@@ -1,0 +1,73 @@
+import { createContext, useContext, useEffect, useState } from 'react';
+import { supabase } from '../services/supabase';
+
+const AuthContext = createContext({});
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
+  const [role, setRole] = useState(null); // 'cadet', 'instructor', 'admin'
+  const [loading, setLoading] = useState(true);
+
+  const fetchProfile = async (userId) => {
+    // Check cadet_profiles first
+    let { data } = await supabase.from('cadet_profiles').select('*').eq('id', userId).maybeSingle();
+    if (data) { setProfile(data); setRole('cadet'); return; }
+
+    // Check instructor_profiles
+    ({ data } = await supabase.from('instructor_profiles').select('*').eq('id', userId).maybeSingle());
+    if (data) { setProfile(data); setRole('instructor'); return; }
+
+    // Check admin_profiles
+    ({ data } = await supabase.from('admin_profiles').select('*').eq('id', userId).maybeSingle());
+    if (data) { setProfile(data); setRole('admin'); return; }
+
+    // Default to cadet if no profile found yet
+    setProfile(null);
+    setRole('cadet');
+  };
+
+  useEffect(() => {
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      const currentUser = session?.user ?? null;
+      setUser(currentUser);
+      if (currentUser) {
+        await fetchProfile(currentUser.id);
+      }
+      setLoading(false);
+    };
+
+    getSession();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      const currentUser = session?.user ?? null;
+      setUser(currentUser);
+      if (currentUser) {
+        await fetchProfile(currentUser.id);
+      } else {
+        setProfile(null);
+        setRole(null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    setProfile(null);
+    setRole(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, profile, role, loading, signOut, fetchProfile }}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
