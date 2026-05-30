@@ -4,6 +4,10 @@
 
 BEGIN;
 
+-- Drop the old content type check constraint and add the new one that allows 'embed'
+ALTER TABLE public.chapters DROP CONSTRAINT IF EXISTS chapters_content_type_check;
+ALTER TABLE public.chapters ADD CONSTRAINT chapters_content_type_check CHECK (content_type IN ('images', 'markdown', 'embed'));
+
 -- Cascade truncate all tables related to courses to prevent duplicate keys
 TRUNCATE public.courses CASCADE;
 
