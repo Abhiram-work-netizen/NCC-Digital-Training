@@ -123,6 +123,7 @@ SYLLABUS_DEFINITION.forEach((def, defIndex) => {
     });
 
     // Modules
+    const isSingleModule = (title === 'NCC At a Glance');
     const mod1Id = generateStableId('b1000000', courseId + '1');
     const mod2Id = generateStableId('b1000000', courseId + '2');
     
@@ -130,8 +131,7 @@ SYLLABUS_DEFINITION.forEach((def, defIndex) => {
     let module2Title = `Practical Training & Operations`;
     
     if (title === 'NCC At a Glance') {
-      module1Title = 'History & Evolution of NCC';
-      module2Title = 'NCC Activities & Camps';
+      module1Title = 'NCC History, Aims & Organisation';
     } else if (title === 'Drill & Commands') {
       module1Title = 'Basic Foot Drill';
       module2Title = 'Parade Formations';
@@ -143,10 +143,16 @@ SYLLABUS_DEFINITION.forEach((def, defIndex) => {
       module2Title = 'Compass & Navigation';
     }
 
-    generatedModules.push(
-      { id: mod1Id, course_id: courseId, title: module1Title, order_index: 1 },
-      { id: mod2Id, course_id: courseId, title: module2Title, order_index: 2 }
-    );
+    if (isSingleModule) {
+      generatedModules.push(
+        { id: mod1Id, course_id: courseId, title: module1Title, order_index: 1 }
+      );
+    } else {
+      generatedModules.push(
+        { id: mod1Id, course_id: courseId, title: module1Title, order_index: 1 },
+        { id: mod2Id, course_id: courseId, title: module2Title, order_index: 2 }
+      );
+    }
 
     // Chapters
     const ch1Id = generateStableId('c1000000', courseId + '1-1');
@@ -233,109 +239,15 @@ Ensure you take the practice tests on this platform for this subject.`
       ch1 = {
         id: 'c1000000-0000-0000-0000-000000000001',
         module_id: mod1Id,
-        title: 'Origin and Establishment of NCC',
-        content_type: 'markdown',
+        title: 'NCC Training Slideshow',
+        content_type: 'embed',
         order_index: 1,
-        content: `# Origin and Establishment of NCC
-
-## Background
-The National Cadet Corps (NCC) came into existence on **15 July 1948** under the NCC Act XXXI of 1948. It was raised on the recommendation of **Pandit H.N. Kunzru Committee** in 1946.
-
-## Historical Roots
-- **1666**: First Volunteer Corps raised in India
-- **1917**: University Corps established during World War I
-- **1942**: University Officers Training Corps (UOTC) formed
-- **1948**: NCC established, replacing the UOTC
-
-## Key Facts
-| Detail | Information |
-|--------|------------|
-| Established | 15 July 1948 |
-| First DG | Lt Gen Grubb |
-| Parent Ministry | Ministry of Defence |
-| Headquarters | New Delhi |
-| Current Strength | ~14 Lakh cadets |
-
-## NCC Motto
-**"Unity and Discipline"** (एकता और अनुशासन)
-
-## NCC Pledge
-> We the cadets of the National Cadet Corps do solemnly pledge that we shall always uphold the unity of India. We shall never resort to violence and shall strive to be worthy citizens of our country.
-
-## NCC Song
-The NCC Song **"Hum Sab Bharatiya Hain"** was written by **Sudarshan Faakir** and composed by the great poet himself.`
+        content_data: {
+          embed_url: 'https://docs.google.com/presentation/d/11HaCvdxdSy4TXuh7HfnX7wWDA2Mkvgv2/embed?start=false&loop=false&delayms=3000'
+        },
+        content: 'Interactive Google Slides Presentation'
       };
-
-      ch2 = {
-        id: 'c1000000-0000-0000-0000-000000000002',
-        module_id: mod1Id,
-        title: 'NCC Aims and Objectives',
-        content_type: 'markdown',
-        order_index: 2,
-        content: `# NCC Aims and Objectives
-
-## Primary Aims
-1. **Character Building** — Develop qualities of character, courage, comradeship, discipline, leadership, secular outlook, spirit of adventure, and ideals of selfless service
-2. **Unity** — Create a human resource of organized, trained, and motivated youth to provide leadership in all walks of life
-3. **Service** — Provide a suitable environment to motivate the youth to take up a career in the Armed Forces
-
-## Core Objectives
-- To develop character, comradeship, discipline, and a secular outlook
-- To create a pool of organized, trained, and motivated youth with leadership qualities
-- To provide a suitable environment to motivate the youth to take up career in Armed Forces
-- To develop qualities of selfless service among the youth
-
-## Three Cardinal Principles
-1. **Sense of Duty and Discipline**
-2. **Secular Outlook and Respect for Diversity**
-3. **Spirit of Selfless Service**
-
-## NCC Flag
-The NCC flag has three colors representing the three wings:
-- **Red** — Army Wing
-- **Dark Blue** — Navy Wing
-- **Light Blue** — Air Force Wing
-
-The NCC crest is in the center with the motto "Unity and Discipline" inscribed below.`
-      };
-
-      ch3 = {
-        id: 'c1000000-0000-0000-0000-000000000003',
-        module_id: mod1Id,
-        title: 'NCC Certificates - A, B & C',
-        content_type: 'markdown',
-        order_index: 3,
-        content: `# NCC Certificates — A, B & C
-
-## Certificate Levels
-
-### A Certificate
-- **Eligibility**: Class VIII to X (2 years in JD/JW)
-- **Exam Pattern**: Written (100 marks) + Practical (100 marks)
-- **Key Benefits**: 5-10 bonus marks in various state board exams
-
-### B Certificate
-- **Eligibility**: Class XI to XII / 1st & 2nd year college (2 years in SD/SW)
-- **Exam Pattern**: Written (150 marks) + Practical (150 marks)
-- **Key Benefits**: Preference in government jobs, bonus marks in competitive exams
-
-### C Certificate
-- **Eligibility**: 2nd & 3rd year college (minimum 3 years total NCC)
-- **Exam Pattern**: Written (200 marks) + Practical (200 marks)
-- **Key Benefits**: Direct entry in Armed Forces (Short Service Commission), exemption from CDS written exam
-
-## Exam Pattern (Latest)
-| Component | A Cert | B Cert | C Cert |
-|-----------|--------|--------|--------|
-| Written | 100 | 150 | 200 |
-| Practical/Drill | 60 | 80 | 120 |
-| Camp Attendance | 40 | 70 | 80 |
-| **Total** | **200** | **300** | **400** |
-| Passing % | 45% | 50% | 50% |
-
-## Important Notes
-- C Certificate holders get **direct entry** to Indian Military Academy (IMA) and Officers Training Academy (OTA)
-- NCC C Certificate holders are **exempted from written exam of CDS**`
+    }
       };
     } else if (title === 'Drill & Commands') {
       ch1 = {
@@ -501,7 +413,11 @@ Conventional signs are **standardized symbols** used on maps:
       };
     }
 
-    generatedChapters.push(ch1, ch2, ch3, ch4);
+    if (title === 'NCC At a Glance') {
+      generatedChapters.push(ch1);
+    } else {
+      generatedChapters.push(ch1, ch2, ch3, ch4);
+    }
 
     // Question bank
     const bankId = generateStableId('d1000000', courseId);

@@ -120,6 +120,15 @@ export default function ChapterViewer() {
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{chapter.content}</ReactMarkdown>
           </article>
         )
+      ) : chapter.content_type === 'embed' && chapter.content_data?.embed_url ? (
+        <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border border-surface-200 bg-black">
+          <iframe 
+            src={chapter.content_data.embed_url} 
+            className="w-full h-full border-0" 
+            allowFullScreen 
+            title={chapter.title}
+          />
+        </div>
       ) : chapter.image_urls && chapter.image_urls.length > 0 ? (
         <ImageCarousel images={chapter.image_urls} />
       ) : (
