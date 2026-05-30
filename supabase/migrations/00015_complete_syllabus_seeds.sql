@@ -304,1474 +304,1474 @@ INSERT INTO public.modules (id, course_id, title, order_index) VALUES
 -- ============================================
 INSERT INTO public.chapters (id, module_id, title, content_type, content_data, order_index, content) VALUES
 ('c1000000-0000-0000-0000-000000000001', 'b1000000-0000-0000-0000-0000784393e0', 'NCC Training Slideshow', 'embed', '{"embed_url":"https://docs.google.com/presentation/d/11HaCvdxdSy4TXuh7HfnX7wWDA2Mkvgv2/embed?start=false&loop=false&delayms=3000"}'::jsonb, 1, 'Interactive Google Slides Presentation'),
-('c1000000-0000-0000-0000-000000000004', 'b1000000-0000-0000-0000-0000784393c1', 'Attention and Stand at Ease', 'markdown', NULL, 1, '# Attention and Stand at Ease
+('c1000000-0000-0000-0000-000000000004', 'b1000000-0000-0000-0000-0000784393c1', 'Attention and Stand at Ease', 'markdown', '{}'::jsonb, 1, '# Attention and Stand at Ease
 
 ## Position of Attention (Savdhan)
 The Position of Attention is the basic military position.'),
-('c1000000-0000-0000-0000-000000000005', 'b1000000-0000-0000-0000-0000784393c1', 'Turning and Saluting', 'markdown', NULL, 2, '# Turning and Saluting
+('c1000000-0000-0000-0000-000000000005', 'b1000000-0000-0000-0000-0000784393c1', 'Turning and Saluting', 'markdown', '{}'::jsonb, 2, '# Turning and Saluting
 
 ## Turnings at the Halt
 All turnings are done in two movements.'),
-('c1000000-0000-0000-0000-000075ad9e1c', 'b1000000-0000-0000-0000-0000784393c0', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000075ad9e1c', 'b1000000-0000-0000-0000-0000784393c0', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Drill & Commands**.'),
-('c1000000-0000-0000-0000-000075ad9e1b', 'b1000000-0000-0000-0000-0000784393c0', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000075ad9e1b', 'b1000000-0000-0000-0000-0000784393c0', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00001c08cee7', 'b1000000-0000-0000-0000-000063203e03', 'Introduction to Weapon Training & Infantry Weapons', 'markdown', NULL, 1, '# Introduction to Weapon Training & Infantry Weapons
+('c1000000-0000-0000-0000-00001c08cee7', 'b1000000-0000-0000-0000-000063203e03', 'Introduction to Weapon Training & Infantry Weapons', 'markdown', '{}'::jsonb, 1, '# Introduction to Weapon Training & Infantry Weapons
 
 ## Overview
 This chapter covers the basic fundamentals of **Weapon Training & Infantry Weapons**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00001c08cee8', 'b1000000-0000-0000-0000-000063203e03', 'Theoretical Principles of Weapon Training & Infantry Weapons', 'markdown', NULL, 2, '# Theoretical Principles of Weapon Training & Infantry Weapons
+('c1000000-0000-0000-0000-00001c08cee8', 'b1000000-0000-0000-0000-000063203e03', 'Theoretical Principles of Weapon Training & Infantry Weapons', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Weapon Training & Infantry Weapons
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Weapon Training & Infantry Weapons**.'),
-('c1000000-0000-0000-0000-00001c08d2a8', 'b1000000-0000-0000-0000-000063203e04', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00001c08d2a8', 'b1000000-0000-0000-0000-000063203e04', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Weapon Training & Infantry Weapons**.'),
-('c1000000-0000-0000-0000-00001c08d2a9', 'b1000000-0000-0000-0000-000063203e04', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00001c08d2a9', 'b1000000-0000-0000-0000-000063203e04', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000075ad2d7e', 'b1000000-0000-0000-0000-0000784393a2', 'Introduction to National Integration', 'markdown', NULL, 1, '# Introduction to National Integration
+('c1000000-0000-0000-0000-000075ad2d7e', 'b1000000-0000-0000-0000-0000784393a2', 'Introduction to National Integration', 'markdown', '{}'::jsonb, 1, '# Introduction to National Integration
 
 ## Overview
 This chapter covers the basic fundamentals of **National Integration**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000075ad2d7d', 'b1000000-0000-0000-0000-0000784393a2', 'Theoretical Principles of National Integration', 'markdown', NULL, 2, '# Theoretical Principles of National Integration
+('c1000000-0000-0000-0000-000075ad2d7d', 'b1000000-0000-0000-0000-0000784393a2', 'Theoretical Principles of National Integration', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of National Integration
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **National Integration**.'),
-('c1000000-0000-0000-0000-000075ad29bd', 'b1000000-0000-0000-0000-0000784393a1', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000075ad29bd', 'b1000000-0000-0000-0000-0000784393a1', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **National Integration**.'),
-('c1000000-0000-0000-0000-000075ad29bc', 'b1000000-0000-0000-0000-0000784393a1', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000075ad29bc', 'b1000000-0000-0000-0000-0000784393a1', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000008078c13', 'b1000000-0000-0000-0000-00001aa16c89', 'Introduction to Leadership & Personality Development', 'markdown', NULL, 1, '# Introduction to Leadership & Personality Development
+('c1000000-0000-0000-0000-000008078c13', 'b1000000-0000-0000-0000-00001aa16c89', 'Introduction to Leadership & Personality Development', 'markdown', '{}'::jsonb, 1, '# Introduction to Leadership & Personality Development
 
 ## Overview
 This chapter covers the basic fundamentals of **Leadership & Personality Development**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000008078c12', 'b1000000-0000-0000-0000-00001aa16c89', 'Theoretical Principles of Leadership & Personality Development', 'markdown', NULL, 2, '# Theoretical Principles of Leadership & Personality Development
+('c1000000-0000-0000-0000-000008078c12', 'b1000000-0000-0000-0000-00001aa16c89', 'Theoretical Principles of Leadership & Personality Development', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Leadership & Personality Development
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Leadership & Personality Development**.'),
-('c1000000-0000-0000-0000-000008078852', 'b1000000-0000-0000-0000-00001aa16c8a', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000008078852', 'b1000000-0000-0000-0000-00001aa16c8a', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Leadership & Personality Development**.'),
-('c1000000-0000-0000-0000-000008078851', 'b1000000-0000-0000-0000-00001aa16c8a', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000008078851', 'b1000000-0000-0000-0000-00001aa16c8a', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00003f7f625e', 'b1000000-0000-0000-0000-00000343433a', 'Introduction to Civil Defence & Disaster Management', 'markdown', NULL, 1, '# Introduction to Civil Defence & Disaster Management
+('c1000000-0000-0000-0000-00003f7f625e', 'b1000000-0000-0000-0000-00000343433a', 'Introduction to Civil Defence & Disaster Management', 'markdown', '{}'::jsonb, 1, '# Introduction to Civil Defence & Disaster Management
 
 ## Overview
 This chapter covers the basic fundamentals of **Civil Defence & Disaster Management**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00003f7f625f', 'b1000000-0000-0000-0000-00000343433a', 'Theoretical Principles of Civil Defence & Disaster Management', 'markdown', NULL, 2, '# Theoretical Principles of Civil Defence & Disaster Management
+('c1000000-0000-0000-0000-00003f7f625f', 'b1000000-0000-0000-0000-00000343433a', 'Theoretical Principles of Civil Defence & Disaster Management', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Civil Defence & Disaster Management
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Civil Defence & Disaster Management**.'),
-('c1000000-0000-0000-0000-00003f7f661f', 'b1000000-0000-0000-0000-00000343433b', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00003f7f661f', 'b1000000-0000-0000-0000-00000343433b', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Civil Defence & Disaster Management**.'),
-('c1000000-0000-0000-0000-00003f7f6620', 'b1000000-0000-0000-0000-00000343433b', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00003f7f6620', 'b1000000-0000-0000-0000-00000343433b', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000051e73703', 'b1000000-0000-0000-0000-0000240c3a67', 'Introduction to Social Service & Awareness', 'markdown', NULL, 1, '# Introduction to Social Service & Awareness
+('c1000000-0000-0000-0000-000051e73703', 'b1000000-0000-0000-0000-0000240c3a67', 'Introduction to Social Service & Awareness', 'markdown', '{}'::jsonb, 1, '# Introduction to Social Service & Awareness
 
 ## Overview
 This chapter covers the basic fundamentals of **Social Service & Awareness**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000051e73702', 'b1000000-0000-0000-0000-0000240c3a67', 'Theoretical Principles of Social Service & Awareness', 'markdown', NULL, 2, '# Theoretical Principles of Social Service & Awareness
+('c1000000-0000-0000-0000-000051e73702', 'b1000000-0000-0000-0000-0000240c3a67', 'Theoretical Principles of Social Service & Awareness', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Social Service & Awareness
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Social Service & Awareness**.'),
-('c1000000-0000-0000-0000-000051e73342', 'b1000000-0000-0000-0000-0000240c3a66', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000051e73342', 'b1000000-0000-0000-0000-0000240c3a66', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Social Service & Awareness**.'),
-('c1000000-0000-0000-0000-000051e73341', 'b1000000-0000-0000-0000-0000240c3a66', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000051e73341', 'b1000000-0000-0000-0000-0000240c3a66', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000000000006', 'b1000000-0000-0000-0000-000078439383', 'Fractures and Bandaging', 'markdown', NULL, 1, '# Fractures and Bandaging
+('c1000000-0000-0000-0000-000000000006', 'b1000000-0000-0000-0000-000078439383', 'Fractures and Bandaging', 'markdown', '{}'::jsonb, 1, '# Fractures and Bandaging
 
 ## Types of Fractures
 1. Simple (Closed): Bone breaks but skin is intact.'),
-('c1000000-0000-0000-0000-000075acb91e', 'b1000000-0000-0000-0000-000078439383', 'Theoretical Principles of Health, Hygiene & Sanitation', 'markdown', NULL, 2, '# Theoretical Principles of Health, Hygiene & Sanitation
+('c1000000-0000-0000-0000-000075acb91e', 'b1000000-0000-0000-0000-000078439383', 'Theoretical Principles of Health, Hygiene & Sanitation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Health, Hygiene & Sanitation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Health, Hygiene & Sanitation**.'),
-('c1000000-0000-0000-0000-000075acb55e', 'b1000000-0000-0000-0000-000078439382', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000075acb55e', 'b1000000-0000-0000-0000-000078439382', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Health, Hygiene & Sanitation**.'),
-('c1000000-0000-0000-0000-000075acb55d', 'b1000000-0000-0000-0000-000078439382', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000075acb55d', 'b1000000-0000-0000-0000-000078439382', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00001897c9ae', 'b1000000-0000-0000-0000-00001eed3e8a', 'Introduction to Yoga & Asanas', 'markdown', NULL, 1, '# Introduction to Yoga & Asanas
+('c1000000-0000-0000-0000-00001897c9ae', 'b1000000-0000-0000-0000-00001eed3e8a', 'Introduction to Yoga & Asanas', 'markdown', '{}'::jsonb, 1, '# Introduction to Yoga & Asanas
 
 ## Overview
 This chapter covers the basic fundamentals of **Yoga & Asanas**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00001897c9af', 'b1000000-0000-0000-0000-00001eed3e8a', 'Theoretical Principles of Yoga & Asanas', 'markdown', NULL, 2, '# Theoretical Principles of Yoga & Asanas
+('c1000000-0000-0000-0000-00001897c9af', 'b1000000-0000-0000-0000-00001eed3e8a', 'Theoretical Principles of Yoga & Asanas', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Yoga & Asanas
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Yoga & Asanas**.'),
-('c1000000-0000-0000-0000-00001897cd6f', 'b1000000-0000-0000-0000-00001eed3e8b', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00001897cd6f', 'b1000000-0000-0000-0000-00001eed3e8b', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Yoga & Asanas**.'),
-('c1000000-0000-0000-0000-00001897cd70', 'b1000000-0000-0000-0000-00001eed3e8b', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00001897cd70', 'b1000000-0000-0000-0000-00001eed3e8b', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00002dc1705b', 'b1000000-0000-0000-0000-000050ab1641', 'Introduction to Home Nursing', 'markdown', NULL, 1, '# Introduction to Home Nursing
+('c1000000-0000-0000-0000-00002dc1705b', 'b1000000-0000-0000-0000-000050ab1641', 'Introduction to Home Nursing', 'markdown', '{}'::jsonb, 1, '# Introduction to Home Nursing
 
 ## Overview
 This chapter covers the basic fundamentals of **Home Nursing**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00002dc1705a', 'b1000000-0000-0000-0000-000050ab1641', 'Theoretical Principles of Home Nursing', 'markdown', NULL, 2, '# Theoretical Principles of Home Nursing
+('c1000000-0000-0000-0000-00002dc1705a', 'b1000000-0000-0000-0000-000050ab1641', 'Theoretical Principles of Home Nursing', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Home Nursing
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Home Nursing**.'),
-('c1000000-0000-0000-0000-00002dc16c9a', 'b1000000-0000-0000-0000-000050ab1642', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00002dc16c9a', 'b1000000-0000-0000-0000-000050ab1642', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Home Nursing**.'),
-('c1000000-0000-0000-0000-00002dc16c99', 'b1000000-0000-0000-0000-000050ab1642', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00002dc16c99', 'b1000000-0000-0000-0000-000050ab1642', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00006f9ab9c0', 'b1000000-0000-0000-0000-00006ab4b79c', 'Introduction to Posture Training', 'markdown', NULL, 1, '# Introduction to Posture Training
+('c1000000-0000-0000-0000-00006f9ab9c0', 'b1000000-0000-0000-0000-00006ab4b79c', 'Introduction to Posture Training', 'markdown', '{}'::jsonb, 1, '# Introduction to Posture Training
 
 ## Overview
 This chapter covers the basic fundamentals of **Posture Training**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00006f9ab9bf', 'b1000000-0000-0000-0000-00006ab4b79c', 'Theoretical Principles of Posture Training', 'markdown', NULL, 2, '# Theoretical Principles of Posture Training
+('c1000000-0000-0000-0000-00006f9ab9bf', 'b1000000-0000-0000-0000-00006ab4b79c', 'Theoretical Principles of Posture Training', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Posture Training
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Posture Training**.'),
-('c1000000-0000-0000-0000-00006f9ab5ff', 'b1000000-0000-0000-0000-00006ab4b79d', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00006f9ab5ff', 'b1000000-0000-0000-0000-00006ab4b79d', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Posture Training**.'),
-('c1000000-0000-0000-0000-00006f9ab5fe', 'b1000000-0000-0000-0000-00006ab4b79d', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00006f9ab5fe', 'b1000000-0000-0000-0000-00006ab4b79d', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000046089a51', 'b1000000-0000-0000-0000-000055702413', 'Introduction to Obstacles Training & Adventure Activities', 'markdown', NULL, 1, '# Introduction to Obstacles Training & Adventure Activities
+('c1000000-0000-0000-0000-000046089a51', 'b1000000-0000-0000-0000-000055702413', 'Introduction to Obstacles Training & Adventure Activities', 'markdown', '{}'::jsonb, 1, '# Introduction to Obstacles Training & Adventure Activities
 
 ## Overview
 This chapter covers the basic fundamentals of **Obstacles Training & Adventure Activities**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000046089a52', 'b1000000-0000-0000-0000-000055702413', 'Theoretical Principles of Obstacles Training & Adventure Activities', 'markdown', NULL, 2, '# Theoretical Principles of Obstacles Training & Adventure Activities
+('c1000000-0000-0000-0000-000046089a52', 'b1000000-0000-0000-0000-000055702413', 'Theoretical Principles of Obstacles Training & Adventure Activities', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Obstacles Training & Adventure Activities
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Obstacles Training & Adventure Activities**.'),
-('c1000000-0000-0000-0000-000046089e12', 'b1000000-0000-0000-0000-000055702412', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000046089e12', 'b1000000-0000-0000-0000-000055702412', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Obstacles Training & Adventure Activities**.'),
-('c1000000-0000-0000-0000-000046089e13', 'b1000000-0000-0000-0000-000055702412', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000046089e13', 'b1000000-0000-0000-0000-000055702412', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00006022b442', 'b1000000-0000-0000-0000-000022cc049a', 'Introduction to Career in Defence Services', 'markdown', NULL, 1, '# Introduction to Career in Defence Services
+('c1000000-0000-0000-0000-00006022b442', 'b1000000-0000-0000-0000-000022cc049a', 'Introduction to Career in Defence Services', 'markdown', '{}'::jsonb, 1, '# Introduction to Career in Defence Services
 
 ## Overview
 This chapter covers the basic fundamentals of **Career in Defence Services**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00006022b441', 'b1000000-0000-0000-0000-000022cc049a', 'Theoretical Principles of Career in Defence Services', 'markdown', NULL, 2, '# Theoretical Principles of Career in Defence Services
+('c1000000-0000-0000-0000-00006022b441', 'b1000000-0000-0000-0000-000022cc049a', 'Theoretical Principles of Career in Defence Services', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Career in Defence Services
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Career in Defence Services**.'),
-('c1000000-0000-0000-0000-00006022b081', 'b1000000-0000-0000-0000-000022cc049b', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00006022b081', 'b1000000-0000-0000-0000-000022cc049b', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Career in Defence Services**.'),
-('c1000000-0000-0000-0000-00006022b080', 'b1000000-0000-0000-0000-000022cc049b', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00006022b080', 'b1000000-0000-0000-0000-000022cc049b', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000021d93601', 'b1000000-0000-0000-0000-00006033a39d', 'Introduction to Services Tests & Interviews', 'markdown', NULL, 1, '# Introduction to Services Tests & Interviews
+('c1000000-0000-0000-0000-000021d93601', 'b1000000-0000-0000-0000-00006033a39d', 'Introduction to Services Tests & Interviews', 'markdown', '{}'::jsonb, 1, '# Introduction to Services Tests & Interviews
 
 ## Overview
 This chapter covers the basic fundamentals of **Services Tests & Interviews**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000021d93602', 'b1000000-0000-0000-0000-00006033a39d', 'Theoretical Principles of Services Tests & Interviews', 'markdown', NULL, 2, '# Theoretical Principles of Services Tests & Interviews
+('c1000000-0000-0000-0000-000021d93602', 'b1000000-0000-0000-0000-00006033a39d', 'Theoretical Principles of Services Tests & Interviews', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Services Tests & Interviews
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Services Tests & Interviews**.'),
-('c1000000-0000-0000-0000-000021d939c2', 'b1000000-0000-0000-0000-00006033a39e', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000021d939c2', 'b1000000-0000-0000-0000-00006033a39e', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Services Tests & Interviews**.'),
-('c1000000-0000-0000-0000-000021d939c3', 'b1000000-0000-0000-0000-00006033a39e', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000021d939c3', 'b1000000-0000-0000-0000-00006033a39e', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00004dbe445a', 'b1000000-0000-0000-0000-00003bdb4e82', 'Introduction to Self-Defence', 'markdown', NULL, 1, '# Introduction to Self-Defence
+('c1000000-0000-0000-0000-00004dbe445a', 'b1000000-0000-0000-0000-00003bdb4e82', 'Introduction to Self-Defence', 'markdown', '{}'::jsonb, 1, '# Introduction to Self-Defence
 
 ## Overview
 This chapter covers the basic fundamentals of **Self-Defence**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00004dbe4459', 'b1000000-0000-0000-0000-00003bdb4e82', 'Theoretical Principles of Self-Defence', 'markdown', NULL, 2, '# Theoretical Principles of Self-Defence
+('c1000000-0000-0000-0000-00004dbe4459', 'b1000000-0000-0000-0000-00003bdb4e82', 'Theoretical Principles of Self-Defence', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Self-Defence
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Self-Defence**.'),
-('c1000000-0000-0000-0000-00004dbe4099', 'b1000000-0000-0000-0000-00003bdb4e83', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00004dbe4099', 'b1000000-0000-0000-0000-00003bdb4e83', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Self-Defence**.'),
-('c1000000-0000-0000-0000-00004dbe4098', 'b1000000-0000-0000-0000-00003bdb4e83', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00004dbe4098', 'b1000000-0000-0000-0000-00003bdb4e83', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000419a1cbd', 'b1000000-0000-0000-0000-000030d146a1', 'Introduction to Environment and Ecology', 'markdown', NULL, 1, '# Introduction to Environment and Ecology
+('c1000000-0000-0000-0000-0000419a1cbd', 'b1000000-0000-0000-0000-000030d146a1', 'Introduction to Environment and Ecology', 'markdown', '{}'::jsonb, 1, '# Introduction to Environment and Ecology
 
 ## Overview
 This chapter covers the basic fundamentals of **Environment and Ecology**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-0000419a1cbc', 'b1000000-0000-0000-0000-000030d146a1', 'Theoretical Principles of Environment and Ecology', 'markdown', NULL, 2, '# Theoretical Principles of Environment and Ecology
+('c1000000-0000-0000-0000-0000419a1cbc', 'b1000000-0000-0000-0000-000030d146a1', 'Theoretical Principles of Environment and Ecology', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Environment and Ecology
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Environment and Ecology**.'),
-('c1000000-0000-0000-0000-0000419a18fc', 'b1000000-0000-0000-0000-000030d146a0', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000419a18fc', 'b1000000-0000-0000-0000-000030d146a0', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Environment and Ecology**.'),
-('c1000000-0000-0000-0000-0000419a18fb', 'b1000000-0000-0000-0000-000030d146a0', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000419a18fb', 'b1000000-0000-0000-0000-000030d146a0', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00003754ad96', 'b1000000-0000-0000-0000-0000581e038e', 'Introduction to Famous Leaders of India', 'markdown', NULL, 1, '# Introduction to Famous Leaders of India
+('c1000000-0000-0000-0000-00003754ad96', 'b1000000-0000-0000-0000-0000581e038e', 'Introduction to Famous Leaders of India', 'markdown', '{}'::jsonb, 1, '# Introduction to Famous Leaders of India
 
 ## Overview
 This chapter covers the basic fundamentals of **Famous Leaders of India**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00003754ad97', 'b1000000-0000-0000-0000-0000581e038e', 'Theoretical Principles of Famous Leaders of India', 'markdown', NULL, 2, '# Theoretical Principles of Famous Leaders of India
+('c1000000-0000-0000-0000-00003754ad97', 'b1000000-0000-0000-0000-0000581e038e', 'Theoretical Principles of Famous Leaders of India', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Famous Leaders of India
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Famous Leaders of India**.'),
-('c1000000-0000-0000-0000-00003754b157', 'b1000000-0000-0000-0000-0000581e038d', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00003754b157', 'b1000000-0000-0000-0000-0000581e038d', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Famous Leaders of India**.'),
-('c1000000-0000-0000-0000-00003754b158', 'b1000000-0000-0000-0000-0000581e038d', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00003754b158', 'b1000000-0000-0000-0000-0000581e038d', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00007599eea5', 'b1000000-0000-0000-0000-00007eec7289', 'Introduction to History of India', 'markdown', NULL, 1, '# Introduction to History of India
+('c1000000-0000-0000-0000-00007599eea5', 'b1000000-0000-0000-0000-00007eec7289', 'Introduction to History of India', 'markdown', '{}'::jsonb, 1, '# Introduction to History of India
 
 ## Overview
 This chapter covers the basic fundamentals of **History of India**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00007599eea4', 'b1000000-0000-0000-0000-00007eec7289', 'Theoretical Principles of History of India', 'markdown', NULL, 2, '# Theoretical Principles of History of India
+('c1000000-0000-0000-0000-00007599eea4', 'b1000000-0000-0000-0000-00007eec7289', 'Theoretical Principles of History of India', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of History of India
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **History of India**.'),
-('c1000000-0000-0000-0000-00007599eae4', 'b1000000-0000-0000-0000-00007eec7288', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00007599eae4', 'b1000000-0000-0000-0000-00007eec7288', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **History of India**.'),
-('c1000000-0000-0000-0000-00007599eae3', 'b1000000-0000-0000-0000-00007eec7288', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00007599eae3', 'b1000000-0000-0000-0000-00007eec7288', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000441c2cdb', 'b1000000-0000-0000-0000-0000009a88f7', 'Introduction to Armed Forces & Military History', 'markdown', NULL, 1, '# Introduction to Armed Forces & Military History
+('c1000000-0000-0000-0000-0000441c2cdb', 'b1000000-0000-0000-0000-0000009a88f7', 'Introduction to Armed Forces & Military History', 'markdown', '{}'::jsonb, 1, '# Introduction to Armed Forces & Military History
 
 ## Overview
 This chapter covers the basic fundamentals of **Armed Forces & Military History**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-0000441c2cdc', 'b1000000-0000-0000-0000-0000009a88f7', 'Theoretical Principles of Armed Forces & Military History', 'markdown', NULL, 2, '# Theoretical Principles of Armed Forces & Military History
+('c1000000-0000-0000-0000-0000441c2cdc', 'b1000000-0000-0000-0000-0000009a88f7', 'Theoretical Principles of Armed Forces & Military History', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Armed Forces & Military History
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Armed Forces & Military History**.'),
-('c1000000-0000-0000-0000-0000441c309c', 'b1000000-0000-0000-0000-0000009a88f8', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000441c309c', 'b1000000-0000-0000-0000-0000009a88f8', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Armed Forces & Military History**.'),
-('c1000000-0000-0000-0000-0000441c309d', 'b1000000-0000-0000-0000-0000009a88f8', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000441c309d', 'b1000000-0000-0000-0000-0000009a88f8', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000000000007', 'b1000000-0000-0000-0000-000078439364', 'Topographic Maps and Conventional Signs', 'markdown', NULL, 1, '# Topographic Maps and Conventional Signs
+('c1000000-0000-0000-0000-000000000007', 'b1000000-0000-0000-0000-000078439364', 'Topographic Maps and Conventional Signs', 'markdown', '{}'::jsonb, 1, '# Topographic Maps and Conventional Signs
 
 ## What is a Topographic Map?'),
-('c1000000-0000-0000-0000-000075ac44bf', 'b1000000-0000-0000-0000-000078439364', 'Theoretical Principles of Map Reading', 'markdown', NULL, 2, '# Theoretical Principles of Map Reading
+('c1000000-0000-0000-0000-000075ac44bf', 'b1000000-0000-0000-0000-000078439364', 'Theoretical Principles of Map Reading', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Map Reading
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Map Reading**.'),
-('c1000000-0000-0000-0000-000075ac40ff', 'b1000000-0000-0000-0000-000078439363', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000075ac40ff', 'b1000000-0000-0000-0000-000078439363', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Map Reading**.'),
-('c1000000-0000-0000-0000-000075ac40fe', 'b1000000-0000-0000-0000-000078439363', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000075ac40fe', 'b1000000-0000-0000-0000-000078439363', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00006ea19a74', 'b1000000-0000-0000-0000-0000123ac618', 'Introduction to Communication', 'markdown', NULL, 1, '# Introduction to Communication
+('c1000000-0000-0000-0000-00006ea19a74', 'b1000000-0000-0000-0000-0000123ac618', 'Introduction to Communication', 'markdown', '{}'::jsonb, 1, '# Introduction to Communication
 
 ## Overview
 This chapter covers the basic fundamentals of **Communication**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00006ea19a73', 'b1000000-0000-0000-0000-0000123ac618', 'Theoretical Principles of Communication', 'markdown', NULL, 2, '# Theoretical Principles of Communication
+('c1000000-0000-0000-0000-00006ea19a73', 'b1000000-0000-0000-0000-0000123ac618', 'Theoretical Principles of Communication', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Communication
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Communication**.'),
-('c1000000-0000-0000-0000-00006ea196b3', 'b1000000-0000-0000-0000-0000123ac617', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00006ea196b3', 'b1000000-0000-0000-0000-0000123ac617', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Communication**.'),
-('c1000000-0000-0000-0000-00006ea196b2', 'b1000000-0000-0000-0000-0000123ac617', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00006ea196b2', 'b1000000-0000-0000-0000-0000123ac617', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000059e97f1a', 'b1000000-0000-0000-0000-00004a3aa10a', 'Introduction to Field Craft & Battle Craft', 'markdown', NULL, 1, '# Introduction to Field Craft & Battle Craft
+('c1000000-0000-0000-0000-000059e97f1a', 'b1000000-0000-0000-0000-00004a3aa10a', 'Introduction to Field Craft & Battle Craft', 'markdown', '{}'::jsonb, 1, '# Introduction to Field Craft & Battle Craft
 
 ## Overview
 This chapter covers the basic fundamentals of **Field Craft & Battle Craft**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000059e97f1b', 'b1000000-0000-0000-0000-00004a3aa10a', 'Theoretical Principles of Field Craft & Battle Craft', 'markdown', NULL, 2, '# Theoretical Principles of Field Craft & Battle Craft
+('c1000000-0000-0000-0000-000059e97f1b', 'b1000000-0000-0000-0000-00004a3aa10a', 'Theoretical Principles of Field Craft & Battle Craft', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Field Craft & Battle Craft
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Field Craft & Battle Craft**.'),
-('c1000000-0000-0000-0000-000059e982db', 'b1000000-0000-0000-0000-00004a3aa109', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000059e982db', 'b1000000-0000-0000-0000-00004a3aa109', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Field Craft & Battle Craft**.'),
-('c1000000-0000-0000-0000-000059e982dc', 'b1000000-0000-0000-0000-00004a3aa109', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000059e982dc', 'b1000000-0000-0000-0000-00004a3aa109', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000063269e5d', 'b1000000-0000-0000-0000-000050d1b041', 'Introduction to Personality Development & Officer Like Qualities (OLQs)', 'markdown', NULL, 1, '# Introduction to Personality Development & Officer Like Qualities (OLQs)
+('c1000000-0000-0000-0000-000063269e5d', 'b1000000-0000-0000-0000-000050d1b041', 'Introduction to Personality Development & Officer Like Qualities (OLQs)', 'markdown', '{}'::jsonb, 1, '# Introduction to Personality Development & Officer Like Qualities (OLQs)
 
 ## Overview
 This chapter covers the basic fundamentals of **Personality Development & Officer Like Qualities (OLQs)**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000063269e5c', 'b1000000-0000-0000-0000-000050d1b041', 'Theoretical Principles of Personality Development & Officer Like Qualities (OLQs)', 'markdown', NULL, 2, '# Theoretical Principles of Personality Development & Officer Like Qualities (OLQs)
+('c1000000-0000-0000-0000-000063269e5c', 'b1000000-0000-0000-0000-000050d1b041', 'Theoretical Principles of Personality Development & Officer Like Qualities (OLQs)', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Personality Development & Officer Like Qualities (OLQs)
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Personality Development & Officer Like Qualities (OLQs)**.'),
-('c1000000-0000-0000-0000-000063269a9c', 'b1000000-0000-0000-0000-000050d1b040', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000063269a9c', 'b1000000-0000-0000-0000-000050d1b040', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Personality Development & Officer Like Qualities (OLQs)**.'),
-('c1000000-0000-0000-0000-000063269a9b', 'b1000000-0000-0000-0000-000050d1b040', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000063269a9b', 'b1000000-0000-0000-0000-000050d1b040', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00003d00f185', 'b1000000-0000-0000-0000-0000625c7021', 'Introduction to Disaster Management & Social Awareness', 'markdown', NULL, 1, '# Introduction to Disaster Management & Social Awareness
+('c1000000-0000-0000-0000-00003d00f185', 'b1000000-0000-0000-0000-0000625c7021', 'Introduction to Disaster Management & Social Awareness', 'markdown', '{}'::jsonb, 1, '# Introduction to Disaster Management & Social Awareness
 
 ## Overview
 This chapter covers the basic fundamentals of **Disaster Management & Social Awareness**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00003d00f186', 'b1000000-0000-0000-0000-0000625c7021', 'Theoretical Principles of Disaster Management & Social Awareness', 'markdown', NULL, 2, '# Theoretical Principles of Disaster Management & Social Awareness
+('c1000000-0000-0000-0000-00003d00f186', 'b1000000-0000-0000-0000-0000625c7021', 'Theoretical Principles of Disaster Management & Social Awareness', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Disaster Management & Social Awareness
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Disaster Management & Social Awareness**.'),
-('c1000000-0000-0000-0000-00003d00f546', 'b1000000-0000-0000-0000-0000625c7022', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00003d00f546', 'b1000000-0000-0000-0000-0000625c7022', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Disaster Management & Social Awareness**.'),
-('c1000000-0000-0000-0000-00003d00f547', 'b1000000-0000-0000-0000-0000625c7022', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00003d00f547', 'b1000000-0000-0000-0000-0000625c7022', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00005070cc2b', 'b1000000-0000-0000-0000-000021370671', 'Introduction to Advanced Leadership', 'markdown', NULL, 1, '# Introduction to Advanced Leadership
+('c1000000-0000-0000-0000-00005070cc2b', 'b1000000-0000-0000-0000-000021370671', 'Introduction to Advanced Leadership', 'markdown', '{}'::jsonb, 1, '# Introduction to Advanced Leadership
 
 ## Overview
 This chapter covers the basic fundamentals of **Advanced Leadership**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00005070cc2a', 'b1000000-0000-0000-0000-000021370671', 'Theoretical Principles of Advanced Leadership', 'markdown', NULL, 2, '# Theoretical Principles of Advanced Leadership
+('c1000000-0000-0000-0000-00005070cc2a', 'b1000000-0000-0000-0000-000021370671', 'Theoretical Principles of Advanced Leadership', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Advanced Leadership
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Advanced Leadership**.'),
-('c1000000-0000-0000-0000-00005070c86a', 'b1000000-0000-0000-0000-000021370672', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00005070c86a', 'b1000000-0000-0000-0000-000021370672', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Advanced Leadership**.'),
-('c1000000-0000-0000-0000-00005070c869', 'b1000000-0000-0000-0000-000021370672', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00005070c869', 'b1000000-0000-0000-0000-000021370672', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00003a1e08ee', 'b1000000-0000-0000-0000-00002d148b12', 'Introduction to Advanced Drill', 'markdown', NULL, 1, '# Introduction to Advanced Drill
+('c1000000-0000-0000-0000-00003a1e08ee', 'b1000000-0000-0000-0000-00002d148b12', 'Introduction to Advanced Drill', 'markdown', '{}'::jsonb, 1, '# Introduction to Advanced Drill
 
 ## Overview
 This chapter covers the basic fundamentals of **Advanced Drill**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00003a1e08ed', 'b1000000-0000-0000-0000-00002d148b12', 'Theoretical Principles of Advanced Drill', 'markdown', NULL, 2, '# Theoretical Principles of Advanced Drill
+('c1000000-0000-0000-0000-00003a1e08ed', 'b1000000-0000-0000-0000-00002d148b12', 'Theoretical Principles of Advanced Drill', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Advanced Drill
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Advanced Drill**.'),
-('c1000000-0000-0000-0000-00003a1e052d', 'b1000000-0000-0000-0000-00002d148b11', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00003a1e052d', 'b1000000-0000-0000-0000-00002d148b11', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Advanced Drill**.'),
-('c1000000-0000-0000-0000-00003a1e052c', 'b1000000-0000-0000-0000-00002d148b11', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00003a1e052c', 'b1000000-0000-0000-0000-00002d148b11', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000476c0b53', 'b1000000-0000-0000-0000-00007659e2b7', 'Introduction to National Security', 'markdown', NULL, 1, '# Introduction to National Security
+('c1000000-0000-0000-0000-0000476c0b53', 'b1000000-0000-0000-0000-00007659e2b7', 'Introduction to National Security', 'markdown', '{}'::jsonb, 1, '# Introduction to National Security
 
 ## Overview
 This chapter covers the basic fundamentals of **National Security**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-0000476c0b52', 'b1000000-0000-0000-0000-00007659e2b7', 'Theoretical Principles of National Security', 'markdown', NULL, 2, '# Theoretical Principles of National Security
+('c1000000-0000-0000-0000-0000476c0b52', 'b1000000-0000-0000-0000-00007659e2b7', 'Theoretical Principles of National Security', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of National Security
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **National Security**.'),
-('c1000000-0000-0000-0000-0000476c0792', 'b1000000-0000-0000-0000-00007659e2b6', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000476c0792', 'b1000000-0000-0000-0000-00007659e2b6', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **National Security**.'),
-('c1000000-0000-0000-0000-0000476c0791', 'b1000000-0000-0000-0000-00007659e2b6', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000476c0791', 'b1000000-0000-0000-0000-00007659e2b6', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000001945e62', 'b1000000-0000-0000-0000-00002d49ad86', 'Introduction to Armed Forces Organisation', 'markdown', NULL, 1, '# Introduction to Armed Forces Organisation
+('c1000000-0000-0000-0000-000001945e62', 'b1000000-0000-0000-0000-00002d49ad86', 'Introduction to Armed Forces Organisation', 'markdown', '{}'::jsonb, 1, '# Introduction to Armed Forces Organisation
 
 ## Overview
 This chapter covers the basic fundamentals of **Armed Forces Organisation**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000001945e61', 'b1000000-0000-0000-0000-00002d49ad86', 'Theoretical Principles of Armed Forces Organisation', 'markdown', NULL, 2, '# Theoretical Principles of Armed Forces Organisation
+('c1000000-0000-0000-0000-000001945e61', 'b1000000-0000-0000-0000-00002d49ad86', 'Theoretical Principles of Armed Forces Organisation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Armed Forces Organisation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Armed Forces Organisation**.'),
-('c1000000-0000-0000-0000-000001945aa1', 'b1000000-0000-0000-0000-00002d49ad85', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000001945aa1', 'b1000000-0000-0000-0000-00002d49ad85', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Armed Forces Organisation**.'),
-('c1000000-0000-0000-0000-000001945aa0', 'b1000000-0000-0000-0000-00002d49ad85', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000001945aa0', 'b1000000-0000-0000-0000-00002d49ad85', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000074a9b238', 'b1000000-0000-0000-0000-0000356c3e6c', 'Introduction to Disaster Management', 'markdown', NULL, 1, '# Introduction to Disaster Management
+('c1000000-0000-0000-0000-000074a9b238', 'b1000000-0000-0000-0000-0000356c3e6c', 'Introduction to Disaster Management', 'markdown', '{}'::jsonb, 1, '# Introduction to Disaster Management
 
 ## Overview
 This chapter covers the basic fundamentals of **Disaster Management**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000074a9b239', 'b1000000-0000-0000-0000-0000356c3e6c', 'Theoretical Principles of Disaster Management', 'markdown', NULL, 2, '# Theoretical Principles of Disaster Management
+('c1000000-0000-0000-0000-000074a9b239', 'b1000000-0000-0000-0000-0000356c3e6c', 'Theoretical Principles of Disaster Management', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Disaster Management
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Disaster Management**.'),
-('c1000000-0000-0000-0000-000074a9b5f9', 'b1000000-0000-0000-0000-0000356c3e6b', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000074a9b5f9', 'b1000000-0000-0000-0000-0000356c3e6b', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Disaster Management**.'),
-('c1000000-0000-0000-0000-000074a9b5fa', 'b1000000-0000-0000-0000-0000356c3e6b', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000074a9b5fa', 'b1000000-0000-0000-0000-0000356c3e6b', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00004cf0b785', 'b1000000-0000-0000-0000-00001785b621', 'Introduction to Social Service & Community Development', 'markdown', NULL, 1, '# Introduction to Social Service & Community Development
+('c1000000-0000-0000-0000-00004cf0b785', 'b1000000-0000-0000-0000-00001785b621', 'Introduction to Social Service & Community Development', 'markdown', '{}'::jsonb, 1, '# Introduction to Social Service & Community Development
 
 ## Overview
 This chapter covers the basic fundamentals of **Social Service & Community Development**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00004cf0b786', 'b1000000-0000-0000-0000-00001785b621', 'Theoretical Principles of Social Service & Community Development', 'markdown', NULL, 2, '# Theoretical Principles of Social Service & Community Development
+('c1000000-0000-0000-0000-00004cf0b786', 'b1000000-0000-0000-0000-00001785b621', 'Theoretical Principles of Social Service & Community Development', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Social Service & Community Development
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Social Service & Community Development**.'),
-('c1000000-0000-0000-0000-00004cf0bb46', 'b1000000-0000-0000-0000-00001785b622', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00004cf0bb46', 'b1000000-0000-0000-0000-00001785b622', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Social Service & Community Development**.'),
-('c1000000-0000-0000-0000-00004cf0bb47', 'b1000000-0000-0000-0000-00001785b622', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00004cf0bb47', 'b1000000-0000-0000-0000-00001785b622', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00007c5aed79', 'b1000000-0000-0000-0000-00002bd326eb', 'Introduction to Personality Development & Communication Skills', 'markdown', NULL, 1, '# Introduction to Personality Development & Communication Skills
+('c1000000-0000-0000-0000-00007c5aed79', 'b1000000-0000-0000-0000-00002bd326eb', 'Introduction to Personality Development & Communication Skills', 'markdown', '{}'::jsonb, 1, '# Introduction to Personality Development & Communication Skills
 
 ## Overview
 This chapter covers the basic fundamentals of **Personality Development & Communication Skills**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00007c5aed7a', 'b1000000-0000-0000-0000-00002bd326eb', 'Theoretical Principles of Personality Development & Communication Skills', 'markdown', NULL, 2, '# Theoretical Principles of Personality Development & Communication Skills
+('c1000000-0000-0000-0000-00007c5aed7a', 'b1000000-0000-0000-0000-00002bd326eb', 'Theoretical Principles of Personality Development & Communication Skills', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Personality Development & Communication Skills
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Personality Development & Communication Skills**.'),
-('c1000000-0000-0000-0000-00007c5af13a', 'b1000000-0000-0000-0000-00002bd326ea', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00007c5af13a', 'b1000000-0000-0000-0000-00002bd326ea', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Personality Development & Communication Skills**.'),
-('c1000000-0000-0000-0000-00007c5af13b', 'b1000000-0000-0000-0000-00002bd326ea', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00007c5af13b', 'b1000000-0000-0000-0000-00002bd326ea', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00002cc16856', 'b1000000-0000-0000-0000-00001fa75b86', 'Introduction to Map Reading & Navigation', 'markdown', NULL, 1, '# Introduction to Map Reading & Navigation
+('c1000000-0000-0000-0000-00002cc16856', 'b1000000-0000-0000-0000-00001fa75b86', 'Introduction to Map Reading & Navigation', 'markdown', '{}'::jsonb, 1, '# Introduction to Map Reading & Navigation
 
 ## Overview
 This chapter covers the basic fundamentals of **Map Reading & Navigation**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00002cc16855', 'b1000000-0000-0000-0000-00001fa75b86', 'Theoretical Principles of Map Reading & Navigation', 'markdown', NULL, 2, '# Theoretical Principles of Map Reading & Navigation
+('c1000000-0000-0000-0000-00002cc16855', 'b1000000-0000-0000-0000-00001fa75b86', 'Theoretical Principles of Map Reading & Navigation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Map Reading & Navigation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Map Reading & Navigation**.'),
-('c1000000-0000-0000-0000-00002cc16495', 'b1000000-0000-0000-0000-00001fa75b87', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00002cc16495', 'b1000000-0000-0000-0000-00001fa75b87', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Map Reading & Navigation**.'),
-('c1000000-0000-0000-0000-00002cc16494', 'b1000000-0000-0000-0000-00001fa75b87', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00002cc16494', 'b1000000-0000-0000-0000-00001fa75b87', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000047b3d36c', 'b1000000-0000-0000-0000-000013a36038', 'Introduction to Field Craft & Battle Craft', 'markdown', NULL, 1, '# Introduction to Field Craft & Battle Craft
+('c1000000-0000-0000-0000-000047b3d36c', 'b1000000-0000-0000-0000-000013a36038', 'Introduction to Field Craft & Battle Craft', 'markdown', '{}'::jsonb, 1, '# Introduction to Field Craft & Battle Craft
 
 ## Overview
 This chapter covers the basic fundamentals of **Field Craft & Battle Craft**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000047b3d36d', 'b1000000-0000-0000-0000-000013a36038', 'Theoretical Principles of Field Craft & Battle Craft', 'markdown', NULL, 2, '# Theoretical Principles of Field Craft & Battle Craft
+('c1000000-0000-0000-0000-000047b3d36d', 'b1000000-0000-0000-0000-000013a36038', 'Theoretical Principles of Field Craft & Battle Craft', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Field Craft & Battle Craft
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Field Craft & Battle Craft**.'),
-('c1000000-0000-0000-0000-000047b3d72d', 'b1000000-0000-0000-0000-000013a36037', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000047b3d72d', 'b1000000-0000-0000-0000-000013a36037', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Field Craft & Battle Craft**.'),
-('c1000000-0000-0000-0000-000047b3d72e', 'b1000000-0000-0000-0000-000013a36037', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000047b3d72e', 'b1000000-0000-0000-0000-000013a36037', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00002986a3f6', 'b1000000-0000-0000-0000-00001987b7e6', 'Introduction to Military History & War Heroes', 'markdown', NULL, 1, '# Introduction to Military History & War Heroes
+('c1000000-0000-0000-0000-00002986a3f6', 'b1000000-0000-0000-0000-00001987b7e6', 'Introduction to Military History & War Heroes', 'markdown', '{}'::jsonb, 1, '# Introduction to Military History & War Heroes
 
 ## Overview
 This chapter covers the basic fundamentals of **Military History & War Heroes**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-00002986a3f5', 'b1000000-0000-0000-0000-00001987b7e6', 'Theoretical Principles of Military History & War Heroes', 'markdown', NULL, 2, '# Theoretical Principles of Military History & War Heroes
+('c1000000-0000-0000-0000-00002986a3f5', 'b1000000-0000-0000-0000-00001987b7e6', 'Theoretical Principles of Military History & War Heroes', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Military History & War Heroes
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Military History & War Heroes**.'),
-('c1000000-0000-0000-0000-00002986a035', 'b1000000-0000-0000-0000-00001987b7e7', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00002986a035', 'b1000000-0000-0000-0000-00001987b7e7', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Military History & War Heroes**.'),
-('c1000000-0000-0000-0000-00002986a034', 'b1000000-0000-0000-0000-00001987b7e7', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00002986a034', 'b1000000-0000-0000-0000-00001987b7e7', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000041022af7', 'b1000000-0000-0000-0000-00004c1ea1ed', 'Introduction to General Awareness & Current Affairs', 'markdown', NULL, 1, '# Introduction to General Awareness & Current Affairs
+('c1000000-0000-0000-0000-000041022af7', 'b1000000-0000-0000-0000-00004c1ea1ed', 'Introduction to General Awareness & Current Affairs', 'markdown', '{}'::jsonb, 1, '# Introduction to General Awareness & Current Affairs
 
 ## Overview
 This chapter covers the basic fundamentals of **General Awareness & Current Affairs**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000041022af8', 'b1000000-0000-0000-0000-00004c1ea1ed', 'Theoretical Principles of General Awareness & Current Affairs', 'markdown', NULL, 2, '# Theoretical Principles of General Awareness & Current Affairs
+('c1000000-0000-0000-0000-000041022af8', 'b1000000-0000-0000-0000-00004c1ea1ed', 'Theoretical Principles of General Awareness & Current Affairs', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of General Awareness & Current Affairs
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **General Awareness & Current Affairs**.'),
-('c1000000-0000-0000-0000-000041022eb8', 'b1000000-0000-0000-0000-00004c1ea1ec', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000041022eb8', 'b1000000-0000-0000-0000-00004c1ea1ec', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **General Awareness & Current Affairs**.'),
-('c1000000-0000-0000-0000-000041022eb9', 'b1000000-0000-0000-0000-00004c1ea1ec', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000041022eb9', 'b1000000-0000-0000-0000-00004c1ea1ec', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000056970cc4', 'b1000000-0000-0000-0000-00002711b0e0', 'Introduction to Officer Like Qualities (OLQs) & Interview Skills', 'markdown', NULL, 1, '# Introduction to Officer Like Qualities (OLQs) & Interview Skills
+('c1000000-0000-0000-0000-000056970cc4', 'b1000000-0000-0000-0000-00002711b0e0', 'Introduction to Officer Like Qualities (OLQs) & Interview Skills', 'markdown', '{}'::jsonb, 1, '# Introduction to Officer Like Qualities (OLQs) & Interview Skills
 
 ## Overview
 This chapter covers the basic fundamentals of **Officer Like Qualities (OLQs) & Interview Skills**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Common** wing.'),
-('c1000000-0000-0000-0000-000056970cc5', 'b1000000-0000-0000-0000-00002711b0e0', 'Theoretical Principles of Officer Like Qualities (OLQs) & Interview Skills', 'markdown', NULL, 2, '# Theoretical Principles of Officer Like Qualities (OLQs) & Interview Skills
+('c1000000-0000-0000-0000-000056970cc5', 'b1000000-0000-0000-0000-00002711b0e0', 'Theoretical Principles of Officer Like Qualities (OLQs) & Interview Skills', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Officer Like Qualities (OLQs) & Interview Skills
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Officer Like Qualities (OLQs) & Interview Skills**.'),
-('c1000000-0000-0000-0000-000056971085', 'b1000000-0000-0000-0000-00002711b0df', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000056971085', 'b1000000-0000-0000-0000-00002711b0df', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Officer Like Qualities (OLQs) & Interview Skills**.'),
-('c1000000-0000-0000-0000-000056971086', 'b1000000-0000-0000-0000-00002711b0df', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000056971086', 'b1000000-0000-0000-0000-00002711b0df', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000562a6038', 'b1000000-0000-0000-0000-000031fdd324', 'Introduction to Field Craft Basics', 'markdown', NULL, 1, '# Introduction to Field Craft Basics
+('c1000000-0000-0000-0000-0000562a6038', 'b1000000-0000-0000-0000-000031fdd324', 'Introduction to Field Craft Basics', 'markdown', '{}'::jsonb, 1, '# Introduction to Field Craft Basics
 
 ## Overview
 This chapter covers the basic fundamentals of **Field Craft Basics**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-0000562a6037', 'b1000000-0000-0000-0000-000031fdd324', 'Theoretical Principles of Field Craft Basics', 'markdown', NULL, 2, '# Theoretical Principles of Field Craft Basics
+('c1000000-0000-0000-0000-0000562a6037', 'b1000000-0000-0000-0000-000031fdd324', 'Theoretical Principles of Field Craft Basics', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Field Craft Basics
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Field Craft Basics**.'),
-('c1000000-0000-0000-0000-0000562a5c77', 'b1000000-0000-0000-0000-000031fdd325', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000562a5c77', 'b1000000-0000-0000-0000-000031fdd325', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Field Craft Basics**.'),
-('c1000000-0000-0000-0000-0000562a5c76', 'b1000000-0000-0000-0000-000031fdd325', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000562a5c76', 'b1000000-0000-0000-0000-000031fdd325', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00005a4e792b', 'b1000000-0000-0000-0000-00003093a947', 'Introduction to Drill with Arms', 'markdown', NULL, 1, '# Introduction to Drill with Arms
+('c1000000-0000-0000-0000-00005a4e792b', 'b1000000-0000-0000-0000-00003093a947', 'Introduction to Drill with Arms', 'markdown', '{}'::jsonb, 1, '# Introduction to Drill with Arms
 
 ## Overview
 This chapter covers the basic fundamentals of **Drill with Arms**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-00005a4e792c', 'b1000000-0000-0000-0000-00003093a947', 'Theoretical Principles of Drill with Arms', 'markdown', NULL, 2, '# Theoretical Principles of Drill with Arms
+('c1000000-0000-0000-0000-00005a4e792c', 'b1000000-0000-0000-0000-00003093a947', 'Theoretical Principles of Drill with Arms', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Drill with Arms
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Drill with Arms**.'),
-('c1000000-0000-0000-0000-00005a4e7cec', 'b1000000-0000-0000-0000-00003093a948', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00005a4e7cec', 'b1000000-0000-0000-0000-00003093a948', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Drill with Arms**.'),
-('c1000000-0000-0000-0000-00005a4e7ced', 'b1000000-0000-0000-0000-00003093a948', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00005a4e7ced', 'b1000000-0000-0000-0000-00003093a948', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000075abd061', 'b1000000-0000-0000-0000-000078439345', 'Introduction to Weapon Training', 'markdown', NULL, 1, '# Introduction to Weapon Training
+('c1000000-0000-0000-0000-000075abd061', 'b1000000-0000-0000-0000-000078439345', 'Introduction to Weapon Training', 'markdown', '{}'::jsonb, 1, '# Introduction to Weapon Training
 
 ## Overview
 This chapter covers the basic fundamentals of **Weapon Training**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-000075abd060', 'b1000000-0000-0000-0000-000078439345', 'Theoretical Principles of Weapon Training', 'markdown', NULL, 2, '# Theoretical Principles of Weapon Training
+('c1000000-0000-0000-0000-000075abd060', 'b1000000-0000-0000-0000-000078439345', 'Theoretical Principles of Weapon Training', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Weapon Training
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Weapon Training**.'),
-('c1000000-0000-0000-0000-000075abcca0', 'b1000000-0000-0000-0000-000078439344', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000075abcca0', 'b1000000-0000-0000-0000-000078439344', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Weapon Training**.'),
-('c1000000-0000-0000-0000-000075abcc9f', 'b1000000-0000-0000-0000-000078439344', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000075abcc9f', 'b1000000-0000-0000-0000-000078439344', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000066a0b64', 'b1000000-0000-0000-0000-000070b075c0', 'Introduction to Section Formation', 'markdown', NULL, 1, '# Introduction to Section Formation
+('c1000000-0000-0000-0000-0000066a0b64', 'b1000000-0000-0000-0000-000070b075c0', 'Introduction to Section Formation', 'markdown', '{}'::jsonb, 1, '# Introduction to Section Formation
 
 ## Overview
 This chapter covers the basic fundamentals of **Section Formation**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-0000066a0b65', 'b1000000-0000-0000-0000-000070b075c0', 'Theoretical Principles of Section Formation', 'markdown', NULL, 2, '# Theoretical Principles of Section Formation
+('c1000000-0000-0000-0000-0000066a0b65', 'b1000000-0000-0000-0000-000070b075c0', 'Theoretical Principles of Section Formation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Section Formation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Section Formation**.'),
-('c1000000-0000-0000-0000-0000066a0f25', 'b1000000-0000-0000-0000-000070b075c1', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000066a0f25', 'b1000000-0000-0000-0000-000070b075c1', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Section Formation**.'),
-('c1000000-0000-0000-0000-0000066a0f26', 'b1000000-0000-0000-0000-000070b075c1', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000066a0f26', 'b1000000-0000-0000-0000-000070b075c1', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000352efb39', 'b1000000-0000-0000-0000-000017c3941d', 'Introduction to Guard Mounting', 'markdown', NULL, 1, '# Introduction to Guard Mounting
+('c1000000-0000-0000-0000-0000352efb39', 'b1000000-0000-0000-0000-000017c3941d', 'Introduction to Guard Mounting', 'markdown', '{}'::jsonb, 1, '# Introduction to Guard Mounting
 
 ## Overview
 This chapter covers the basic fundamentals of **Guard Mounting**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-0000352efb38', 'b1000000-0000-0000-0000-000017c3941d', 'Theoretical Principles of Guard Mounting', 'markdown', NULL, 2, '# Theoretical Principles of Guard Mounting
+('c1000000-0000-0000-0000-0000352efb38', 'b1000000-0000-0000-0000-000017c3941d', 'Theoretical Principles of Guard Mounting', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Guard Mounting
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Guard Mounting**.'),
-('c1000000-0000-0000-0000-0000352ef778', 'b1000000-0000-0000-0000-000017c3941c', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000352ef778', 'b1000000-0000-0000-0000-000017c3941c', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Guard Mounting**.'),
-('c1000000-0000-0000-0000-0000352ef777', 'b1000000-0000-0000-0000-000017c3941c', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000352ef777', 'b1000000-0000-0000-0000-000017c3941c', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00006eead09d', 'b1000000-0000-0000-0000-000067828d7f', 'Introduction to Battle Craft Basics', 'markdown', NULL, 1, '# Introduction to Battle Craft Basics
+('c1000000-0000-0000-0000-00006eead09d', 'b1000000-0000-0000-0000-000067828d7f', 'Introduction to Battle Craft Basics', 'markdown', '{}'::jsonb, 1, '# Introduction to Battle Craft Basics
 
 ## Overview
 This chapter covers the basic fundamentals of **Battle Craft Basics**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-00006eead09c', 'b1000000-0000-0000-0000-000067828d7f', 'Theoretical Principles of Battle Craft Basics', 'markdown', NULL, 2, '# Theoretical Principles of Battle Craft Basics
+('c1000000-0000-0000-0000-00006eead09c', 'b1000000-0000-0000-0000-000067828d7f', 'Theoretical Principles of Battle Craft Basics', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Battle Craft Basics
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Battle Craft Basics**.'),
-('c1000000-0000-0000-0000-00006eeaccdc', 'b1000000-0000-0000-0000-000067828d80', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00006eeaccdc', 'b1000000-0000-0000-0000-000067828d80', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Battle Craft Basics**.'),
-('c1000000-0000-0000-0000-00006eeaccdb', 'b1000000-0000-0000-0000-000067828d80', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00006eeaccdb', 'b1000000-0000-0000-0000-000067828d80', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00006d9497fc', 'b1000000-0000-0000-0000-0000363ab7a8', 'Introduction to Advanced Weapon Training', 'markdown', NULL, 1, '# Introduction to Advanced Weapon Training
+('c1000000-0000-0000-0000-00006d9497fc', 'b1000000-0000-0000-0000-0000363ab7a8', 'Introduction to Advanced Weapon Training', 'markdown', '{}'::jsonb, 1, '# Introduction to Advanced Weapon Training
 
 ## Overview
 This chapter covers the basic fundamentals of **Advanced Weapon Training**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-00006d9497fd', 'b1000000-0000-0000-0000-0000363ab7a8', 'Theoretical Principles of Advanced Weapon Training', 'markdown', NULL, 2, '# Theoretical Principles of Advanced Weapon Training
+('c1000000-0000-0000-0000-00006d9497fd', 'b1000000-0000-0000-0000-0000363ab7a8', 'Theoretical Principles of Advanced Weapon Training', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Advanced Weapon Training
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Advanced Weapon Training**.'),
-('c1000000-0000-0000-0000-00006d949bbd', 'b1000000-0000-0000-0000-0000363ab7a7', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00006d949bbd', 'b1000000-0000-0000-0000-0000363ab7a7', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Advanced Weapon Training**.'),
-('c1000000-0000-0000-0000-00006d949bbe', 'b1000000-0000-0000-0000-0000363ab7a7', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00006d949bbe', 'b1000000-0000-0000-0000-0000363ab7a7', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000527f9dc2', 'b1000000-0000-0000-0000-000070dcf862', 'Introduction to Field Signals', 'markdown', NULL, 1, '# Introduction to Field Signals
+('c1000000-0000-0000-0000-0000527f9dc2', 'b1000000-0000-0000-0000-000070dcf862', 'Introduction to Field Signals', 'markdown', '{}'::jsonb, 1, '# Introduction to Field Signals
 
 ## Overview
 This chapter covers the basic fundamentals of **Field Signals**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-0000527f9dc3', 'b1000000-0000-0000-0000-000070dcf862', 'Theoretical Principles of Field Signals', 'markdown', NULL, 2, '# Theoretical Principles of Field Signals
+('c1000000-0000-0000-0000-0000527f9dc3', 'b1000000-0000-0000-0000-000070dcf862', 'Theoretical Principles of Field Signals', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Field Signals
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Field Signals**.'),
-('c1000000-0000-0000-0000-0000527fa183', 'b1000000-0000-0000-0000-000070dcf861', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000527fa183', 'b1000000-0000-0000-0000-000070dcf861', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Field Signals**.'),
-('c1000000-0000-0000-0000-0000527fa184', 'b1000000-0000-0000-0000-000070dcf861', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000527fa184', 'b1000000-0000-0000-0000-000070dcf861', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000023ac73f3', 'b1000000-0000-0000-0000-00006adbf357', 'Introduction to Patrolling', 'markdown', NULL, 1, '# Introduction to Patrolling
+('c1000000-0000-0000-0000-000023ac73f3', 'b1000000-0000-0000-0000-00006adbf357', 'Introduction to Patrolling', 'markdown', '{}'::jsonb, 1, '# Introduction to Patrolling
 
 ## Overview
 This chapter covers the basic fundamentals of **Patrolling**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-000023ac73f2', 'b1000000-0000-0000-0000-00006adbf357', 'Theoretical Principles of Patrolling', 'markdown', NULL, 2, '# Theoretical Principles of Patrolling
+('c1000000-0000-0000-0000-000023ac73f2', 'b1000000-0000-0000-0000-00006adbf357', 'Theoretical Principles of Patrolling', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Patrolling
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Patrolling**.'),
-('c1000000-0000-0000-0000-000023ac7032', 'b1000000-0000-0000-0000-00006adbf356', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000023ac7032', 'b1000000-0000-0000-0000-00006adbf356', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Patrolling**.'),
-('c1000000-0000-0000-0000-000023ac7031', 'b1000000-0000-0000-0000-00006adbf356', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000023ac7031', 'b1000000-0000-0000-0000-00006adbf356', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00000a56d3e9', 'b1000000-0000-0000-0000-00004030647b', 'Introduction to Camouflage & Concealment', 'markdown', NULL, 1, '# Introduction to Camouflage & Concealment
+('c1000000-0000-0000-0000-00000a56d3e9', 'b1000000-0000-0000-0000-00004030647b', 'Introduction to Camouflage & Concealment', 'markdown', '{}'::jsonb, 1, '# Introduction to Camouflage & Concealment
 
 ## Overview
 This chapter covers the basic fundamentals of **Camouflage & Concealment**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-00000a56d3ea', 'b1000000-0000-0000-0000-00004030647b', 'Theoretical Principles of Camouflage & Concealment', 'markdown', NULL, 2, '# Theoretical Principles of Camouflage & Concealment
+('c1000000-0000-0000-0000-00000a56d3ea', 'b1000000-0000-0000-0000-00004030647b', 'Theoretical Principles of Camouflage & Concealment', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Camouflage & Concealment
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Camouflage & Concealment**.'),
-('c1000000-0000-0000-0000-00000a56d7aa', 'b1000000-0000-0000-0000-00004030647a', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00000a56d7aa', 'b1000000-0000-0000-0000-00004030647a', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Camouflage & Concealment**.'),
-('c1000000-0000-0000-0000-00000a56d7ab', 'b1000000-0000-0000-0000-00004030647a', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00000a56d7ab', 'b1000000-0000-0000-0000-00004030647a', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000028b4561d', 'b1000000-0000-0000-0000-00000615a7ff', 'Introduction to Section Battle Drill', 'markdown', NULL, 1, '# Introduction to Section Battle Drill
+('c1000000-0000-0000-0000-000028b4561d', 'b1000000-0000-0000-0000-00000615a7ff', 'Introduction to Section Battle Drill', 'markdown', '{}'::jsonb, 1, '# Introduction to Section Battle Drill
 
 ## Overview
 This chapter covers the basic fundamentals of **Section Battle Drill**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-000028b4561c', 'b1000000-0000-0000-0000-00000615a7ff', 'Theoretical Principles of Section Battle Drill', 'markdown', NULL, 2, '# Theoretical Principles of Section Battle Drill
+('c1000000-0000-0000-0000-000028b4561c', 'b1000000-0000-0000-0000-00000615a7ff', 'Theoretical Principles of Section Battle Drill', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Section Battle Drill
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Section Battle Drill**.'),
-('c1000000-0000-0000-0000-000028b4525c', 'b1000000-0000-0000-0000-00000615a800', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000028b4525c', 'b1000000-0000-0000-0000-00000615a800', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Section Battle Drill**.'),
-('c1000000-0000-0000-0000-000028b4525b', 'b1000000-0000-0000-0000-00000615a800', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000028b4525b', 'b1000000-0000-0000-0000-00000615a800', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000079d241a4', 'b1000000-0000-0000-0000-0000013486b8', 'Introduction to Ambush & Defence', 'markdown', NULL, 1, '# Introduction to Ambush & Defence
+('c1000000-0000-0000-0000-000079d241a4', 'b1000000-0000-0000-0000-0000013486b8', 'Introduction to Ambush & Defence', 'markdown', '{}'::jsonb, 1, '# Introduction to Ambush & Defence
 
 ## Overview
 This chapter covers the basic fundamentals of **Ambush & Defence**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-000079d241a3', 'b1000000-0000-0000-0000-0000013486b8', 'Theoretical Principles of Ambush & Defence', 'markdown', NULL, 2, '# Theoretical Principles of Ambush & Defence
+('c1000000-0000-0000-0000-000079d241a3', 'b1000000-0000-0000-0000-0000013486b8', 'Theoretical Principles of Ambush & Defence', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Ambush & Defence
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Ambush & Defence**.'),
-('c1000000-0000-0000-0000-000079d23de3', 'b1000000-0000-0000-0000-0000013486b9', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000079d23de3', 'b1000000-0000-0000-0000-0000013486b9', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Ambush & Defence**.'),
-('c1000000-0000-0000-0000-000079d23de2', 'b1000000-0000-0000-0000-0000013486b9', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000079d23de2', 'b1000000-0000-0000-0000-0000013486b9', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00006b411fe8', 'b1000000-0000-0000-0000-00001fdae774', 'Introduction to Tactical Exercises', 'markdown', NULL, 1, '# Introduction to Tactical Exercises
+('c1000000-0000-0000-0000-00006b411fe8', 'b1000000-0000-0000-0000-00001fdae774', 'Introduction to Tactical Exercises', 'markdown', '{}'::jsonb, 1, '# Introduction to Tactical Exercises
 
 ## Overview
 This chapter covers the basic fundamentals of **Tactical Exercises**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-00006b411fe7', 'b1000000-0000-0000-0000-00001fdae774', 'Theoretical Principles of Tactical Exercises', 'markdown', NULL, 2, '# Theoretical Principles of Tactical Exercises
+('c1000000-0000-0000-0000-00006b411fe7', 'b1000000-0000-0000-0000-00001fdae774', 'Theoretical Principles of Tactical Exercises', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Tactical Exercises
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Tactical Exercises**.'),
-('c1000000-0000-0000-0000-00006b411c27', 'b1000000-0000-0000-0000-00001fdae775', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00006b411c27', 'b1000000-0000-0000-0000-00001fdae775', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Tactical Exercises**.'),
-('c1000000-0000-0000-0000-00006b411c26', 'b1000000-0000-0000-0000-00001fdae775', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00006b411c26', 'b1000000-0000-0000-0000-00001fdae775', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000066565e3b', 'b1000000-0000-0000-0000-000045f43061', 'Introduction to Platoon Formation', 'markdown', NULL, 1, '# Introduction to Platoon Formation
+('c1000000-0000-0000-0000-000066565e3b', 'b1000000-0000-0000-0000-000045f43061', 'Introduction to Platoon Formation', 'markdown', '{}'::jsonb, 1, '# Introduction to Platoon Formation
 
 ## Overview
 This chapter covers the basic fundamentals of **Platoon Formation**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-000066565e3a', 'b1000000-0000-0000-0000-000045f43061', 'Theoretical Principles of Platoon Formation', 'markdown', NULL, 2, '# Theoretical Principles of Platoon Formation
+('c1000000-0000-0000-0000-000066565e3a', 'b1000000-0000-0000-0000-000045f43061', 'Theoretical Principles of Platoon Formation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Platoon Formation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Platoon Formation**.'),
-('c1000000-0000-0000-0000-000066565a7a', 'b1000000-0000-0000-0000-000045f43062', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000066565a7a', 'b1000000-0000-0000-0000-000045f43062', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Platoon Formation**.'),
-('c1000000-0000-0000-0000-000066565a79', 'b1000000-0000-0000-0000-000045f43062', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000066565a79', 'b1000000-0000-0000-0000-000045f43062', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00005ab83223', 'b1000000-0000-0000-0000-00001f87403f', 'Introduction to Advanced Battle Craft', 'markdown', NULL, 1, '# Introduction to Advanced Battle Craft
+('c1000000-0000-0000-0000-00005ab83223', 'b1000000-0000-0000-0000-00001f87403f', 'Introduction to Advanced Battle Craft', 'markdown', '{}'::jsonb, 1, '# Introduction to Advanced Battle Craft
 
 ## Overview
 This chapter covers the basic fundamentals of **Advanced Battle Craft**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-00005ab83224', 'b1000000-0000-0000-0000-00001f87403f', 'Theoretical Principles of Advanced Battle Craft', 'markdown', NULL, 2, '# Theoretical Principles of Advanced Battle Craft
+('c1000000-0000-0000-0000-00005ab83224', 'b1000000-0000-0000-0000-00001f87403f', 'Theoretical Principles of Advanced Battle Craft', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Advanced Battle Craft
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Advanced Battle Craft**.'),
-('c1000000-0000-0000-0000-00005ab835e4', 'b1000000-0000-0000-0000-00001f874040', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00005ab835e4', 'b1000000-0000-0000-0000-00001f874040', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Advanced Battle Craft**.'),
-('c1000000-0000-0000-0000-00005ab835e5', 'b1000000-0000-0000-0000-00001f874040', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00005ab835e5', 'b1000000-0000-0000-0000-00001f874040', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000010207cf3', 'b1000000-0000-0000-0000-00003941c3a9', 'Introduction to Internal Security Duties', 'markdown', NULL, 1, '# Introduction to Internal Security Duties
+('c1000000-0000-0000-0000-000010207cf3', 'b1000000-0000-0000-0000-00003941c3a9', 'Introduction to Internal Security Duties', 'markdown', '{}'::jsonb, 1, '# Introduction to Internal Security Duties
 
 ## Overview
 This chapter covers the basic fundamentals of **Internal Security Duties**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-000010207cf2', 'b1000000-0000-0000-0000-00003941c3a9', 'Theoretical Principles of Internal Security Duties', 'markdown', NULL, 2, '# Theoretical Principles of Internal Security Duties
+('c1000000-0000-0000-0000-000010207cf2', 'b1000000-0000-0000-0000-00003941c3a9', 'Theoretical Principles of Internal Security Duties', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Internal Security Duties
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Internal Security Duties**.'),
-('c1000000-0000-0000-0000-000010207932', 'b1000000-0000-0000-0000-00003941c3aa', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000010207932', 'b1000000-0000-0000-0000-00003941c3aa', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Internal Security Duties**.'),
-('c1000000-0000-0000-0000-000010207931', 'b1000000-0000-0000-0000-00003941c3aa', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000010207931', 'b1000000-0000-0000-0000-00003941c3aa', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00003d10dec4', 'b1000000-0000-0000-0000-000057b4a120', 'Introduction to Field Engineering', 'markdown', NULL, 1, '# Introduction to Field Engineering
+('c1000000-0000-0000-0000-00003d10dec4', 'b1000000-0000-0000-0000-000057b4a120', 'Introduction to Field Engineering', 'markdown', '{}'::jsonb, 1, '# Introduction to Field Engineering
 
 ## Overview
 This chapter covers the basic fundamentals of **Field Engineering**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-00003d10dec5', 'b1000000-0000-0000-0000-000057b4a120', 'Theoretical Principles of Field Engineering', 'markdown', NULL, 2, '# Theoretical Principles of Field Engineering
+('c1000000-0000-0000-0000-00003d10dec5', 'b1000000-0000-0000-0000-000057b4a120', 'Theoretical Principles of Field Engineering', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Field Engineering
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Field Engineering**.'),
-('c1000000-0000-0000-0000-00003d10e285', 'b1000000-0000-0000-0000-000057b4a121', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00003d10e285', 'b1000000-0000-0000-0000-000057b4a121', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Field Engineering**.'),
-('c1000000-0000-0000-0000-00003d10e286', 'b1000000-0000-0000-0000-000057b4a121', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00003d10e286', 'b1000000-0000-0000-0000-000057b4a121', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00001f95a7f7', 'b1000000-0000-0000-0000-00002b301b13', 'Introduction to Communication Procedures', 'markdown', NULL, 1, '# Introduction to Communication Procedures
+('c1000000-0000-0000-0000-00001f95a7f7', 'b1000000-0000-0000-0000-00002b301b13', 'Introduction to Communication Procedures', 'markdown', '{}'::jsonb, 1, '# Introduction to Communication Procedures
 
 ## Overview
 This chapter covers the basic fundamentals of **Communication Procedures**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-00001f95a7f8', 'b1000000-0000-0000-0000-00002b301b13', 'Theoretical Principles of Communication Procedures', 'markdown', NULL, 2, '# Theoretical Principles of Communication Procedures
+('c1000000-0000-0000-0000-00001f95a7f8', 'b1000000-0000-0000-0000-00002b301b13', 'Theoretical Principles of Communication Procedures', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Communication Procedures
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Communication Procedures**.'),
-('c1000000-0000-0000-0000-00001f95abb8', 'b1000000-0000-0000-0000-00002b301b14', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00001f95abb8', 'b1000000-0000-0000-0000-00002b301b14', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Communication Procedures**.'),
-('c1000000-0000-0000-0000-00001f95abb9', 'b1000000-0000-0000-0000-00002b301b14', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00001f95abb9', 'b1000000-0000-0000-0000-00002b301b14', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000017b73a41', 'b1000000-0000-0000-0000-00006dba4823', 'Introduction to Map Reading Advanced', 'markdown', NULL, 1, '# Introduction to Map Reading Advanced
+('c1000000-0000-0000-0000-000017b73a41', 'b1000000-0000-0000-0000-00006dba4823', 'Introduction to Map Reading Advanced', 'markdown', '{}'::jsonb, 1, '# Introduction to Map Reading Advanced
 
 ## Overview
 This chapter covers the basic fundamentals of **Map Reading Advanced**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Army** wing.'),
-('c1000000-0000-0000-0000-000017b73a42', 'b1000000-0000-0000-0000-00006dba4823', 'Theoretical Principles of Map Reading Advanced', 'markdown', NULL, 2, '# Theoretical Principles of Map Reading Advanced
+('c1000000-0000-0000-0000-000017b73a42', 'b1000000-0000-0000-0000-00006dba4823', 'Theoretical Principles of Map Reading Advanced', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Map Reading Advanced
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Map Reading Advanced**.'),
-('c1000000-0000-0000-0000-000017b73e02', 'b1000000-0000-0000-0000-00006dba4822', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000017b73e02', 'b1000000-0000-0000-0000-00006dba4822', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Map Reading Advanced**.'),
-('c1000000-0000-0000-0000-000017b73e03', 'b1000000-0000-0000-0000-00006dba4822', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000017b73e03', 'b1000000-0000-0000-0000-00006dba4822', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000043eb9b00', 'b1000000-0000-0000-0000-000071493c5c', 'Introduction to Naval Orientation', 'markdown', NULL, 1, '# Introduction to Naval Orientation
+('c1000000-0000-0000-0000-000043eb9b00', 'b1000000-0000-0000-0000-000071493c5c', 'Introduction to Naval Orientation', 'markdown', '{}'::jsonb, 1, '# Introduction to Naval Orientation
 
 ## Overview
 This chapter covers the basic fundamentals of **Naval Orientation**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000043eb9b01', 'b1000000-0000-0000-0000-000071493c5c', 'Theoretical Principles of Naval Orientation', 'markdown', NULL, 2, '# Theoretical Principles of Naval Orientation
+('c1000000-0000-0000-0000-000043eb9b01', 'b1000000-0000-0000-0000-000071493c5c', 'Theoretical Principles of Naval Orientation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Naval Orientation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Naval Orientation**.'),
-('c1000000-0000-0000-0000-000043eb9ec1', 'b1000000-0000-0000-0000-000071493c5d', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000043eb9ec1', 'b1000000-0000-0000-0000-000071493c5d', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Naval Orientation**.'),
-('c1000000-0000-0000-0000-000043eb9ec2', 'b1000000-0000-0000-0000-000071493c5d', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000043eb9ec2', 'b1000000-0000-0000-0000-000071493c5d', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000069ed6743', 'b1000000-0000-0000-0000-00000138c2a1', 'Introduction to Parts of Ship', 'markdown', NULL, 1, '# Introduction to Parts of Ship
+('c1000000-0000-0000-0000-000069ed6743', 'b1000000-0000-0000-0000-00000138c2a1', 'Introduction to Parts of Ship', 'markdown', '{}'::jsonb, 1, '# Introduction to Parts of Ship
 
 ## Overview
 This chapter covers the basic fundamentals of **Parts of Ship**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000069ed6744', 'b1000000-0000-0000-0000-00000138c2a1', 'Theoretical Principles of Parts of Ship', 'markdown', NULL, 2, '# Theoretical Principles of Parts of Ship
+('c1000000-0000-0000-0000-000069ed6744', 'b1000000-0000-0000-0000-00000138c2a1', 'Theoretical Principles of Parts of Ship', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Parts of Ship
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Parts of Ship**.'),
-('c1000000-0000-0000-0000-000069ed6b04', 'b1000000-0000-0000-0000-00000138c2a0', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000069ed6b04', 'b1000000-0000-0000-0000-00000138c2a0', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Parts of Ship**.'),
-('c1000000-0000-0000-0000-000069ed6b05', 'b1000000-0000-0000-0000-00000138c2a0', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000069ed6b05', 'b1000000-0000-0000-0000-00000138c2a0', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00001eb9805d', 'b1000000-0000-0000-0000-00003a1ad4f9', 'Introduction to Seamanship', 'markdown', NULL, 1, '# Introduction to Seamanship
+('c1000000-0000-0000-0000-00001eb9805d', 'b1000000-0000-0000-0000-00003a1ad4f9', 'Introduction to Seamanship', 'markdown', '{}'::jsonb, 1, '# Introduction to Seamanship
 
 ## Overview
 This chapter covers the basic fundamentals of **Seamanship**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-00001eb9805e', 'b1000000-0000-0000-0000-00003a1ad4f9', 'Theoretical Principles of Seamanship', 'markdown', NULL, 2, '# Theoretical Principles of Seamanship
+('c1000000-0000-0000-0000-00001eb9805e', 'b1000000-0000-0000-0000-00003a1ad4f9', 'Theoretical Principles of Seamanship', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Seamanship
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Seamanship**.'),
-('c1000000-0000-0000-0000-00001eb9841e', 'b1000000-0000-0000-0000-00003a1ad4fa', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00001eb9841e', 'b1000000-0000-0000-0000-00003a1ad4fa', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Seamanship**.'),
-('c1000000-0000-0000-0000-00001eb9841f', 'b1000000-0000-0000-0000-00003a1ad4fa', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00001eb9841f', 'b1000000-0000-0000-0000-00003a1ad4fa', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00004cec69b5', 'b1000000-0000-0000-0000-000036283451', 'Introduction to Boat Pulling', 'markdown', NULL, 1, '# Introduction to Boat Pulling
+('c1000000-0000-0000-0000-00004cec69b5', 'b1000000-0000-0000-0000-000036283451', 'Introduction to Boat Pulling', 'markdown', '{}'::jsonb, 1, '# Introduction to Boat Pulling
 
 ## Overview
 This chapter covers the basic fundamentals of **Boat Pulling**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-00004cec69b6', 'b1000000-0000-0000-0000-000036283451', 'Theoretical Principles of Boat Pulling', 'markdown', NULL, 2, '# Theoretical Principles of Boat Pulling
+('c1000000-0000-0000-0000-00004cec69b6', 'b1000000-0000-0000-0000-000036283451', 'Theoretical Principles of Boat Pulling', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Boat Pulling
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Boat Pulling**.'),
-('c1000000-0000-0000-0000-00004cec6d76', 'b1000000-0000-0000-0000-000036283452', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00004cec6d76', 'b1000000-0000-0000-0000-000036283452', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Boat Pulling**.'),
-('c1000000-0000-0000-0000-00004cec6d77', 'b1000000-0000-0000-0000-000036283452', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00004cec6d77', 'b1000000-0000-0000-0000-000036283452', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00003f24d6da', 'b1000000-0000-0000-0000-0000328c594a', 'Introduction to Rigging', 'markdown', NULL, 1, '# Introduction to Rigging
+('c1000000-0000-0000-0000-00003f24d6da', 'b1000000-0000-0000-0000-0000328c594a', 'Introduction to Rigging', 'markdown', '{}'::jsonb, 1, '# Introduction to Rigging
 
 ## Overview
 This chapter covers the basic fundamentals of **Rigging**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-00003f24d6db', 'b1000000-0000-0000-0000-0000328c594a', 'Theoretical Principles of Rigging', 'markdown', NULL, 2, '# Theoretical Principles of Rigging
+('c1000000-0000-0000-0000-00003f24d6db', 'b1000000-0000-0000-0000-0000328c594a', 'Theoretical Principles of Rigging', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Rigging
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Rigging**.'),
-('c1000000-0000-0000-0000-00003f24da9b', 'b1000000-0000-0000-0000-0000328c5949', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00003f24da9b', 'b1000000-0000-0000-0000-0000328c5949', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Rigging**.'),
-('c1000000-0000-0000-0000-00003f24da9c', 'b1000000-0000-0000-0000-0000328c5949', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00003f24da9c', 'b1000000-0000-0000-0000-0000328c5949', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000191c1185', 'b1000000-0000-0000-0000-000035406fdf', 'Introduction to Naval Communication Basics', 'markdown', NULL, 1, '# Introduction to Naval Communication Basics
+('c1000000-0000-0000-0000-0000191c1185', 'b1000000-0000-0000-0000-000035406fdf', 'Introduction to Naval Communication Basics', 'markdown', '{}'::jsonb, 1, '# Introduction to Naval Communication Basics
 
 ## Overview
 This chapter covers the basic fundamentals of **Naval Communication Basics**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-0000191c1186', 'b1000000-0000-0000-0000-000035406fdf', 'Theoretical Principles of Naval Communication Basics', 'markdown', NULL, 2, '# Theoretical Principles of Naval Communication Basics
+('c1000000-0000-0000-0000-0000191c1186', 'b1000000-0000-0000-0000-000035406fdf', 'Theoretical Principles of Naval Communication Basics', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Naval Communication Basics
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Naval Communication Basics**.'),
-('c1000000-0000-0000-0000-0000191c1546', 'b1000000-0000-0000-0000-000035406fde', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000191c1546', 'b1000000-0000-0000-0000-000035406fde', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Naval Communication Basics**.'),
-('c1000000-0000-0000-0000-0000191c1547', 'b1000000-0000-0000-0000-000035406fde', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000191c1547', 'b1000000-0000-0000-0000-000035406fde', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000002fc2e7d', 'b1000000-0000-0000-0000-00006a8d74e7', 'Introduction to Navigation', 'markdown', NULL, 1, '# Introduction to Navigation
+('c1000000-0000-0000-0000-000002fc2e7d', 'b1000000-0000-0000-0000-00006a8d74e7', 'Introduction to Navigation', 'markdown', '{}'::jsonb, 1, '# Introduction to Navigation
 
 ## Overview
 This chapter covers the basic fundamentals of **Navigation**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000002fc2e7e', 'b1000000-0000-0000-0000-00006a8d74e7', 'Theoretical Principles of Navigation', 'markdown', NULL, 2, '# Theoretical Principles of Navigation
+('c1000000-0000-0000-0000-000002fc2e7e', 'b1000000-0000-0000-0000-00006a8d74e7', 'Theoretical Principles of Navigation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Navigation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Navigation**.'),
-('c1000000-0000-0000-0000-000002fc323e', 'b1000000-0000-0000-0000-00006a8d74e6', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000002fc323e', 'b1000000-0000-0000-0000-00006a8d74e6', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Navigation**.'),
-('c1000000-0000-0000-0000-000002fc323f', 'b1000000-0000-0000-0000-00006a8d74e6', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000002fc323f', 'b1000000-0000-0000-0000-00006a8d74e6', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000029339381', 'b1000000-0000-0000-0000-00006d87611d', 'Introduction to Anchoring', 'markdown', NULL, 1, '# Introduction to Anchoring
+('c1000000-0000-0000-0000-000029339381', 'b1000000-0000-0000-0000-00006d87611d', 'Introduction to Anchoring', 'markdown', '{}'::jsonb, 1, '# Introduction to Anchoring
 
 ## Overview
 This chapter covers the basic fundamentals of **Anchoring**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000029339382', 'b1000000-0000-0000-0000-00006d87611d', 'Theoretical Principles of Anchoring', 'markdown', NULL, 2, '# Theoretical Principles of Anchoring
+('c1000000-0000-0000-0000-000029339382', 'b1000000-0000-0000-0000-00006d87611d', 'Theoretical Principles of Anchoring', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Anchoring
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Anchoring**.'),
-('c1000000-0000-0000-0000-000029339742', 'b1000000-0000-0000-0000-00006d87611e', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000029339742', 'b1000000-0000-0000-0000-00006d87611e', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Anchoring**.'),
-('c1000000-0000-0000-0000-000029339743', 'b1000000-0000-0000-0000-00006d87611e', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000029339743', 'b1000000-0000-0000-0000-00006d87611e', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00002cae100d', 'b1000000-0000-0000-0000-00007fe9cdf1', 'Introduction to Ship Modelling', 'markdown', NULL, 1, '# Introduction to Ship Modelling
+('c1000000-0000-0000-0000-00002cae100d', 'b1000000-0000-0000-0000-00007fe9cdf1', 'Introduction to Ship Modelling', 'markdown', '{}'::jsonb, 1, '# Introduction to Ship Modelling
 
 ## Overview
 This chapter covers the basic fundamentals of **Ship Modelling**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-00002cae100c', 'b1000000-0000-0000-0000-00007fe9cdf1', 'Theoretical Principles of Ship Modelling', 'markdown', NULL, 2, '# Theoretical Principles of Ship Modelling
+('c1000000-0000-0000-0000-00002cae100c', 'b1000000-0000-0000-0000-00007fe9cdf1', 'Theoretical Principles of Ship Modelling', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Ship Modelling
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Ship Modelling**.'),
-('c1000000-0000-0000-0000-00002cae0c4c', 'b1000000-0000-0000-0000-00007fe9cdf0', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00002cae0c4c', 'b1000000-0000-0000-0000-00007fe9cdf0', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Ship Modelling**.'),
-('c1000000-0000-0000-0000-00002cae0c4b', 'b1000000-0000-0000-0000-00007fe9cdf0', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00002cae0c4b', 'b1000000-0000-0000-0000-00007fe9cdf0', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000023cd0b0a', 'b1000000-0000-0000-0000-00004a04d91a', 'Introduction to Naval Signals', 'markdown', NULL, 1, '# Introduction to Naval Signals
+('c1000000-0000-0000-0000-000023cd0b0a', 'b1000000-0000-0000-0000-00004a04d91a', 'Introduction to Naval Signals', 'markdown', '{}'::jsonb, 1, '# Introduction to Naval Signals
 
 ## Overview
 This chapter covers the basic fundamentals of **Naval Signals**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000023cd0b0b', 'b1000000-0000-0000-0000-00004a04d91a', 'Theoretical Principles of Naval Signals', 'markdown', NULL, 2, '# Theoretical Principles of Naval Signals
+('c1000000-0000-0000-0000-000023cd0b0b', 'b1000000-0000-0000-0000-00004a04d91a', 'Theoretical Principles of Naval Signals', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Naval Signals
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Naval Signals**.'),
-('c1000000-0000-0000-0000-000023cd0ecb', 'b1000000-0000-0000-0000-00004a04d919', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000023cd0ecb', 'b1000000-0000-0000-0000-00004a04d919', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Naval Signals**.'),
-('c1000000-0000-0000-0000-000023cd0ecc', 'b1000000-0000-0000-0000-00004a04d919', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000023cd0ecc', 'b1000000-0000-0000-0000-00004a04d919', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00003b85b41d', 'b1000000-0000-0000-0000-0000501f0747', 'Introduction to Boat Sailing', 'markdown', NULL, 1, '# Introduction to Boat Sailing
+('c1000000-0000-0000-0000-00003b85b41d', 'b1000000-0000-0000-0000-0000501f0747', 'Introduction to Boat Sailing', 'markdown', '{}'::jsonb, 1, '# Introduction to Boat Sailing
 
 ## Overview
 This chapter covers the basic fundamentals of **Boat Sailing**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-00003b85b41e', 'b1000000-0000-0000-0000-0000501f0747', 'Theoretical Principles of Boat Sailing', 'markdown', NULL, 2, '# Theoretical Principles of Boat Sailing
+('c1000000-0000-0000-0000-00003b85b41e', 'b1000000-0000-0000-0000-0000501f0747', 'Theoretical Principles of Boat Sailing', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Boat Sailing
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Boat Sailing**.'),
-('c1000000-0000-0000-0000-00003b85b7de', 'b1000000-0000-0000-0000-0000501f0746', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00003b85b7de', 'b1000000-0000-0000-0000-0000501f0746', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Boat Sailing**.'),
-('c1000000-0000-0000-0000-00003b85b7df', 'b1000000-0000-0000-0000-0000501f0746', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00003b85b7df', 'b1000000-0000-0000-0000-0000501f0746', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000022624a12', 'b1000000-0000-0000-0000-0000169b7812', 'Introduction to Tides & Compass', 'markdown', NULL, 1, '# Introduction to Tides & Compass
+('c1000000-0000-0000-0000-000022624a12', 'b1000000-0000-0000-0000-0000169b7812', 'Introduction to Tides & Compass', 'markdown', '{}'::jsonb, 1, '# Introduction to Tides & Compass
 
 ## Overview
 This chapter covers the basic fundamentals of **Tides & Compass**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000022624a13', 'b1000000-0000-0000-0000-0000169b7812', 'Theoretical Principles of Tides & Compass', 'markdown', NULL, 2, '# Theoretical Principles of Tides & Compass
+('c1000000-0000-0000-0000-000022624a13', 'b1000000-0000-0000-0000-0000169b7812', 'Theoretical Principles of Tides & Compass', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Tides & Compass
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Tides & Compass**.'),
-('c1000000-0000-0000-0000-000022624dd3', 'b1000000-0000-0000-0000-0000169b7811', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000022624dd3', 'b1000000-0000-0000-0000-0000169b7811', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Tides & Compass**.'),
-('c1000000-0000-0000-0000-000022624dd4', 'b1000000-0000-0000-0000-0000169b7811', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000022624dd4', 'b1000000-0000-0000-0000-0000169b7811', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000074eba54c', 'b1000000-0000-0000-0000-000040e09658', 'Introduction to Advanced Navigation', 'markdown', NULL, 1, '# Introduction to Advanced Navigation
+('c1000000-0000-0000-0000-000074eba54c', 'b1000000-0000-0000-0000-000040e09658', 'Introduction to Advanced Navigation', 'markdown', '{}'::jsonb, 1, '# Introduction to Advanced Navigation
 
 ## Overview
 This chapter covers the basic fundamentals of **Advanced Navigation**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000074eba54d', 'b1000000-0000-0000-0000-000040e09658', 'Theoretical Principles of Advanced Navigation', 'markdown', NULL, 2, '# Theoretical Principles of Advanced Navigation
+('c1000000-0000-0000-0000-000074eba54d', 'b1000000-0000-0000-0000-000040e09658', 'Theoretical Principles of Advanced Navigation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Advanced Navigation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Advanced Navigation**.'),
-('c1000000-0000-0000-0000-000074eba90d', 'b1000000-0000-0000-0000-000040e09657', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000074eba90d', 'b1000000-0000-0000-0000-000040e09657', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Advanced Navigation**.'),
-('c1000000-0000-0000-0000-000074eba90e', 'b1000000-0000-0000-0000-000040e09657', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000074eba90e', 'b1000000-0000-0000-0000-000040e09657', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000019f60841', 'b1000000-0000-0000-0000-000011e005dd', 'Introduction to Naval Warfare Basics', 'markdown', NULL, 1, '# Introduction to Naval Warfare Basics
+('c1000000-0000-0000-0000-000019f60841', 'b1000000-0000-0000-0000-000011e005dd', 'Introduction to Naval Warfare Basics', 'markdown', '{}'::jsonb, 1, '# Introduction to Naval Warfare Basics
 
 ## Overview
 This chapter covers the basic fundamentals of **Naval Warfare Basics**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000019f60842', 'b1000000-0000-0000-0000-000011e005dd', 'Theoretical Principles of Naval Warfare Basics', 'markdown', NULL, 2, '# Theoretical Principles of Naval Warfare Basics
+('c1000000-0000-0000-0000-000019f60842', 'b1000000-0000-0000-0000-000011e005dd', 'Theoretical Principles of Naval Warfare Basics', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Naval Warfare Basics
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Naval Warfare Basics**.'),
-('c1000000-0000-0000-0000-000019f60c02', 'b1000000-0000-0000-0000-000011e005de', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000019f60c02', 'b1000000-0000-0000-0000-000011e005de', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Naval Warfare Basics**.'),
-('c1000000-0000-0000-0000-000019f60c03', 'b1000000-0000-0000-0000-000011e005de', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000019f60c03', 'b1000000-0000-0000-0000-000011e005de', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00000c394e9c', 'b1000000-0000-0000-0000-00003698d908', 'Introduction to Ship Organisation', 'markdown', NULL, 1, '# Introduction to Ship Organisation
+('c1000000-0000-0000-0000-00000c394e9c', 'b1000000-0000-0000-0000-00003698d908', 'Introduction to Ship Organisation', 'markdown', '{}'::jsonb, 1, '# Introduction to Ship Organisation
 
 ## Overview
 This chapter covers the basic fundamentals of **Ship Organisation**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-00000c394e9d', 'b1000000-0000-0000-0000-00003698d908', 'Theoretical Principles of Ship Organisation', 'markdown', NULL, 2, '# Theoretical Principles of Ship Organisation
+('c1000000-0000-0000-0000-00000c394e9d', 'b1000000-0000-0000-0000-00003698d908', 'Theoretical Principles of Ship Organisation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Ship Organisation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Ship Organisation**.'),
-('c1000000-0000-0000-0000-00000c39525d', 'b1000000-0000-0000-0000-00003698d907', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00000c39525d', 'b1000000-0000-0000-0000-00003698d907', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Ship Organisation**.'),
-('c1000000-0000-0000-0000-00000c39525e', 'b1000000-0000-0000-0000-00003698d907', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00000c39525e', 'b1000000-0000-0000-0000-00003698d907', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00000929b2a0', 'b1000000-0000-0000-0000-00007f974404', 'Introduction to Communication Systems', 'markdown', NULL, 1, '# Introduction to Communication Systems
+('c1000000-0000-0000-0000-00000929b2a0', 'b1000000-0000-0000-0000-00007f974404', 'Introduction to Communication Systems', 'markdown', '{}'::jsonb, 1, '# Introduction to Communication Systems
 
 ## Overview
 This chapter covers the basic fundamentals of **Communication Systems**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-00000929b2a1', 'b1000000-0000-0000-0000-00007f974404', 'Theoretical Principles of Communication Systems', 'markdown', NULL, 2, '# Theoretical Principles of Communication Systems
+('c1000000-0000-0000-0000-00000929b2a1', 'b1000000-0000-0000-0000-00007f974404', 'Theoretical Principles of Communication Systems', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Communication Systems
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Communication Systems**.'),
-('c1000000-0000-0000-0000-00000929b661', 'b1000000-0000-0000-0000-00007f974403', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00000929b661', 'b1000000-0000-0000-0000-00007f974403', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Communication Systems**.'),
-('c1000000-0000-0000-0000-00000929b662', 'b1000000-0000-0000-0000-00007f974403', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00000929b662', 'b1000000-0000-0000-0000-00007f974403', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00002203684d', 'b1000000-0000-0000-0000-00000f383631', 'Introduction to Sailing Expeditions', 'markdown', NULL, 1, '# Introduction to Sailing Expeditions
+('c1000000-0000-0000-0000-00002203684d', 'b1000000-0000-0000-0000-00000f383631', 'Introduction to Sailing Expeditions', 'markdown', '{}'::jsonb, 1, '# Introduction to Sailing Expeditions
 
 ## Overview
 This chapter covers the basic fundamentals of **Sailing Expeditions**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-00002203684c', 'b1000000-0000-0000-0000-00000f383631', 'Theoretical Principles of Sailing Expeditions', 'markdown', NULL, 2, '# Theoretical Principles of Sailing Expeditions
+('c1000000-0000-0000-0000-00002203684c', 'b1000000-0000-0000-0000-00000f383631', 'Theoretical Principles of Sailing Expeditions', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Sailing Expeditions
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Sailing Expeditions**.'),
-('c1000000-0000-0000-0000-00002203648c', 'b1000000-0000-0000-0000-00000f383630', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00002203648c', 'b1000000-0000-0000-0000-00000f383630', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Sailing Expeditions**.'),
-('c1000000-0000-0000-0000-00002203648b', 'b1000000-0000-0000-0000-00000f383630', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00002203648b', 'b1000000-0000-0000-0000-00000f383630', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000075243141', 'b1000000-0000-0000-0000-00007b7b9123', 'Introduction to Naval Weapons Basics', 'markdown', NULL, 1, '# Introduction to Naval Weapons Basics
+('c1000000-0000-0000-0000-000075243141', 'b1000000-0000-0000-0000-00007b7b9123', 'Introduction to Naval Weapons Basics', 'markdown', '{}'::jsonb, 1, '# Introduction to Naval Weapons Basics
 
 ## Overview
 This chapter covers the basic fundamentals of **Naval Weapons Basics**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000075243142', 'b1000000-0000-0000-0000-00007b7b9123', 'Theoretical Principles of Naval Weapons Basics', 'markdown', NULL, 2, '# Theoretical Principles of Naval Weapons Basics
+('c1000000-0000-0000-0000-000075243142', 'b1000000-0000-0000-0000-00007b7b9123', 'Theoretical Principles of Naval Weapons Basics', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Naval Weapons Basics
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Naval Weapons Basics**.'),
-('c1000000-0000-0000-0000-000075243502', 'b1000000-0000-0000-0000-00007b7b9122', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000075243502', 'b1000000-0000-0000-0000-00007b7b9122', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Naval Weapons Basics**.'),
-('c1000000-0000-0000-0000-000075243503', 'b1000000-0000-0000-0000-00007b7b9122', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000075243503', 'b1000000-0000-0000-0000-00007b7b9122', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000076e4251f', 'b1000000-0000-0000-0000-0000079a007d', 'Introduction to Leadership at Sea', 'markdown', NULL, 1, '# Introduction to Leadership at Sea
+('c1000000-0000-0000-0000-000076e4251f', 'b1000000-0000-0000-0000-0000079a007d', 'Introduction to Leadership at Sea', 'markdown', '{}'::jsonb, 1, '# Introduction to Leadership at Sea
 
 ## Overview
 This chapter covers the basic fundamentals of **Leadership at Sea**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Navy** wing.'),
-('c1000000-0000-0000-0000-000076e4251e', 'b1000000-0000-0000-0000-0000079a007d', 'Theoretical Principles of Leadership at Sea', 'markdown', NULL, 2, '# Theoretical Principles of Leadership at Sea
+('c1000000-0000-0000-0000-000076e4251e', 'b1000000-0000-0000-0000-0000079a007d', 'Theoretical Principles of Leadership at Sea', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Leadership at Sea
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Leadership at Sea**.'),
-('c1000000-0000-0000-0000-000076e4215e', 'b1000000-0000-0000-0000-0000079a007e', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000076e4215e', 'b1000000-0000-0000-0000-0000079a007e', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Leadership at Sea**.'),
-('c1000000-0000-0000-0000-000076e4215d', 'b1000000-0000-0000-0000-0000079a007e', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000076e4215d', 'b1000000-0000-0000-0000-0000079a007e', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000763ce794', 'b1000000-0000-0000-0000-00007c86db38', 'Introduction to Principles of Flight', 'markdown', NULL, 1, '# Introduction to Principles of Flight
+('c1000000-0000-0000-0000-0000763ce794', 'b1000000-0000-0000-0000-00007c86db38', 'Introduction to Principles of Flight', 'markdown', '{}'::jsonb, 1, '# Introduction to Principles of Flight
 
 ## Overview
 This chapter covers the basic fundamentals of **Principles of Flight**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-0000763ce793', 'b1000000-0000-0000-0000-00007c86db38', 'Theoretical Principles of Principles of Flight', 'markdown', NULL, 2, '# Theoretical Principles of Principles of Flight
+('c1000000-0000-0000-0000-0000763ce793', 'b1000000-0000-0000-0000-00007c86db38', 'Theoretical Principles of Principles of Flight', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Principles of Flight
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Principles of Flight**.'),
-('c1000000-0000-0000-0000-0000763ce3d3', 'b1000000-0000-0000-0000-00007c86db37', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000763ce3d3', 'b1000000-0000-0000-0000-00007c86db37', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Principles of Flight**.'),
-('c1000000-0000-0000-0000-0000763ce3d2', 'b1000000-0000-0000-0000-00007c86db37', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000763ce3d2', 'b1000000-0000-0000-0000-00007c86db37', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000360e5cbd', 'b1000000-0000-0000-0000-000037bb4959', 'Introduction to Airframe & Aircraft Parts', 'markdown', NULL, 1, '# Introduction to Airframe & Aircraft Parts
+('c1000000-0000-0000-0000-0000360e5cbd', 'b1000000-0000-0000-0000-000037bb4959', 'Introduction to Airframe & Aircraft Parts', 'markdown', '{}'::jsonb, 1, '# Introduction to Airframe & Aircraft Parts
 
 ## Overview
 This chapter covers the basic fundamentals of **Airframe & Aircraft Parts**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-0000360e5cbe', 'b1000000-0000-0000-0000-000037bb4959', 'Theoretical Principles of Airframe & Aircraft Parts', 'markdown', NULL, 2, '# Theoretical Principles of Airframe & Aircraft Parts
+('c1000000-0000-0000-0000-0000360e5cbe', 'b1000000-0000-0000-0000-000037bb4959', 'Theoretical Principles of Airframe & Aircraft Parts', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Airframe & Aircraft Parts
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Airframe & Aircraft Parts**.'),
-('c1000000-0000-0000-0000-0000360e607e', 'b1000000-0000-0000-0000-000037bb495a', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000360e607e', 'b1000000-0000-0000-0000-000037bb495a', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Airframe & Aircraft Parts**.'),
-('c1000000-0000-0000-0000-0000360e607f', 'b1000000-0000-0000-0000-000037bb495a', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000360e607f', 'b1000000-0000-0000-0000-000037bb495a', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000058d2d71f', 'b1000000-0000-0000-0000-000075a6ce7d', 'Introduction to Flying Basics', 'markdown', NULL, 1, '# Introduction to Flying Basics
+('c1000000-0000-0000-0000-000058d2d71f', 'b1000000-0000-0000-0000-000075a6ce7d', 'Introduction to Flying Basics', 'markdown', '{}'::jsonb, 1, '# Introduction to Flying Basics
 
 ## Overview
 This chapter covers the basic fundamentals of **Flying Basics**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-000058d2d71e', 'b1000000-0000-0000-0000-000075a6ce7d', 'Theoretical Principles of Flying Basics', 'markdown', NULL, 2, '# Theoretical Principles of Flying Basics
+('c1000000-0000-0000-0000-000058d2d71e', 'b1000000-0000-0000-0000-000075a6ce7d', 'Theoretical Principles of Flying Basics', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Flying Basics
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Flying Basics**.'),
-('c1000000-0000-0000-0000-000058d2d35e', 'b1000000-0000-0000-0000-000075a6ce7e', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000058d2d35e', 'b1000000-0000-0000-0000-000075a6ce7e', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Flying Basics**.'),
-('c1000000-0000-0000-0000-000058d2d35d', 'b1000000-0000-0000-0000-000075a6ce7e', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000058d2d35d', 'b1000000-0000-0000-0000-000075a6ce7e', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000047cb2b2d', 'b1000000-0000-0000-0000-0000102cceef', 'Introduction to Aviation History', 'markdown', NULL, 1, '# Introduction to Aviation History
+('c1000000-0000-0000-0000-000047cb2b2d', 'b1000000-0000-0000-0000-0000102cceef', 'Introduction to Aviation History', 'markdown', '{}'::jsonb, 1, '# Introduction to Aviation History
 
 ## Overview
 This chapter covers the basic fundamentals of **Aviation History**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-000047cb2b2c', 'b1000000-0000-0000-0000-0000102cceef', 'Theoretical Principles of Aviation History', 'markdown', NULL, 2, '# Theoretical Principles of Aviation History
+('c1000000-0000-0000-0000-000047cb2b2c', 'b1000000-0000-0000-0000-0000102cceef', 'Theoretical Principles of Aviation History', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Aviation History
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Aviation History**.'),
-('c1000000-0000-0000-0000-000047cb276c', 'b1000000-0000-0000-0000-0000102ccef0', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000047cb276c', 'b1000000-0000-0000-0000-0000102ccef0', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Aviation History**.'),
-('c1000000-0000-0000-0000-000047cb276b', 'b1000000-0000-0000-0000-0000102ccef0', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000047cb276b', 'b1000000-0000-0000-0000-0000102ccef0', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00007ed85c1f', 'b1000000-0000-0000-0000-00001061b93b', 'Introduction to Aero Modelling', 'markdown', NULL, 1, '# Introduction to Aero Modelling
+('c1000000-0000-0000-0000-00007ed85c1f', 'b1000000-0000-0000-0000-00001061b93b', 'Introduction to Aero Modelling', 'markdown', '{}'::jsonb, 1, '# Introduction to Aero Modelling
 
 ## Overview
 This chapter covers the basic fundamentals of **Aero Modelling**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00007ed85c20', 'b1000000-0000-0000-0000-00001061b93b', 'Theoretical Principles of Aero Modelling', 'markdown', NULL, 2, '# Theoretical Principles of Aero Modelling
+('c1000000-0000-0000-0000-00007ed85c20', 'b1000000-0000-0000-0000-00001061b93b', 'Theoretical Principles of Aero Modelling', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Aero Modelling
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Aero Modelling**.'),
-('c1000000-0000-0000-0000-00007ed85fe0', 'b1000000-0000-0000-0000-00001061b93c', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00007ed85fe0', 'b1000000-0000-0000-0000-00001061b93c', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Aero Modelling**.'),
-('c1000000-0000-0000-0000-00007ed85fe1', 'b1000000-0000-0000-0000-00001061b93c', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00007ed85fe1', 'b1000000-0000-0000-0000-00001061b93c', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00002a756c3b', 'b1000000-0000-0000-0000-000076965d9f', 'Introduction to Air Navigation Basics', 'markdown', NULL, 1, '# Introduction to Air Navigation Basics
+('c1000000-0000-0000-0000-00002a756c3b', 'b1000000-0000-0000-0000-000076965d9f', 'Introduction to Air Navigation Basics', 'markdown', '{}'::jsonb, 1, '# Introduction to Air Navigation Basics
 
 ## Overview
 This chapter covers the basic fundamentals of **Air Navigation Basics**, required for National Cadet Corps (NCC) Certificate **A** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00002a756c3a', 'b1000000-0000-0000-0000-000076965d9f', 'Theoretical Principles of Air Navigation Basics', 'markdown', NULL, 2, '# Theoretical Principles of Air Navigation Basics
+('c1000000-0000-0000-0000-00002a756c3a', 'b1000000-0000-0000-0000-000076965d9f', 'Theoretical Principles of Air Navigation Basics', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Air Navigation Basics
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Air Navigation Basics**.'),
-('c1000000-0000-0000-0000-00002a75687a', 'b1000000-0000-0000-0000-000076965d9e', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00002a75687a', 'b1000000-0000-0000-0000-000076965d9e', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Air Navigation Basics**.'),
-('c1000000-0000-0000-0000-00002a756879', 'b1000000-0000-0000-0000-000076965d9e', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00002a756879', 'b1000000-0000-0000-0000-000076965d9e', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00002a666630', 'b1000000-0000-0000-0000-00000d5d138c', 'Introduction to Aircraft Instruments', 'markdown', NULL, 1, '# Introduction to Aircraft Instruments
+('c1000000-0000-0000-0000-00002a666630', 'b1000000-0000-0000-0000-00000d5d138c', 'Introduction to Aircraft Instruments', 'markdown', '{}'::jsonb, 1, '# Introduction to Aircraft Instruments
 
 ## Overview
 This chapter covers the basic fundamentals of **Aircraft Instruments**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00002a666631', 'b1000000-0000-0000-0000-00000d5d138c', 'Theoretical Principles of Aircraft Instruments', 'markdown', NULL, 2, '# Theoretical Principles of Aircraft Instruments
+('c1000000-0000-0000-0000-00002a666631', 'b1000000-0000-0000-0000-00000d5d138c', 'Theoretical Principles of Aircraft Instruments', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Aircraft Instruments
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Aircraft Instruments**.'),
-('c1000000-0000-0000-0000-00002a6669f1', 'b1000000-0000-0000-0000-00000d5d138d', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00002a6669f1', 'b1000000-0000-0000-0000-00000d5d138d', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Aircraft Instruments**.'),
-('c1000000-0000-0000-0000-00002a6669f2', 'b1000000-0000-0000-0000-00000d5d138d', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00002a6669f2', 'b1000000-0000-0000-0000-00000d5d138d', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00005dea500e', 'b1000000-0000-0000-0000-00001f881a32', 'Introduction to Meteorology', 'markdown', NULL, 1, '# Introduction to Meteorology
+('c1000000-0000-0000-0000-00005dea500e', 'b1000000-0000-0000-0000-00001f881a32', 'Introduction to Meteorology', 'markdown', '{}'::jsonb, 1, '# Introduction to Meteorology
 
 ## Overview
 This chapter covers the basic fundamentals of **Meteorology**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00005dea500d', 'b1000000-0000-0000-0000-00001f881a32', 'Theoretical Principles of Meteorology', 'markdown', NULL, 2, '# Theoretical Principles of Meteorology
+('c1000000-0000-0000-0000-00005dea500d', 'b1000000-0000-0000-0000-00001f881a32', 'Theoretical Principles of Meteorology', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Meteorology
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Meteorology**.'),
-('c1000000-0000-0000-0000-00005dea4c4d', 'b1000000-0000-0000-0000-00001f881a31', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00005dea4c4d', 'b1000000-0000-0000-0000-00001f881a31', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Meteorology**.'),
-('c1000000-0000-0000-0000-00005dea4c4c', 'b1000000-0000-0000-0000-00001f881a31', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00005dea4c4c', 'b1000000-0000-0000-0000-00001f881a31', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-000016f61ffa', 'b1000000-0000-0000-0000-000052def51e', 'Introduction to Air Traffic Control Basics', 'markdown', NULL, 1, '# Introduction to Air Traffic Control Basics
+('c1000000-0000-0000-0000-000016f61ffa', 'b1000000-0000-0000-0000-000052def51e', 'Introduction to Air Traffic Control Basics', 'markdown', '{}'::jsonb, 1, '# Introduction to Air Traffic Control Basics
 
 ## Overview
 This chapter covers the basic fundamentals of **Air Traffic Control Basics**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-000016f61ff9', 'b1000000-0000-0000-0000-000052def51e', 'Theoretical Principles of Air Traffic Control Basics', 'markdown', NULL, 2, '# Theoretical Principles of Air Traffic Control Basics
+('c1000000-0000-0000-0000-000016f61ff9', 'b1000000-0000-0000-0000-000052def51e', 'Theoretical Principles of Air Traffic Control Basics', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Air Traffic Control Basics
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Air Traffic Control Basics**.'),
-('c1000000-0000-0000-0000-000016f61c39', 'b1000000-0000-0000-0000-000052def51d', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-000016f61c39', 'b1000000-0000-0000-0000-000052def51d', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Air Traffic Control Basics**.'),
-('c1000000-0000-0000-0000-000016f61c38', 'b1000000-0000-0000-0000-000052def51d', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-000016f61c38', 'b1000000-0000-0000-0000-000052def51d', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000556b8489', 'b1000000-0000-0000-0000-000024680bdb', 'Introduction to Navigation Advanced', 'markdown', NULL, 1, '# Introduction to Navigation Advanced
+('c1000000-0000-0000-0000-0000556b8489', 'b1000000-0000-0000-0000-000024680bdb', 'Introduction to Navigation Advanced', 'markdown', '{}'::jsonb, 1, '# Introduction to Navigation Advanced
 
 ## Overview
 This chapter covers the basic fundamentals of **Navigation Advanced**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-0000556b848a', 'b1000000-0000-0000-0000-000024680bdb', 'Theoretical Principles of Navigation Advanced', 'markdown', NULL, 2, '# Theoretical Principles of Navigation Advanced
+('c1000000-0000-0000-0000-0000556b848a', 'b1000000-0000-0000-0000-000024680bdb', 'Theoretical Principles of Navigation Advanced', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Navigation Advanced
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Navigation Advanced**.'),
-('c1000000-0000-0000-0000-0000556b884a', 'b1000000-0000-0000-0000-000024680bda', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000556b884a', 'b1000000-0000-0000-0000-000024680bda', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Navigation Advanced**.'),
-('c1000000-0000-0000-0000-0000556b884b', 'b1000000-0000-0000-0000-000024680bda', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000556b884b', 'b1000000-0000-0000-0000-000024680bda', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00007137a37b', 'b1000000-0000-0000-0000-00003d632797', 'Introduction to Aero Engines', 'markdown', NULL, 1, '# Introduction to Aero Engines
+('c1000000-0000-0000-0000-00007137a37b', 'b1000000-0000-0000-0000-00003d632797', 'Introduction to Aero Engines', 'markdown', '{}'::jsonb, 1, '# Introduction to Aero Engines
 
 ## Overview
 This chapter covers the basic fundamentals of **Aero Engines**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00007137a37c', 'b1000000-0000-0000-0000-00003d632797', 'Theoretical Principles of Aero Engines', 'markdown', NULL, 2, '# Theoretical Principles of Aero Engines
+('c1000000-0000-0000-0000-00007137a37c', 'b1000000-0000-0000-0000-00003d632797', 'Theoretical Principles of Aero Engines', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Aero Engines
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Aero Engines**.'),
-('c1000000-0000-0000-0000-00007137a73c', 'b1000000-0000-0000-0000-00003d632798', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00007137a73c', 'b1000000-0000-0000-0000-00003d632798', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Aero Engines**.'),
-('c1000000-0000-0000-0000-00007137a73d', 'b1000000-0000-0000-0000-00003d632798', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00007137a73d', 'b1000000-0000-0000-0000-00003d632798', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00001afeecbc', 'b1000000-0000-0000-0000-00000cc232e8', 'Introduction to Map Reading for Aviation', 'markdown', NULL, 1, '# Introduction to Map Reading for Aviation
+('c1000000-0000-0000-0000-00001afeecbc', 'b1000000-0000-0000-0000-00000cc232e8', 'Introduction to Map Reading for Aviation', 'markdown', '{}'::jsonb, 1, '# Introduction to Map Reading for Aviation
 
 ## Overview
 This chapter covers the basic fundamentals of **Map Reading for Aviation**, required for National Cadet Corps (NCC) Certificate **B** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00001afeecbd', 'b1000000-0000-0000-0000-00000cc232e8', 'Theoretical Principles of Map Reading for Aviation', 'markdown', NULL, 2, '# Theoretical Principles of Map Reading for Aviation
+('c1000000-0000-0000-0000-00001afeecbd', 'b1000000-0000-0000-0000-00000cc232e8', 'Theoretical Principles of Map Reading for Aviation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Map Reading for Aviation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Map Reading for Aviation**.'),
-('c1000000-0000-0000-0000-00001afef07d', 'b1000000-0000-0000-0000-00000cc232e7', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00001afef07d', 'b1000000-0000-0000-0000-00000cc232e7', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Map Reading for Aviation**.'),
-('c1000000-0000-0000-0000-00001afef07e', 'b1000000-0000-0000-0000-00000cc232e7', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00001afef07e', 'b1000000-0000-0000-0000-00000cc232e7', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00005d23a4e9', 'b1000000-0000-0000-0000-0000519cac85', 'Introduction to Advanced Aviation Subjects', 'markdown', NULL, 1, '# Introduction to Advanced Aviation Subjects
+('c1000000-0000-0000-0000-00005d23a4e9', 'b1000000-0000-0000-0000-0000519cac85', 'Introduction to Advanced Aviation Subjects', 'markdown', '{}'::jsonb, 1, '# Introduction to Advanced Aviation Subjects
 
 ## Overview
 This chapter covers the basic fundamentals of **Advanced Aviation Subjects**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00005d23a4ea', 'b1000000-0000-0000-0000-0000519cac85', 'Theoretical Principles of Advanced Aviation Subjects', 'markdown', NULL, 2, '# Theoretical Principles of Advanced Aviation Subjects
+('c1000000-0000-0000-0000-00005d23a4ea', 'b1000000-0000-0000-0000-0000519cac85', 'Theoretical Principles of Advanced Aviation Subjects', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Advanced Aviation Subjects
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Advanced Aviation Subjects**.'),
-('c1000000-0000-0000-0000-00005d23a8aa', 'b1000000-0000-0000-0000-0000519cac86', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00005d23a8aa', 'b1000000-0000-0000-0000-0000519cac86', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Advanced Aviation Subjects**.'),
-('c1000000-0000-0000-0000-00005d23a8ab', 'b1000000-0000-0000-0000-0000519cac86', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00005d23a8ab', 'b1000000-0000-0000-0000-0000519cac86', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00006a6c40ad', 'b1000000-0000-0000-0000-00002abba691', 'Introduction to Flight Navigation', 'markdown', NULL, 1, '# Introduction to Flight Navigation
+('c1000000-0000-0000-0000-00006a6c40ad', 'b1000000-0000-0000-0000-00002abba691', 'Introduction to Flight Navigation', 'markdown', '{}'::jsonb, 1, '# Introduction to Flight Navigation
 
 ## Overview
 This chapter covers the basic fundamentals of **Flight Navigation**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00006a6c40ac', 'b1000000-0000-0000-0000-00002abba691', 'Theoretical Principles of Flight Navigation', 'markdown', NULL, 2, '# Theoretical Principles of Flight Navigation
+('c1000000-0000-0000-0000-00006a6c40ac', 'b1000000-0000-0000-0000-00002abba691', 'Theoretical Principles of Flight Navigation', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Flight Navigation
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Flight Navigation**.'),
-('c1000000-0000-0000-0000-00006a6c3cec', 'b1000000-0000-0000-0000-00002abba690', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00006a6c3cec', 'b1000000-0000-0000-0000-00002abba690', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Flight Navigation**.'),
-('c1000000-0000-0000-0000-00006a6c3ceb', 'b1000000-0000-0000-0000-00002abba690', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00006a6c3ceb', 'b1000000-0000-0000-0000-00002abba690', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00001aff7215', 'b1000000-0000-0000-0000-00006643ee07', 'Introduction to Aircraft Recognition', 'markdown', NULL, 1, '# Introduction to Aircraft Recognition
+('c1000000-0000-0000-0000-00001aff7215', 'b1000000-0000-0000-0000-00006643ee07', 'Introduction to Aircraft Recognition', 'markdown', '{}'::jsonb, 1, '# Introduction to Aircraft Recognition
 
 ## Overview
 This chapter covers the basic fundamentals of **Aircraft Recognition**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00001aff7214', 'b1000000-0000-0000-0000-00006643ee07', 'Theoretical Principles of Aircraft Recognition', 'markdown', NULL, 2, '# Theoretical Principles of Aircraft Recognition
+('c1000000-0000-0000-0000-00001aff7214', 'b1000000-0000-0000-0000-00006643ee07', 'Theoretical Principles of Aircraft Recognition', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Aircraft Recognition
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Aircraft Recognition**.'),
-('c1000000-0000-0000-0000-00001aff6e54', 'b1000000-0000-0000-0000-00006643ee08', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00001aff6e54', 'b1000000-0000-0000-0000-00006643ee08', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Aircraft Recognition**.'),
-('c1000000-0000-0000-0000-00001aff6e53', 'b1000000-0000-0000-0000-00006643ee08', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00001aff6e53', 'b1000000-0000-0000-0000-00006643ee08', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-0000323bbaf8', 'b1000000-0000-0000-0000-00006d6f05ac', 'Introduction to Air Power & Warfare', 'markdown', NULL, 1, '# Introduction to Air Power & Warfare
+('c1000000-0000-0000-0000-0000323bbaf8', 'b1000000-0000-0000-0000-00006d6f05ac', 'Introduction to Air Power & Warfare', 'markdown', '{}'::jsonb, 1, '# Introduction to Air Power & Warfare
 
 ## Overview
 This chapter covers the basic fundamentals of **Air Power & Warfare**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-0000323bbaf9', 'b1000000-0000-0000-0000-00006d6f05ac', 'Theoretical Principles of Air Power & Warfare', 'markdown', NULL, 2, '# Theoretical Principles of Air Power & Warfare
+('c1000000-0000-0000-0000-0000323bbaf9', 'b1000000-0000-0000-0000-00006d6f05ac', 'Theoretical Principles of Air Power & Warfare', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Air Power & Warfare
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Air Power & Warfare**.'),
-('c1000000-0000-0000-0000-0000323bbeb9', 'b1000000-0000-0000-0000-00006d6f05ab', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-0000323bbeb9', 'b1000000-0000-0000-0000-00006d6f05ab', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Air Power & Warfare**.'),
-('c1000000-0000-0000-0000-0000323bbeba', 'b1000000-0000-0000-0000-00006d6f05ab', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-0000323bbeba', 'b1000000-0000-0000-0000-00006d6f05ab', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00001cf11792', 'b1000000-0000-0000-0000-000009e2f2b6', 'Introduction to Aero Engine Systems', 'markdown', NULL, 1, '# Introduction to Aero Engine Systems
+('c1000000-0000-0000-0000-00001cf11792', 'b1000000-0000-0000-0000-000009e2f2b6', 'Introduction to Aero Engine Systems', 'markdown', '{}'::jsonb, 1, '# Introduction to Aero Engine Systems
 
 ## Overview
 This chapter covers the basic fundamentals of **Aero Engine Systems**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00001cf11791', 'b1000000-0000-0000-0000-000009e2f2b6', 'Theoretical Principles of Aero Engine Systems', 'markdown', NULL, 2, '# Theoretical Principles of Aero Engine Systems
+('c1000000-0000-0000-0000-00001cf11791', 'b1000000-0000-0000-0000-000009e2f2b6', 'Theoretical Principles of Aero Engine Systems', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Aero Engine Systems
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Aero Engine Systems**.'),
-('c1000000-0000-0000-0000-00001cf113d1', 'b1000000-0000-0000-0000-000009e2f2b5', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00001cf113d1', 'b1000000-0000-0000-0000-000009e2f2b5', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Aero Engine Systems**.'),
-('c1000000-0000-0000-0000-00001cf113d0', 'b1000000-0000-0000-0000-000009e2f2b5', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00001cf113d0', 'b1000000-0000-0000-0000-000009e2f2b5', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00000498f42b', 'b1000000-0000-0000-0000-00004edb218f', 'Introduction to Aviation Safety', 'markdown', NULL, 1, '# Introduction to Aviation Safety
+('c1000000-0000-0000-0000-00000498f42b', 'b1000000-0000-0000-0000-00004edb218f', 'Introduction to Aviation Safety', 'markdown', '{}'::jsonb, 1, '# Introduction to Aviation Safety
 
 ## Overview
 This chapter covers the basic fundamentals of **Aviation Safety**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00000498f42a', 'b1000000-0000-0000-0000-00004edb218f', 'Theoretical Principles of Aviation Safety', 'markdown', NULL, 2, '# Theoretical Principles of Aviation Safety
+('c1000000-0000-0000-0000-00000498f42a', 'b1000000-0000-0000-0000-00004edb218f', 'Theoretical Principles of Aviation Safety', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Aviation Safety
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Aviation Safety**.'),
-('c1000000-0000-0000-0000-00000498f06a', 'b1000000-0000-0000-0000-00004edb218e', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00000498f06a', 'b1000000-0000-0000-0000-00004edb218e', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Aviation Safety**.'),
-('c1000000-0000-0000-0000-00000498f069', 'b1000000-0000-0000-0000-00004edb218e', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00000498f069', 'b1000000-0000-0000-0000-00004edb218e', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.'),
-('c1000000-0000-0000-0000-00004bfd561f', 'b1000000-0000-0000-0000-00000982ccc5', 'Introduction to Air Force Leadership & Communication', 'markdown', NULL, 1, '# Introduction to Air Force Leadership & Communication
+('c1000000-0000-0000-0000-00004bfd561f', 'b1000000-0000-0000-0000-00000982ccc5', 'Introduction to Air Force Leadership & Communication', 'markdown', '{}'::jsonb, 1, '# Introduction to Air Force Leadership & Communication
 
 ## Overview
 This chapter covers the basic fundamentals of **Air Force Leadership & Communication**, required for National Cadet Corps (NCC) Certificate **C** cadets of the **Air Force** wing.'),
-('c1000000-0000-0000-0000-00004bfd5620', 'b1000000-0000-0000-0000-00000982ccc5', 'Theoretical Principles of Air Force Leadership & Communication', 'markdown', NULL, 2, '# Theoretical Principles of Air Force Leadership & Communication
+('c1000000-0000-0000-0000-00004bfd5620', 'b1000000-0000-0000-0000-00000982ccc5', 'Theoretical Principles of Air Force Leadership & Communication', 'markdown', '{}'::jsonb, 2, '# Theoretical Principles of Air Force Leadership & Communication
 
 ## Study Material
 Here we explore the detailed guidelines and regulations surrounding **Air Force Leadership & Communication**.'),
-('c1000000-0000-0000-0000-00004bfd59e0', 'b1000000-0000-0000-0000-00000982ccc4', 'Practical Training & Operations', 'markdown', NULL, 1, '# Practical Training & Operations
+('c1000000-0000-0000-0000-00004bfd59e0', 'b1000000-0000-0000-0000-00000982ccc4', 'Practical Training & Operations', 'markdown', '{}'::jsonb, 1, '# Practical Training & Operations
 
 ## Field Training
 This section outlines the practical activities and camp drills associated with **Air Force Leadership & Communication**.'),
-('c1000000-0000-0000-0000-00004bfd59e1', 'b1000000-0000-0000-0000-00000982ccc4', 'Mock Evaluation & Exercises', 'markdown', NULL, 2, '# Mock Evaluation & Exercises
+('c1000000-0000-0000-0000-00004bfd59e1', 'b1000000-0000-0000-0000-00000982ccc4', 'Mock Evaluation & Exercises', 'markdown', '{}'::jsonb, 2, '# Mock Evaluation & Exercises
 
 ## Self-Assessment
 To prepare for your Certificate examination, answer the following questions.');
