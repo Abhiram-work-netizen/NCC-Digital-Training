@@ -513,10 +513,10 @@ Conventional signs are **standardized symbols** used on maps:
     });
 
     // Questions pool
-    const q1Id = generateStableId('q0000001', courseId);
-    const q2Id = generateStableId('q0000002', courseId);
-    const q3Id = generateStableId('q0000003', courseId);
-    const q4Id = generateStableId('q0000004', courseId);
+    const q1Id = generateStableId('f0000001', courseId);
+    const q2Id = generateStableId('f0000002', courseId);
+    const q3Id = generateStableId('f0000003', courseId);
+    const q4Id = generateStableId('f0000004', courseId);
 
     let questionsPool = [
       {
@@ -571,22 +571,22 @@ Conventional signs are **standardized symbols** used on maps:
 
     if (title === 'NCC At a Glance') {
       questionsPool = [
-        { id: generateStableId('q0000001', courseId), bank_id: bankId, question_text: 'When was the NCC established in India?', question_type: 'mcq', options: ['1946', '1947', '1948', '1950'], correct_answer: '1948', difficulty: 'easy', topic_tag: 'History', explanation: 'NCC was established on 15 July 1948 under the NCC Act XXXI of 1948.', points: 1 },
-        { id: generateStableId('q0000002', courseId), bank_id: bankId, question_text: 'What is the motto of the NCC?', question_type: 'mcq', options: ['Service Before Self', 'Unity and Discipline', 'Duty Honor Country', 'Jai Hind'], correct_answer: 'Unity and Discipline', difficulty: 'easy', topic_tag: 'Basics', explanation: 'The NCC motto is "Unity and Discipline".', points: 1 },
-        { id: generateStableId('q0000003', courseId), bank_id: bankId, question_text: 'Who was the first Director General of NCC?', question_type: 'mcq', options: ['Lt Gen Grubb', 'Gen Cariappa', 'Maj Gen Sinha', 'Gen Thimayya'], correct_answer: 'Lt Gen Grubb', difficulty: 'medium', topic_tag: 'History', explanation: 'Lt Gen Grubb was the first DG of NCC appointed in 1948.', points: 1 },
-        { id: generateStableId('q0000004', courseId), bank_id: bankId, question_text: 'The NCC was raised on the recommendation of which committee?', question_type: 'mcq', options: ['Kunzru Committee', 'Nehru Committee', 'Patel Committee', 'Kothari Committee'], correct_answer: 'Kunzru Committee', difficulty: 'medium', topic_tag: 'History', explanation: 'Pandit H.N. Kunzru Committee (1946) recommended establishing NCC.', points: 1 }
+        { id: generateStableId('f0000001', courseId), bank_id: bankId, question_text: 'When was the NCC established in India?', question_type: 'mcq', options: ['1946', '1947', '1948', '1950'], correct_answer: '1948', difficulty: 'easy', topic_tag: 'History', explanation: 'NCC was established on 15 July 1948 under the NCC Act XXXI of 1948.', points: 1 },
+        { id: generateStableId('f0000002', courseId), bank_id: bankId, question_text: 'What is the motto of the NCC?', question_type: 'mcq', options: ['Service Before Self', 'Unity and Discipline', 'Duty Honor Country', 'Jai Hind'], correct_answer: 'Unity and Discipline', difficulty: 'easy', topic_tag: 'Basics', explanation: 'The NCC motto is "Unity and Discipline".', points: 1 },
+        { id: generateStableId('f0000003', courseId), bank_id: bankId, question_text: 'Who was the first Director General of NCC?', question_type: 'mcq', options: ['Lt Gen Grubb', 'Gen Cariappa', 'Maj Gen Sinha', 'Gen Thimayya'], correct_answer: 'Lt Gen Grubb', difficulty: 'medium', topic_tag: 'History', explanation: 'Lt Gen Grubb was the first DG of NCC appointed in 1948.', points: 1 },
+        { id: generateStableId('f0000004', courseId), bank_id: bankId, question_text: 'The NCC was raised on the recommendation of which committee?', question_type: 'mcq', options: ['Kunzru Committee', 'Nehru Committee', 'Patel Committee', 'Kothari Committee'], correct_answer: 'Kunzru Committee', difficulty: 'medium', topic_tag: 'History', explanation: 'Pandit H.N. Kunzru Committee (1946) recommended establishing NCC.', points: 1 }
       ];
     } else if (title === 'Drill & Commands') {
       questionsPool = [
-        { id: generateStableId('q0000001', courseId), bank_id: bankId, question_text: 'At the position of attention, the angle between feet should be?', question_type: 'mcq', options: ['15 degrees', '30 degrees', '45 degrees', '60 degrees'], correct_answer: '30 degrees', difficulty: 'easy', topic_tag: 'Foot Drill', explanation: 'At attention, feet are turned out equally forming a 30-degree angle.', points: 1 },
-        { id: generateStableId('q0000002', courseId), bank_id: bankId, question_text: 'In "Stand at Ease," the left foot moves how many inches to the left?', question_type: 'mcq', options: ['10 inches', '12 inches', '15 inches', '18 inches'], correct_answer: '15 inches', difficulty: 'medium', topic_tag: 'Foot Drill', explanation: 'The left foot moves 15 inches to the left.', points: 1 },
-        { id: generateStableId('q0000003', courseId), bank_id: bankId, question_text: 'About Turn involves rotation of how many degrees?', question_type: 'mcq', options: ['90 degrees', '120 degrees', '180 degrees', '360 degrees'], correct_answer: '180 degrees', difficulty: 'easy', topic_tag: 'Turnings', explanation: 'About Turn (Peeche Mud) involves a 180-degree turn to the right.', points: 1 },
-        { id: generateStableId('q0000004', courseId), bank_id: bankId, question_text: 'The word of command has how many parts?', question_type: 'mcq', options: ['1', '2', '3', '4'], correct_answer: '2', difficulty: 'easy', topic_tag: 'Commands', explanation: 'Word of command has Cautionary (alert) and Executive (action) parts.', points: 1 }
+        { id: generateStableId('f0000001', courseId), bank_id: bankId, question_text: 'At the position of attention, the angle between feet should be?', question_type: 'mcq', options: ['15 degrees', '30 degrees', '45 degrees', '60 degrees'], correct_answer: '30 degrees', difficulty: 'easy', topic_tag: 'Foot Drill', explanation: 'At attention, feet are turned out equally forming a 30-degree angle.', points: 1 },
+        { id: generateStableId('f0000002', courseId), bank_id: bankId, question_text: 'In "Stand at Ease," the left foot moves how many inches to the left?', question_type: 'mcq', options: ['10 inches', '12 inches', '15 inches', '18 inches'], correct_answer: '15 inches', difficulty: 'medium', topic_tag: 'Foot Drill', explanation: 'The left foot moves 15 inches to the left.', points: 1 },
+        { id: generateStableId('f0000003', courseId), bank_id: bankId, question_text: 'About Turn involves rotation of how many degrees?', question_type: 'mcq', options: ['90 degrees', '120 degrees', '180 degrees', '360 degrees'], correct_answer: '180 degrees', difficulty: 'easy', topic_tag: 'Turnings', explanation: 'About Turn (Peeche Mud) involves a 180-degree turn to the right.', points: 1 },
+        { id: generateStableId('f0000004', courseId), bank_id: bankId, question_text: 'The word of command has how many parts?', question_type: 'mcq', options: ['1', '2', '3', '4'], correct_answer: '2', difficulty: 'easy', topic_tag: 'Commands', explanation: 'Word of command has Cautionary (alert) and Executive (action) parts.', points: 1 }
       ];
     } else if (title === 'Map Reading') {
       questionsPool = [
-        { id: generateStableId('q0000001', courseId), bank_id: bankId, question_text: 'On a topographic map, blue color represents?', question_type: 'mcq', options: ['Roads', 'Vegetation', 'Water features', 'Contour lines'], correct_answer: 'Water features', difficulty: 'easy', topic_tag: 'Conventional Signs', explanation: 'Blue is used for water features like rivers, lakes, and wells.', points: 1 },
-        { id: generateStableId('q0000002', courseId), bank_id: bankId, question_text: 'Contour lines that are close together indicate?', question_type: 'mcq', options: ['Flat ground', 'Gentle slope', 'Steep slope', 'Valley'], correct_answer: 'Steep slope', difficulty: 'easy', topic_tag: 'Contours', explanation: 'Close contour lines indicate steep slopes.', points: 1 }
+        { id: generateStableId('f0000001', courseId), bank_id: bankId, question_text: 'On a topographic map, blue color represents?', question_type: 'mcq', options: ['Roads', 'Vegetation', 'Water features', 'Contour lines'], correct_answer: 'Water features', difficulty: 'easy', topic_tag: 'Conventional Signs', explanation: 'Blue is used for water features like rivers, lakes, and wells.', points: 1 },
+        { id: generateStableId('f0000002', courseId), bank_id: bankId, question_text: 'Contour lines that are close together indicate?', question_type: 'mcq', options: ['Flat ground', 'Gentle slope', 'Steep slope', 'Valley'], correct_answer: 'Steep slope', difficulty: 'easy', topic_tag: 'Contours', explanation: 'Close contour lines indicate steep slopes.', points: 1 }
       ];
     }
 
