@@ -63,6 +63,7 @@ Go to the **SQL Editor** tab (SQL console icon in the left menu) in your Supabas
    - `00013_announcement_notifications.sql`
    - `00014_fix_exam_logic.sql`
    - `production_patch_v1.sql`
+   - `00015_complete_syllabus_seeds.sql`
 3. Click **Run** for each query. This will configure the tables, indexes, row-level security (RLS) policies, and test accounts.
 
 ---
