@@ -1,16 +1,31 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../services/supabase';
-import { Shield, Users, BookOpen, Activity, AlertTriangle, Search, Trash2, UserPlus } from 'lucide-react';
+import { Shield, Users, BookOpen, Activity, AlertTriangle, Search, Trash2, UserPlus, Edit2, Plus } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import UserModal from '../components/UserModal';
+import CourseEditorModal from '../components/CourseEditorModal';
+
+const TABS = [
+  { id: 'overview', label: 'Overview', icon: Activity },
+  { id: 'users', label: 'User Management', icon: Users },
+  { id: 'courses', label: 'Course Management', icon: BookOpen }
+];
 
 export default function AdminPanel() {
+  const [activeTab, setActiveTab] = useState('overview');
+  const [courses, setCourses] = useState([]);
+  const [isCourseModalOpen, setIsCourseModalOpen] = useState(false);
+  const [editingCourse, setEditingCourse] = useState(null);
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [users, setUsers] = useState([]);
   const [activity, setActivity] = useState([]);
   const [stats, setStats] = useState({ users: 0, courses: 0, tests: 0, flagged: 0 });
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingUser, setEditingUser] = useState(null);
 
-  useEffect(() => {
-    const load = async () => {
+  const load = async () => {
       // Get all cadets
       const { data: cadets } = await supabase.from('cadet_profiles').select('id, full_name, wing, certificate_level, ncc_number');
       // Get instructors
@@ -25,8 +40,10 @@ export default function AdminPanel() {
       ];
       setUsers(allUsers);
 
-      // Courses count
-      const { count: courseCount } = await supabase.from('courses').select('id', { count: 'exact', head: true });
+      // Courses
+      const { data: courseList } = await supabase.from('courses').select('*').order('certificate_level');
+      setCourses(courseList || []);
+      const courseCount = courseList?.length || 0;
       // Today's tests
       const { count: testCount } = await supabase.from('test_attempts').select('id', { count: 'exact', head: true });
       // Flagged
@@ -52,8 +69,22 @@ export default function AdminPanel() {
 
       setLoading(false);
     };
+
+  useEffect(() => {
     load();
   }, []);
+
+  const handleDeleteUser = async (user) => {
+    if (!confirm(`Are you sure you want to delete ${user.full_name || 'this user'}? This will not delete their auth account without backend API.`)) return;
+    
+    let table = 'cadet_profiles';
+    if (user.role === 'instructor') table = 'instructor_profiles';
+    if (user.role === 'admin') table = 'admin_profiles';
+
+    const { error } = await supabase.from(table).delete().eq('id', user.id);
+    if (error) alert('Error deleting user: ' + error.message);
+    else load();
+  };
 
   const filtered = users.filter(u => (u.full_name || '').toLowerCase().includes(search.toLowerCase()));
 
@@ -72,32 +103,75 @@ export default function AdminPanel() {
         <p className="text-surface-700 text-sm">Platform management and monitoring</p>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-        {[
-          { label: 'Total Users', value: stats.users, icon: Users, color: 'text-navy-500', bg: 'bg-navy-500/10' },
-          { label: 'Courses', value: stats.courses, icon: BookOpen, color: 'text-mgreen-600', bg: 'bg-mgreen-600/10' },
-          { label: 'Attempts', value: stats.tests, icon: Activity, color: 'text-gold-500', bg: 'bg-gold-500/10' },
-          { label: 'Flagged', value: stats.flagged, icon: AlertTriangle, color: 'text-danger', bg: 'bg-danger-bg' },
-        ].map((s, i) => (
-          <div key={i} className="ncc-stat-card">
-            <div className={`w-8 h-8 md:w-10 md:h-10 rounded-xl ${s.bg} flex items-center justify-center mb-2 md:mb-3`}>
-              <s.icon className={`w-4 h-4 md:w-5 md:h-5 ${s.color}`} />
-            </div>
-            <p className="text-xl md:text-2xl font-bold text-navy-900">{s.value}</p>
-            <p className="text-xs md:text-sm text-surface-700">{s.label}</p>
-          </div>
+      {/* Tabs */}
+      <div className="flex gap-1 bg-surface-100 p-1 rounded-xl overflow-x-auto no-scrollbar">
+        {TABS.map(tab => (
+          <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+            className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition cursor-pointer whitespace-nowrap ${
+              activeTab === tab.id ? 'bg-white text-navy-900 shadow-sm' : 'text-surface-700 hover:text-navy-900'
+            }`}>
+            <tab.icon className="w-4 h-4" /> {tab.label}
+          </button>
         ))}
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-4 md:gap-6">
+      {activeTab === 'overview' && (
+        <>
+          {/* Stats */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {[
+              { label: 'Total Users', value: stats.users, icon: Users, color: 'text-navy-500', bg: 'bg-navy-500/10' },
+              { label: 'Courses', value: stats.courses, icon: BookOpen, color: 'text-mgreen-600', bg: 'bg-mgreen-600/10' },
+              { label: 'Attempts', value: stats.tests, icon: Activity, color: 'text-gold-500', bg: 'bg-gold-500/10' },
+              { label: 'Flagged', value: stats.flagged, icon: AlertTriangle, color: 'text-danger', bg: 'bg-danger-bg' },
+            ].map((s, i) => (
+              <div key={i} className="ncc-stat-card">
+                <div className={`w-8 h-8 md:w-10 md:h-10 rounded-xl ${s.bg} flex items-center justify-center mb-2 md:mb-3`}>
+                  <s.icon className={`w-4 h-4 md:w-5 md:h-5 ${s.color}`} />
+                </div>
+                <p className="text-xl md:text-2xl font-bold text-navy-900">{s.value}</p>
+                <p className="text-xs md:text-sm text-surface-700">{s.label}</p>
+              </div>
+            ))}
+          </div>
+          
+          {/* Activity */}
+          <div className="ncc-glass-card p-4 md:p-5 mt-6">
+            <h2 className="font-bold text-navy-900 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base"><Activity className="w-5 h-5 text-gold-500" /> Recent Activity</h2>
+            {activity.length === 0 ? (
+              <p className="text-sm text-surface-700">No recent activity.</p>
+            ) : (
+              <div className="space-y-4">
+                {activity.map((act, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${act.type === 'warning' ? 'bg-warning' : 'bg-mgreen-600'}`} />
+                    <div>
+                      <p className="text-sm text-navy-900">{act.text}</p>
+                      <p className="text-xs text-surface-300 mt-0.5">{act.time}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </>
+      )}
+
+      {activeTab === 'users' && (
+        <div className="grid lg:grid-cols-1 gap-4 md:gap-6">
         {/* User table */}
         <div className="lg:col-span-2 ncc-glass-card overflow-hidden">
           <div className="p-3 md:p-4 border-b border-surface-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <h2 className="font-bold text-navy-900 text-sm md:text-base">User Management</h2>
-            <div className="relative w-full sm:w-auto">
+            <div className="relative w-full sm:w-auto flex items-center gap-2">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-300" />
-              <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="ncc-input ncc-input-icon py-1.5 text-sm" />
+              <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="ncc-input ncc-input-icon py-1.5 text-sm w-full sm:w-48" />
+              <button 
+                onClick={() => { setEditingUser(null); setIsModalOpen(true); }}
+                className="ncc-btn ncc-btn-primary py-1.5 px-3 whitespace-nowrap text-sm h-full"
+              >
+                <UserPlus className="w-4 h-4" /> Add
+              </button>
             </div>
           </div>
           <div className="overflow-x-auto">
@@ -108,6 +182,7 @@ export default function AdminPanel() {
                   <th className="p-2.5 md:p-3">Role</th>
                   <th className="p-2.5 md:p-3">Wing</th>
                   <th className="p-2.5 md:p-3">Status</th>
+                  <th className="p-2.5 md:p-3 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-surface-100">
@@ -123,33 +198,86 @@ export default function AdminPanel() {
                         <span className="w-1.5 h-1.5 rounded-full bg-mgreen-600" /> active
                       </span>
                     </td>
+                    <td className="p-2.5 md:p-3 text-right">
+                      <div className="flex items-center justify-end gap-1">
+                        <button 
+                          onClick={() => { setEditingUser(u); setIsModalOpen(true); }}
+                          className="p-1.5 hover:bg-surface-200 rounded-lg text-navy-500 transition cursor-pointer"
+                          title="Edit User"
+                        >
+                          <Edit2 className="w-4 h-4" />
+                        </button>
+                        <button 
+                          onClick={() => handleDeleteUser(u)}
+                          className="p-1.5 hover:bg-danger/10 rounded-lg text-danger transition cursor-pointer"
+                          title="Delete User Profile"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
         </div>
-
-        {/* Activity */}
-        <div className="ncc-glass-card p-4 md:p-5">
-          <h2 className="font-bold text-navy-900 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base"><Activity className="w-5 h-5 text-gold-500" /> Recent Activity</h2>
-          {activity.length === 0 ? (
-            <p className="text-sm text-surface-700">No recent activity.</p>
-          ) : (
-            <div className="space-y-4">
-              {activity.map((act, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${act.type === 'warning' ? 'bg-warning' : 'bg-mgreen-600'}`} />
-                  <div>
-                    <p className="text-sm text-navy-900">{act.text}</p>
-                    <p className="text-xs text-surface-300 mt-0.5">{act.time}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
-      </div>
+      )}
+
+      {activeTab === 'courses' && (
+        <div className="space-y-4">
+          <div className="flex justify-end">
+            <button 
+              onClick={() => { setEditingCourse(null); setIsCourseModalOpen(true); }}
+              className="ncc-btn ncc-btn-primary py-2.5 px-6 cursor-pointer"
+            >
+              <Plus className="w-4 h-4" /> Create Course
+            </button>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {courses.map(c => (
+              <div key={c.id} className="ncc-glass-card p-5 relative group flex flex-col">
+                <div className="absolute top-4 right-4 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button onClick={() => { setEditingCourse(c); setIsCourseModalOpen(true); }} className="p-1.5 hover:bg-surface-200 rounded-lg text-navy-500 cursor-pointer" title="Edit Course Info">
+                    <Edit2 className="w-4 h-4" />
+                  </button>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className={`ncc-badge ${c.target_wing === 'Army' ? 'ncc-badge-army' : c.target_wing === 'Navy' ? 'ncc-badge-navy' : c.target_wing === 'Air Force' ? 'ncc-badge-airforce' : 'bg-surface-100 text-surface-700'}`}>{c.target_wing}</span>
+                  <span className="ncc-badge bg-navy-900/10 text-navy-900">{c.certificate_level} Cert</span>
+                </div>
+                <h3 className="font-bold text-navy-900 mb-1 pr-6">{c.title}</h3>
+                <p className="text-sm text-surface-700 mb-4 flex-1 line-clamp-2">{c.description || 'NCC training course'}</p>
+                <button 
+                  onClick={() => navigate(`/instructor/course/${c.id}`)}
+                  className="w-full py-2 bg-surface-100 hover:bg-surface-200 text-navy-900 font-bold rounded-xl transition text-sm flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <BookOpen className="w-4 h-4" /> Manage Syllabus
+                </button>
+              </div>
+            ))}
+            {courses.length === 0 && (
+              <div className="col-span-full p-8 text-center text-surface-500 ncc-glass-card">No courses created yet.</div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <UserModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        user={editingUser} 
+        onSave={load} 
+        mode="admin"
+      />
+
+      <CourseEditorModal
+        isOpen={isCourseModalOpen}
+        onClose={() => setIsCourseModalOpen(false)}
+        courseToEdit={editingCourse}
+        onSave={load}
+      />
     </div>
   );
 }

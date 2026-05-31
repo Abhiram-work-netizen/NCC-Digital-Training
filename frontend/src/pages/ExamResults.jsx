@@ -27,7 +27,7 @@ export default function ExamResults() {
   if (!data) return <div className="text-center py-20 text-surface-700">Results not found.</div>;
 
   const topicBreakdown = {};
-  (data.grading_data || []).forEach(q => {
+  (data.questions || []).forEach(q => {
     const t = q.topic_tag || 'General';
     if (!topicBreakdown[t]) topicBreakdown[t] = { correct: 0, total: 0 };
     topicBreakdown[t].total++;
@@ -82,7 +82,7 @@ export default function ExamResults() {
       <div className="ncc-glass-card p-4 md:p-6">
         <h2 className="font-bold text-navy-900 mb-3 md:mb-4 text-sm md:text-base">Answer Review</h2>
         <div className="space-y-3 md:space-y-4">
-          {(data.grading_data || []).map((q, i) => (
+          {(data.questions || []).map((q, i) => (
             <div key={i} className={`p-3 md:p-4 rounded-xl border-2 ${q.is_correct ? 'border-mgreen-600/20 bg-mgreen-600/5' : 'border-danger/20 bg-danger/5'}`}>
               <div className="flex items-start gap-2 md:gap-3">
                 {q.is_correct ? <CheckCircle className="w-5 h-5 text-mgreen-600 mt-0.5 flex-shrink-0" /> : <XCircle className="w-5 h-5 text-danger mt-0.5 flex-shrink-0" />}
@@ -90,7 +90,7 @@ export default function ExamResults() {
                   <p className="font-medium text-navy-900 mb-2 text-sm md:text-base break-words">{i + 1}. {q.question_text || 'Question'}</p>
                   <div className="text-xs md:text-sm space-y-1">
                     <p className={`${q.is_correct ? 'text-mgreen-600' : 'text-danger'} font-bold`}>
-                      Your Answer: {q.user_answer || 'None'}
+                      Your Answer: {q.selected_answer || 'None'}
                     </p>
                     {!q.is_correct && (
                       <p className="text-mgreen-600 font-bold">

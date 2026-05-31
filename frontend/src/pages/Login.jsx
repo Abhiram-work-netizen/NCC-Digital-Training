@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import nccLogo from '../assets/ncc-seeklogo.png';
 import paradeImg from '../assets/pexels-pramodtiwari-13315966.jpg';
+import ThemeToggle from '../components/ThemeToggle';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -39,6 +40,11 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex">
+      {/* Theme Toggle at top right */}
+      <div className="absolute top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
+
       {/* Left Panel - Branding */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col justify-center items-center p-12">
         {/* Background image */}

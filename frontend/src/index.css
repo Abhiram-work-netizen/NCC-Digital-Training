@@ -56,6 +56,36 @@
   --color-surface-900: #0f172a;
 }
 
+:root {
+  --bg-app: #f0f4f8;
+  --text-main: #1a2332;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(200, 169, 81, 0.15);
+  --input-bg: #ffffff;
+  --input-border: #e2e8f0;
+  --stat-bg: #ffffff;
+  --stat-border: #e8ecf2;
+  --text-heading: #0a1628;
+  --text-muted: #475569;
+  --text-input: #1a2332;
+}
+
+.dark {
+  --bg-app: #050d1a;
+  --text-main: #e2e8f0;
+  --card-bg: rgba(10, 22, 40, 0.7);
+  --card-border: rgba(200, 169, 81, 0.25);
+  --input-bg: rgba(15, 31, 53, 0.8);
+  --input-border: #1e3f62;
+  --stat-bg: rgba(15, 31, 53, 0.6);
+  --stat-border: rgba(30, 63, 98, 0.4);
+  --text-heading: #ffffff;
+  --text-muted: #cbd5e1;
+  --text-input: #ffffff;
+  
+  color-scheme: dark;
+}
+
 /* ============================================ */
 /* BASE STYLES                                  */
 /* ============================================ */
@@ -77,9 +107,10 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f4f8;
-  color: #1a2332;
+  background-color: var(--bg-app);
+  color: var(--text-main);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
   /* Prevent overscroll bounce on mobile */
   overscroll-behavior: none;
   /* Safe area padding for notched phones */
@@ -146,14 +177,14 @@ a, button, [role="button"] {
 
 /* Glassmorphism Card */
 .ncc-glass-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--card-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(200, 169, 81, 0.15);
+  border: 1px solid var(--card-border);
   border-radius: 16px;
   box-shadow:
-    0 4px 6px -1px rgba(10, 22, 40, 0.05),
-    0 2px 4px -2px rgba(10, 22, 40, 0.03);
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.05);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -321,12 +352,12 @@ a, button, [role="button"] {
 .ncc-input {
   width: 100%;
   padding: 10px 16px;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid var(--input-border);
   border-radius: 10px;
   font-size: 14px;
   font-family: inherit;
-  background: #fff;
-  color: #1a2332;
+  background: var(--input-bg);
+  color: var(--text-input);
   transition: all 0.2s ease;
   outline: none;
   /* Minimum touch target */
@@ -359,7 +390,7 @@ a, button, [role="button"] {
   display: block;
   font-size: 13px;
   font-weight: 600;
-  color: #475569;
+  color: var(--text-muted);
   margin-bottom: 6px;
   letter-spacing: 0.02em;
 }
@@ -467,8 +498,8 @@ a, button, [role="button"] {
 .ncc-stat-card {
   padding: 20px;
   border-radius: 14px;
-  background: #fff;
-  border: 1px solid #e8ecf2;
+  background: var(--stat-bg);
+  border: 1px solid var(--stat-border);
   transition: all 0.3s ease;
 }
 
@@ -519,10 +550,10 @@ a, button, [role="button"] {
   left: 0;
   right: 0;
   z-index: 40;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(200, 169, 81, 0.12);
+  border-top: 1px solid var(--card-border);
   display: none;
   padding-bottom: env(safe-area-inset-bottom, 0);
 }

@@ -121,13 +121,25 @@ export default function ChapterViewer() {
           </article>
         )
       ) : chapter.content_type === 'embed' && chapter.content_data?.embed_url ? (
-        <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border border-surface-200 bg-black">
-          <iframe 
-            src={chapter.content_data.embed_url} 
-            className="w-full h-full border-0" 
-            allowFullScreen 
-            title={chapter.title}
-          />
+        <div className="space-y-4">
+          <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border border-surface-200 bg-black">
+            <iframe 
+              src={chapter.content_data.embed_url} 
+              className="w-full h-full border-0" 
+              allowFullScreen 
+              title={chapter.title}
+            />
+          </div>
+          <div className="flex justify-center">
+            <a 
+              href={chapter.content_data.embed_url.replace('/embed', '/edit')} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="ncc-btn ncc-btn-ghost text-xs cursor-pointer flex items-center gap-1.5 border border-surface-200 bg-white hover:bg-surface-50 px-4 py-2 rounded-xl shadow-sm font-bold text-navy-900"
+            >
+              <Presentation className="w-4 h-4 text-gold-500" /> Open Presentation in New Tab
+            </a>
+          </div>
         </div>
       ) : chapter.image_urls && chapter.image_urls.length > 0 ? (
         <ImageCarousel images={chapter.image_urls} />

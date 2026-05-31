@@ -7,9 +7,10 @@ import {
 } from 'lucide-react';
 import nccLogo from '../assets/ncc-seeklogo.png';
 import NotificationPanel from '../components/NotificationPanel';
+import ThemeToggle from '../components/ThemeToggle';
 import { supabase } from '../services/supabase';
 
-const NAV_ITEMS = [
+const CADET_ITEMS = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { path: '/courses', icon: BookOpen, label: 'My Courses' },
   { path: '/practice-tests', icon: ClipboardCheck, label: 'Practice Tests' },
@@ -19,10 +20,12 @@ const NAV_ITEMS = [
 
 const INSTRUCTOR_ITEMS = [
   { path: '/instructor', icon: GraduationCap, label: 'Instructor Panel' },
+  { path: '/profile', icon: User, label: 'Profile' },
 ];
 
 const ADMIN_ITEMS = [
   { path: '/admin', icon: Shield, label: 'Admin Panel' },
+  { path: '/profile', icon: User, label: 'Profile' },
 ];
 
 // Bottom nav shows max 5 items (the core 5)
@@ -93,11 +96,9 @@ const MainLayout = () => {
     setUnreadCount(count || 0);
   };
 
-  const items = [
-    ...NAV_ITEMS,
-    ...(role === 'instructor' || role === 'admin' ? INSTRUCTOR_ITEMS : []),
-    ...(role === 'admin' ? ADMIN_ITEMS : []),
-  ];
+  let items = CADET_ITEMS;
+  if (role === 'instructor') items = INSTRUCTOR_ITEMS;
+  if (role === 'admin') items = ADMIN_ITEMS;
 
   const wing = profile?.wing || 'Common';
   const wc = wingColors[wing] || { bg: 'bg-gold-200', text: 'text-gold-600', border: 'border-gold-500' };
@@ -170,7 +171,7 @@ const MainLayout = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Bar */}
-        <header className="h-14 md:h-16 bg-white border-b border-surface-200 flex items-center justify-between px-4 md:px-6 flex-shrink-0 z-10">
+        <header className="h-14 md:h-16 bg-surface-50 border-b border-surface-200 flex items-center justify-between px-4 md:px-6 flex-shrink-0 z-10 transition-colors duration-300">
           <div className="flex items-center gap-3">
             <button
               className="md:hidden p-2 rounded-lg hover:bg-surface-100 transition cursor-pointer"
@@ -202,10 +203,12 @@ const MainLayout = () => {
             {/* Profile Avatar (Mobile + Desktop) */}
             <Link 
               to="/profile" 
-              className="flex items-center justify-center w-9 h-9 rounded-full bg-navy-50 border border-surface-200 text-navy-600 font-bold hover:border-gold-500 transition-all active:scale-95"
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-navy-50 dark:bg-navy-900 border border-surface-200 dark:border-surface-700 text-navy-600 dark:text-gold-500 font-bold hover:border-gold-500 transition-all active:scale-95"
             >
               {profile?.full_name?.charAt(0) || user?.email?.charAt(0)?.toUpperCase() || 'C'}
             </Link>
+
+            <ThemeToggle />
 
             {/* Unified Notification Bell */}
             <button 
@@ -230,7 +233,7 @@ const MainLayout = () => {
 
       {/* Mobile Bottom Navigation Bar */}
       <nav className="ncc-mobile-nav">
-        {BOTTOM_NAV_ITEMS.map((item) => {
+        {items.map((item) => {
           const isActive = location.pathname === item.path ||
             (item.path !== '/' && location.pathname.startsWith(item.path));
           const Icon = item.icon;

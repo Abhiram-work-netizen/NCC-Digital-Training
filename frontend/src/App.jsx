@@ -15,6 +15,7 @@ import ExamResults from './pages/ExamResults';
 import Performance from './pages/Performance';
 import Profile from './pages/Profile';
 import InstructorDashboard from './pages/InstructorDashboard';
+import InstructorCourseManager from './pages/InstructorCourseManager';
 import AdminPanel from './pages/AdminPanel';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -45,6 +46,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/exam-results/:attemptId" element={<ExamResults />} />
               <Route path="/instructor" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorDashboard /></ProtectedRoute>} />
+              <Route path="/instructor/course/:courseId" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorCourseManager /></ProtectedRoute>} />
               <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}><AdminPanel /></ProtectedRoute>} />
             </Route>
 

@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../services/supabase';
-import { GraduationCap, BookOpen, Users, ClipboardCheck, Plus, Upload, BarChart3, Eye, Search, Edit2, Trash2, Filter } from 'lucide-react';
+import { GraduationCap, BookOpen, Users, ClipboardCheck, Plus, Upload, BarChart3, Eye, Search, Edit2, Trash2, Filter, UserPlus } from 'lucide-react';
 import AddQuestionModal from '../components/AddQuestionModal';
+import UserModal from '../components/UserModal';
+import AddTestModal from '../components/AddTestModal';
+import CourseEditorModal from '../components/CourseEditorModal';
+import { useNavigate } from 'react-router-dom';
 
 const TABS = [
   { id: 'overview', label: 'Overview', icon: BarChart3 },
   { id: 'cadets', label: 'Cadets', icon: Users },
   { id: 'courses', label: 'Courses', icon: BookOpen },
+  { id: 'tests', label: 'Exams', icon: ClipboardCheck },
   { id: 'questions', label: 'Question Bank', icon: ClipboardCheck },
 ];
 
@@ -17,15 +22,22 @@ export default function InstructorDashboard() {
   const [courses, setCourses] = useState([]);
   const [stats, setStats] = useState({ courses: 0, cadets: 0, questions: 0, avgScore: 0 });
   const [questions, setQuestions] = useState([]);
+  const [tests, setTests] = useState([]);
   const [banks, setBanks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState(null);
   const [loading, setLoading] = useState(true);
   const [qSearch, setQSearch] = useState('');
   const [selectedBank, setSelectedBank] = useState('all');
+  const [isUserModalOpen, setIsUserModalOpen] = useState(false);
+  const [editingCadet, setEditingCadet] = useState(null);
+  const [isTestModalOpen, setIsTestModalOpen] = useState(false);
+  const [editingTest, setEditingTest] = useState(null);
+  const [isCourseModalOpen, setIsCourseModalOpen] = useState(false);
+  const [editingCourse, setEditingCourse] = useState(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const load = async () => {
+  const loadData = async () => {
       // Cadets
       const { data: cadetList } = await supabase.from('cadet_profiles').select('*');
       setCadets(cadetList || []);
@@ -41,6 +53,10 @@ export default function InstructorDashboard() {
       const { data: qList } = await supabase.from('questions').select('*, question_banks(title)').order('created_at', { ascending: false });
       setQuestions(qList || []);
 
+      // Tests
+      const { data: tList } = await supabase.from('tests').select('*, courses(title)').order('created_at', { ascending: false });
+      setTests(tList || []);
+
       // Average score
       const { data: attempts } = await supabase.from('test_attempts')
         .select('score').in('status', ['submitted', 'flagged']);
@@ -49,13 +65,23 @@ export default function InstructorDashboard() {
       setStats({
         courses: courseList?.length || 0,
         cadets: cadetList?.length || 0,
+        tests: tList?.length || 0,
         questions: qList?.length || 0,
         avgScore: avg
       });
       setLoading(false);
     };
-    load();
+
+  useEffect(() => {
+    loadData();
   }, []);
+
+  const handleDeleteCadet = async (id) => {
+    if (!confirm('Are you sure you want to remove this cadet from the platform?')) return;
+    const { error } = await supabase.from('cadet_profiles').delete().eq('id', id);
+    if (error) alert(error.message);
+    else loadData();
+  };
 
   const refreshQuestions = async () => {
     const { data } = await supabase.from('questions').select('*, question_banks(title)').order('created_at', { ascending: false });
@@ -113,7 +139,7 @@ export default function InstructorDashboard() {
           {[
             { label: 'Active Courses', value: stats.courses, icon: BookOpen, color: 'text-navy-500', bg: 'bg-navy-500/10' },
             { label: 'Total Cadets', value: stats.cadets, icon: Users, color: 'text-mgreen-600', bg: 'bg-mgreen-600/10' },
-            { label: 'Questions', value: stats.questions, icon: ClipboardCheck, color: 'text-gold-500', bg: 'bg-gold-500/10' },
+            { label: 'Exams/Tests', value: stats.tests, icon: ClipboardCheck, color: 'text-gold-500', bg: 'bg-gold-500/10' },
             { label: 'Avg. Score', value: stats.avgScore + '%', icon: BarChart3, color: 'text-wing-airforce', bg: 'bg-wing-airforce-bg' },
           ].map((s, i) => (
             <div key={i} className="ncc-stat-card">
@@ -130,11 +156,17 @@ export default function InstructorDashboard() {
       {/* Cadets Tab */}
       {activeTab === 'cadets' && (
         <div className="ncc-glass-card overflow-hidden">
-          <div className="p-3 md:p-4 border-b border-surface-100 flex items-center gap-3">
-            <div className="relative flex-1 sm:max-w-sm">
+          <div className="p-3 md:p-4 border-b border-surface-100 flex flex-col sm:flex-row items-center gap-3 justify-between">
+            <div className="relative flex-1 sm:max-w-sm w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-300" />
-              <input type="text" placeholder="Search cadets..." value={search} onChange={e => setSearch(e.target.value)} className="ncc-input ncc-input-icon" />
+              <input type="text" placeholder="Search cadets..." value={search} onChange={e => setSearch(e.target.value)} className="ncc-input ncc-input-icon w-full" />
             </div>
+            <button 
+              onClick={() => { setEditingCadet(null); setIsUserModalOpen(true); }}
+              className="ncc-btn ncc-btn-primary py-2 px-4 w-full sm:w-auto"
+            >
+              <UserPlus className="w-4 h-4" /> Add Cadet
+            </button>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[480px]">
@@ -144,15 +176,32 @@ export default function InstructorDashboard() {
                   <th className="p-3 md:p-4">Wing</th>
                   <th className="p-3 md:p-4">Level</th>
                   <th className="p-3 md:p-4">NCC Number</th>
+                  <th className="p-3 md:p-4 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-surface-100">
                 {filteredCadets.map((cadet, i) => (
-                  <tr key={i} className="hover:bg-surface-50 transition">
+                  <tr key={cadet.id || i} className="hover:bg-surface-50 transition">
                     <td className="p-3 md:p-4 font-medium text-navy-900 text-sm">{cadet.full_name || 'N/A'}</td>
                     <td className="p-3 md:p-4"><span className={`ncc-badge ${cadet.wing === 'Army' ? 'ncc-badge-army' : cadet.wing === 'Navy' ? 'ncc-badge-navy' : cadet.wing === 'Air Force' ? 'ncc-badge-airforce' : 'bg-surface-100 text-surface-700'}`}>{cadet.wing}</span></td>
                     <td className="p-3 md:p-4 text-sm">{cadet.certificate_level} Cert</td>
                     <td className="p-3 md:p-4 text-sm text-surface-700">{cadet.ncc_number || '—'}</td>
+                    <td className="p-3 md:p-4 text-right">
+                      <div className="flex items-center justify-end gap-1">
+                        <button 
+                          onClick={() => { setEditingCadet(cadet); setIsUserModalOpen(true); }}
+                          className="p-1.5 hover:bg-surface-200 rounded-lg text-navy-500 transition cursor-pointer"
+                        >
+                          <Edit2 className="w-4 h-4" />
+                        </button>
+                        <button 
+                          onClick={() => handleDeleteCadet(cadet.id)}
+                          className="p-1.5 hover:bg-danger/10 rounded-lg text-danger transition cursor-pointer"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
                   </tr>
                 ))}
                 {filteredCadets.length === 0 && (
@@ -166,17 +215,84 @@ export default function InstructorDashboard() {
 
       {/* Courses Tab */}
       {activeTab === 'courses' && (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {courses.map(c => (
-            <div key={c.id} className="ncc-glass-card p-5">
-              <div className="flex items-center gap-2 mb-2">
-                <span className={`ncc-badge ${c.target_wing === 'Army' ? 'ncc-badge-army' : c.target_wing === 'Navy' ? 'ncc-badge-navy' : c.target_wing === 'Air Force' ? 'ncc-badge-airforce' : 'bg-surface-100 text-surface-700'}`}>{c.target_wing}</span>
-                <span className="ncc-badge bg-navy-900/10 text-navy-900">{c.certificate_level} Cert</span>
+        <div className="space-y-4">
+          <div className="flex justify-end">
+            <button 
+              onClick={() => { setEditingCourse(null); setIsCourseModalOpen(true); }}
+              className="ncc-btn ncc-btn-primary py-2.5 px-6 cursor-pointer"
+            >
+              <Plus className="w-4 h-4" /> Create Course
+            </button>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {courses.map(c => (
+              <div key={c.id} className="ncc-glass-card p-5 relative group flex flex-col">
+                <div className="absolute top-4 right-4 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button onClick={() => { setEditingCourse(c); setIsCourseModalOpen(true); }} className="p-1.5 hover:bg-surface-200 rounded-lg text-navy-500 cursor-pointer" title="Edit Course Info">
+                    <Edit2 className="w-4 h-4" />
+                  </button>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className={`ncc-badge ${c.target_wing === 'Army' ? 'ncc-badge-army' : c.target_wing === 'Navy' ? 'ncc-badge-navy' : c.target_wing === 'Air Force' ? 'ncc-badge-airforce' : 'bg-surface-100 text-surface-700'}`}>{c.target_wing}</span>
+                  <span className="ncc-badge bg-navy-900/10 text-navy-900">{c.certificate_level} Cert</span>
+                </div>
+                <h3 className="font-bold text-navy-900 mb-1 pr-6">{c.title}</h3>
+                <p className="text-sm text-surface-700 mb-4 flex-1 line-clamp-2">{c.description || 'NCC training course'}</p>
+                <button 
+                  onClick={() => navigate(`/instructor/course/${c.id}`)}
+                  className="w-full py-2 bg-surface-100 hover:bg-surface-200 text-navy-900 font-bold rounded-xl transition text-sm flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <BookOpen className="w-4 h-4" /> Manage Syllabus
+                </button>
               </div>
-              <h3 className="font-bold text-navy-900 mb-1">{c.title}</h3>
-              <p className="text-sm text-surface-700">{c.description || 'NCC training course'}</p>
-            </div>
-          ))}
+            ))}
+            {courses.length === 0 && (
+              <div className="col-span-full p-8 text-center text-surface-500 ncc-glass-card">No courses created yet.</div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Tests/Exams Tab */}
+      {activeTab === 'tests' && (
+        <div className="space-y-4">
+          <div className="flex justify-end">
+            <button 
+              onClick={() => { setEditingTest(null); setIsTestModalOpen(true); }}
+              className="ncc-btn ncc-btn-primary py-2.5 px-6 cursor-pointer"
+            >
+              <Plus className="w-4 h-4" /> Create Exam
+            </button>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {tests.map(t => (
+              <div key={t.id} className="ncc-glass-card p-5 relative group">
+                <div className="absolute top-4 right-4 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button onClick={() => { setEditingTest(t); setIsTestModalOpen(true); }} className="p-1.5 hover:bg-surface-200 rounded-lg text-navy-500 cursor-pointer">
+                    <Edit2 className="w-4 h-4" />
+                  </button>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className={`ncc-badge ${t.test_type === 'mock' ? 'bg-danger/10 text-danger' : t.test_type === 'final' ? 'bg-navy-900/10 text-navy-900' : 'bg-info-bg text-info'}`}>
+                    {t.test_type.toUpperCase()}
+                  </span>
+                  <span className={`ncc-badge ${t.is_active ? 'bg-mgreen-600/10 text-mgreen-600' : 'bg-surface-200 text-surface-500'}`}>
+                    {t.is_active ? 'Active' : 'Draft'}
+                  </span>
+                </div>
+                <h3 className="font-bold text-navy-900 mb-1 line-clamp-1">{t.title}</h3>
+                <p className="text-[10px] font-bold text-gold-600 mb-2 truncate">{t.courses?.title}</p>
+                <div className="flex gap-3 text-xs text-surface-700 font-medium">
+                  <span>{t.duration_minutes}m</span>
+                  <span>{t.question_count}Q</span>
+                  <span>Pass: {t.passing_score}%</span>
+                </div>
+              </div>
+            ))}
+            {tests.length === 0 && (
+              <div className="col-span-full p-8 text-center text-surface-500 ncc-glass-card">No exams created yet.</div>
+            )}
+          </div>
         </div>
       )}
 
@@ -279,6 +395,29 @@ export default function InstructorDashboard() {
         onSave={refreshQuestions} 
         questionToEdit={editingQuestion}
         banks={banks}
+      />
+
+      <UserModal
+        isOpen={isUserModalOpen}
+        onClose={() => setIsUserModalOpen(false)}
+        user={editingCadet}
+        onSave={loadData}
+        mode="instructor"
+      />
+
+      <AddTestModal
+        isOpen={isTestModalOpen}
+        onClose={() => setIsTestModalOpen(false)}
+        testToEdit={editingTest}
+        onSave={loadData}
+        courses={courses}
+      />
+
+      <CourseEditorModal
+        isOpen={isCourseModalOpen}
+        onClose={() => setIsCourseModalOpen(false)}
+        courseToEdit={editingCourse}
+        onSave={loadData}
       />
     </div>
   );

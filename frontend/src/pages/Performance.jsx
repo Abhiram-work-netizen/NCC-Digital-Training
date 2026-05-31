@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/AuthContext';
 import { supabase } from '../services/supabase';
-import { BarChart3, TrendingUp, Target, Award, BookOpen, Crown, History, Trophy, Search, ChevronRight, Shield } from 'lucide-react';
+import { BarChart3, TrendingUp, Target, Award, BookOpen, Crown, History, Trophy, Search, ChevronRight, Shield, Flame } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { useNavigate } from 'react-router-dom';
 
@@ -254,6 +254,7 @@ export default function Performance() {
                     <th className="px-6 py-4 text-[10px] font-black text-surface-500 uppercase tracking-widest">Cadet</th>
                     <th className="px-6 py-4 text-[10px] font-black text-surface-500 uppercase tracking-widest">Wing</th>
                     <th className="px-6 py-4 text-[10px] font-black text-surface-500 uppercase tracking-widest text-right">Level</th>
+                    <th className="px-6 py-4 text-[10px] font-black text-surface-500 uppercase tracking-widest text-right">Streak</th>
                     <th className="px-6 py-4 text-[10px] font-black text-surface-500 uppercase tracking-widest text-right">Total EXP</th>
                   </tr>
                 </thead>
@@ -295,6 +296,12 @@ export default function Performance() {
                       </td>
                       <td className="px-6 py-4 text-right">
                         <span className="text-xs font-black text-navy-900">Lv.{entry.level}</span>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <div className="flex items-center justify-end gap-1 font-black text-warning">
+                          <Flame className="w-3.5 h-3.5" />
+                          <span>{entry.current_streak || 0}</span>
+                        </div>
                       </td>
                       <td className="px-6 py-4 text-right">
                         <span className="text-sm font-black text-gold-600">{entry.exp.toLocaleString()}</span>

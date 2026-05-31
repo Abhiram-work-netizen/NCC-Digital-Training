@@ -247,8 +247,6 @@ Ensure you take the practice tests on this platform for this subject.`
         },
         content: 'Interactive Google Slides Presentation'
       };
-    }
-      };
     } else if (title === 'Drill & Commands') {
       ch1 = {
         id: 'c1000000-0000-0000-0000-000000000004',
@@ -519,6 +517,7 @@ Conventional signs are **standardized symbols** used on maps:
       duration_minutes: 15,
       question_count: questionsPool.length,
       passing_score: 50,
+      randomize_questions: true,
       target_wing: def.wing,
       is_active: true
     });
@@ -554,7 +553,7 @@ const defaultAuthUsers = [
 ];
 
 // Initialize localStorage databases if not set or outdated
-const SYLLABUS_VERSION = 'ncc_mock_syllabus_v3';
+const SYLLABUS_VERSION = 'ncc_mock_syllabus_v4';
 if (USE_MOCK && localStorage.getItem(SYLLABUS_VERSION) !== 'true') {
   localStorage.setItem(SYLLABUS_VERSION, 'true');
   localStorage.setItem('ncc_mock_initialized', 'true');
@@ -927,6 +926,29 @@ class MockSupabaseClient {
             ...q,
             question_banks: bank ? {
               title: bank.title
+            } : null
+          };
+        });
+      } else if (builder.table === 'modules') {
+        const chapters = this._getTableData('chapters');
+        list = list.map(m => {
+          const modChapters = chapters.filter(c => c.module_id === m.id);
+          return {
+            ...m,
+            chapters: modChapters
+          };
+        });
+      } else if (builder.table === 'test_attempts') {
+        const tests = this._getTableData('tests');
+        list = list.map(ta => {
+          const test = tests.find(t => t.id === ta.test_id);
+          return {
+            ...ta,
+            tests: test ? {
+              id: test.id,
+              title: test.title,
+              course_id: test.course_id,
+              passing_score: test.passing_score
             } : null
           };
         });

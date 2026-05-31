@@ -2,21 +2,32 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../services/supabase';
-import { BookOpen, ClipboardCheck, TrendingUp, Award, ArrowRight, Megaphone, Clock, Target } from 'lucide-react';
+import { BookOpen, ClipboardCheck, TrendingUp, Award, ArrowRight, Megaphone, Clock, Target, Flame } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 
 export default function Dashboard() {
-  const { user, profile } = useAuth();
+  const { user, profile, role } = useAuth();
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
   const [stats, setStats] = useState({ enrolled: 0, completed: 0, avgScore: 0, tests: 0 });
   const [loading, setLoading] = useState(true);
 
+  // Redirect admin and instructor to their panels
+  useEffect(() => {
+    if (role === 'admin') navigate('/admin', { replace: true });
+    else if (role === 'instructor') navigate('/instructor', { replace: true });
+  }, [role, navigate]);
+
   useEffect(() => {
     if (!user) return;
     const load = async () => {
       const wing = profile?.wing || 'Common';
+
+      // Update Streak
+      if (profile?.role === 'cadet' || !profile?.role) {
+        await supabase.rpc('fn_update_daily_streak');
+      }
 
       // Enrolled courses with progress
       const { data: enrollments } = await supabase
@@ -105,6 +116,10 @@ export default function Dashboard() {
                 <div className="h-full bg-gold-500 shadow-[0_0_8px_rgba(200,169,81,0.5)]" style={{ width: `${(profile?.exp % 1000) / 10}%` }} />
               </div>
               <span className="text-xs text-white/60 font-bold">{profile?.exp || 0} EXP</span>
+              <div className="flex items-center gap-1 bg-white/10 px-2 py-1 rounded-full text-xs font-bold border border-white/5 ml-2">
+                <Flame className="w-3.5 h-3.5 text-warning" />
+                <span className="text-white">{profile?.current_streak || 0} Day Streak</span>
+              </div>
             </div>
           </div>
           <div className="hidden md:block text-right">
