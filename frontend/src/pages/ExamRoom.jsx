@@ -316,10 +316,10 @@ export default function ExamRoom() {
           ) : (
             <>
               <div className={`w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 md:mb-6 rounded-full flex items-center justify-center text-white text-2xl md:text-3xl font-black ${passed ? 'bg-mgreen-600' : 'bg-danger'}`}>
-                {score}%
+                {percentage}%
               </div>
               <h2 className="text-xl md:text-2xl font-bold text-navy-900 mb-2">{passed ? '🎉 You Passed!' : 'Keep Practicing!'}</h2>
-              <p className="text-surface-700 mb-2 text-sm md:text-base">You scored {result?.total_correct || 0} out of {result?.total_questions || 0}</p>
+              <p className="text-surface-700 mb-2 text-sm md:text-base">You scored {result?.total_correct || score} out of {result?.total_questions || total}</p>
               {tabSwitches > 0 && <p className="text-warning text-sm mb-2">⚠️ {tabSwitches} tab switch(es) detected</p>}
               {result?.status === 'flagged' && <p className="text-danger text-sm font-medium mb-2">🚩 Attempt flagged for review</p>}
               {result?.timed_out && <p className="text-warning text-sm mb-2">⏱ Auto-submitted (time expired)</p>}
@@ -329,7 +329,7 @@ export default function ExamRoom() {
                     setError('Error: Attempt ID lost. Please contact support.');
                     return;
                   }
-                  await fetchProfile(user.id);
+                  if (refreshProfile) await refreshProfile();
                   navigate(`/exam-results/${attemptId}`);
                 }} className="ncc-btn ncc-btn-primary w-full sm:w-auto">View Detailed Results</button>
                 <button onClick={() => navigate('/practice-tests')} className="ncc-btn ncc-btn-ghost w-full sm:w-auto">Back to Tests</button>
