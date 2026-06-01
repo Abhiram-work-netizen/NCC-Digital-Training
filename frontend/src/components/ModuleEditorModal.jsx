@@ -34,7 +34,12 @@ export default function ModuleEditorModal({ isOpen, onClose, moduleToEdit, cours
     setLoading(true);
     setError('');
 
-    const payload = { ...formData, course_id: courseId };
+    const payload = { 
+      title: formData.title,
+      description: formData.description,
+      order_index: formData.sequence_order,
+      course_id: courseId 
+    };
 
     try {
       if (moduleToEdit) {
