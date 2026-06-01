@@ -89,7 +89,8 @@ export default function ChapterEditorModal({ isOpen, onClose, chapterToEdit, mod
       video_url: formData.video_url,
       order_index: formData.sequence_order,
       module_id: moduleId,
-      image_urls: attachments
+      image_urls: attachments,
+      content_type: 'markdown'
     };
 
     try {
