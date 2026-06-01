@@ -7,7 +7,7 @@ import { useAuth } from '../hooks/AuthContext';
 export default function ExamRoom() {
   const { testId } = useParams();
   const navigate = useNavigate();
-  const { user, fetchProfile } = useAuth();
+  const { user, refreshProfile } = useAuth();
 
   // Exam state
   const [phase, setPhase] = useState('loading'); // loading, rules, exam, submitting, results
@@ -196,11 +196,12 @@ export default function ExamRoom() {
       if (!data) throw new Error('No result data returned from server');
       setResult({ ...data, timed_out: timedOut });
       setPhase('results');
+      if (refreshProfile) await refreshProfile();
     } catch (err) {
       setError('Submission failed: ' + err.message);
       setPhase('results');
     }
-  }, [phase, questions, answers, attemptId, tabSwitches]);
+  }, [phase, questions, answers, attemptId, tabSwitches, refreshProfile]);
 
   const formatTime = (s) => `${Math.floor(s / 60).toString().padStart(2, '0')}:${(s % 60).toString().padStart(2, '0')}`;
   const answered = Object.keys(answers).filter(k => answers[k]).length;

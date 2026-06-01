@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight, CheckCircle, Circle, BookOpen, Presentation,
 
 export default function ChapterViewer() {
   const { courseId, chapterId } = useParams();
-  const { user } = useAuth();
+  const { user, refreshProfile } = useAuth();
   const navigate = useNavigate();
   const { modules, completedChapters, refreshProgress } = useOutletContext();
   const [chapter, setChapter] = useState(null);
@@ -38,12 +38,8 @@ export default function ChapterViewer() {
     if (!user || marking) return;
     setMarking(true);
     try {
-      await supabase.from('user_progress').upsert({
-        user_id: user.id,
-        chapter_id: chapterId,
-        completed: true,
-        completed_at: new Date().toISOString()
-      }, { onConflict: 'user_id,chapter_id' });
+      // Call the RPC to mark complete and get EXP!
+      await supabase.rpc('fn_complete_chapter', { p_chapter_id: chapterId });
 
       // Check if this was the last chapter
       const updatedCount = completedChapters.has(chapterId) ? completedChapters.size : completedChapters.size + 1;
@@ -59,6 +55,7 @@ export default function ChapterViewer() {
       }
 
       await refreshProgress();
+      if (refreshProfile) await refreshProfile();
       setMarking(false);
       
       // Auto-navigate to next chapter
