@@ -180,7 +180,9 @@ export default function ExamRoom() {
     // Prepare answers as a flat object { question_id: answer } to match RPC expectation
     const answerObject = {};
     questions.forEach(q => {
-      answerObject[q.id] = answers[q.id] || '';
+      if (q && q.id) {
+        answerObject[q.id] = answers[q.id] || '';
+      }
     });
 
     try {
@@ -342,6 +344,18 @@ export default function ExamRoom() {
   const q = questions[currentQ];
   if (!q) return null;
 
+  const getSafeOptions = (opts) => {
+    if (Array.isArray(opts)) return opts;
+    if (typeof opts === 'string') {
+      try { 
+        const parsed = JSON.parse(opts);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    return [];
+  };
+  const safeOptions = getSafeOptions(q.options);
+
   return (
     <div className="exam-mode flex flex-col select-none" style={{userSelect:'none'}}>
       {/* Warning banners */}
@@ -377,8 +391,8 @@ export default function ExamRoom() {
                 <button key={i} onClick={() => { setCurrentQ(i); setShowMobileNav(false); }}
                   className={`w-full aspect-square rounded-lg text-xs font-medium transition cursor-pointer flex items-center justify-center ${
                     i === currentQ ? 'bg-navy-900 text-white' :
-                    answers[qq.id] ? 'bg-mgreen-600/20 text-mgreen-600' :
-                    flagged.has(qq.id) ? 'bg-warning-bg text-warning border border-warning/30' :
+                    answers[qq?.id] ? 'bg-mgreen-600/20 text-mgreen-600' :
+                    flagged.has(qq?.id) ? 'bg-warning-bg text-warning border border-warning/30' :
                     'bg-surface-100 text-surface-700'
                   }`}>{i + 1}</button>
               ))}
@@ -440,7 +454,7 @@ export default function ExamRoom() {
             <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-5 md:mb-8">{q.question_text}</h2>
 
             <div className="space-y-2.5 md:space-y-3">
-              {(q.options || []).map((opt, i) => (
+              {safeOptions.map((opt, i) => (
                 <button key={i} onClick={() => setAnswers(prev => ({ ...prev, [q.id]: opt }))}
                   className={`w-full text-left p-3 md:p-4 rounded-xl border-2 transition font-medium cursor-pointer text-sm md:text-base ${
                     answers[q.id] === opt ? 'border-gold-500 bg-gold-500/10 text-navy-900' : 'border-surface-200 hover:border-surface-300 text-surface-700 hover:bg-surface-50'
@@ -471,8 +485,8 @@ export default function ExamRoom() {
               <button key={i} onClick={() => setCurrentQ(i)}
                 className={`w-9 h-9 rounded-lg text-sm font-medium transition cursor-pointer ${
                   i === currentQ ? 'bg-navy-900 text-white' :
-                  answers[qq.id] ? 'bg-mgreen-600/20 text-mgreen-600' :
-                  flagged.has(qq.id) ? 'bg-warning-bg text-warning border border-warning/30' :
+                  answers[qq?.id] ? 'bg-mgreen-600/20 text-mgreen-600' :
+                  flagged.has(qq?.id) ? 'bg-warning-bg text-warning border border-warning/30' :
                   'bg-surface-100 text-surface-700 hover:bg-surface-200'
                 }`}>{i + 1}</button>
             ))}
