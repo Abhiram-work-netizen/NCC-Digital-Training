@@ -1354,8 +1354,7 @@ class RealCustomAuth {
       full_name: metadata.full_name || 'Cadet',
       wing: metadata.wing || 'Common',
       certificate_level: metadata.certificate_level || 'A',
-      ncc_number: metadata.ncc_number || '',
-      role: 'cadet'
+      ncc_number: metadata.ncc_number || ''
     }]);
 
     if (error) return { data: null, error };
@@ -1372,14 +1371,22 @@ class RealCustomAuth {
   async signInWithPassword({ email, password }) {
     let { data: user, error } = await this.client.from('cadet_profiles').select('*').eq('email', email).eq('password', password).maybeSingle();
     
-    if (!user) {
+    if (user) {
+      user.role = 'cadet';
+    } else {
       const res = await this.client.from('instructor_profiles').select('*').eq('email', email).eq('password', password).maybeSingle();
-      user = res.data;
+      if (res.data) {
+        user = res.data;
+        user.role = 'instructor';
+      }
     }
     
     if (!user) {
       const res = await this.client.from('admin_profiles').select('*').eq('email', email).eq('password', password).maybeSingle();
-      user = res.data;
+      if (res.data) {
+        user = res.data;
+        user.role = 'admin';
+      }
     }
 
     if (!user) {
@@ -1428,7 +1435,6 @@ class RealCustomAuth {
           email,
           password,
           full_name: user_metadata.full_name || 'User',
-          role: user_metadata.role || 'cadet',
           wing: user_metadata.wing,
           certificate_level: user_metadata.certificate_level,
           ncc_number: user_metadata.ncc_number
