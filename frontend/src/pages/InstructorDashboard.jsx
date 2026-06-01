@@ -255,7 +255,7 @@ export default function InstructorDashboard() {
                   placeholder="Search courses..." 
                   value={courseSearch}
                   onChange={e => setCourseSearch(e.target.value)}
-                  className="ncc-input pl-9 py-2 w-full text-sm h-10"
+                  className="ncc-input ncc-input-icon py-2 w-full text-sm h-10"
                 />
               </div>
               <div className="flex gap-2 w-full sm:w-auto">
