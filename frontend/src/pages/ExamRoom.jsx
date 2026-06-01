@@ -269,10 +269,10 @@ export default function ExamRoom() {
 
           <button 
             onClick={startExam} 
-            disabled={loading}
+            disabled={phase === 'loading'}
             className="ncc-btn ncc-btn-accent px-8 md:px-10 py-4 text-lg font-black tracking-wide cursor-pointer w-full shadow-[0_10px_20px_-10px_rgba(200,169,81,0.5)] active:translate-y-0.5 transition-all"
           >
-            {loading ? 'Entering Room...' : 'I UNDERSTAND, START EXAM'}
+            {phase === 'loading' ? 'Entering Room...' : 'I UNDERSTAND, START EXAM'}
           </button>
           
           <button onClick={() => navigate(-1)} className="block mx-auto mt-6 text-sm text-surface-500 hover:text-navy-900 cursor-pointer font-medium">Exit and Go Back</button>
