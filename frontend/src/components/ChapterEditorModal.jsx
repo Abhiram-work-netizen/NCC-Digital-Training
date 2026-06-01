@@ -21,7 +21,7 @@ export default function ChapterEditorModal({ isOpen, onClose, chapterToEdit, mod
         title: chapterToEdit.title || '',
         content: chapterToEdit.content || '',
         video_url: chapterToEdit.video_url || '',
-        sequence_order: chapterToEdit.sequence_order || 1
+        sequence_order: chapterToEdit.order_index || 1
       });
       setAttachments(chapterToEdit.image_urls || []);
     } else {

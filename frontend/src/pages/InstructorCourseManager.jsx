@@ -30,12 +30,12 @@ export default function InstructorCourseManager() {
       .from('modules')
       .select('*, chapters(*)')
       .eq('course_id', courseId)
-      .order('sequence_order', { ascending: true });
+      .order('order_index', { ascending: true });
     
     // Sort chapters inside modules
     const sortedModules = (mData || []).map(m => ({
       ...m,
-      chapters: (m.chapters || []).sort((a, b) => a.sequence_order - b.sequence_order)
+      chapters: (m.chapters || []).sort((a, b) => a.order_index - b.order_index)
     }));
     
     setModules(sortedModules);
@@ -117,7 +117,7 @@ export default function InstructorCourseManager() {
                 {/* Module Header */}
                 <div className="bg-surface-50 p-4 border-b border-surface-100 flex items-center justify-between">
                   <div className="flex flex-col">
-                    <h3 className="font-bold text-navy-900">Module {module.sequence_order}: {module.title}</h3>
+                    <h3 className="font-bold text-navy-900">Module {module.order_index}: {module.title}</h3>
                     {module.description && <p className="text-xs text-surface-500 mt-1">{module.description}</p>}
                   </div>
                   <div className="flex items-center gap-2">
@@ -151,7 +151,7 @@ export default function InstructorCourseManager() {
                               {chapter.video_url ? <Video className="w-4 h-4 text-gold-600" /> : <FileText className="w-4 h-4 text-gold-600" />}
                             </div>
                             <div>
-                              <p className="font-bold text-sm text-navy-900">{chapter.sequence_order}. {chapter.title}</p>
+                              <p className="font-bold text-sm text-navy-900">{chapter.order_index}. {chapter.title}</p>
                               <div className="flex items-center gap-2 mt-0.5">
                                 {(chapter.image_urls && chapter.image_urls.length > 0) && (
                                   <span className="text-[10px] font-bold text-mgreen-600 uppercase bg-mgreen-600/10 px-1.5 py-0.5 rounded">Has Attachments</span>

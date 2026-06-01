@@ -16,7 +16,7 @@ export default function ModuleEditorModal({ isOpen, onClose, moduleToEdit, cours
       setFormData({
         title: moduleToEdit.title || '',
         description: moduleToEdit.description || '',
-        sequence_order: moduleToEdit.sequence_order || 1
+        sequence_order: moduleToEdit.order_index || 1
       });
     } else {
       setFormData({
