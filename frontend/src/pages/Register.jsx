@@ -25,16 +25,25 @@ export default function Register() {
     setLoading(true);
     setError(null);
 
-    const { data, error: signUpError } = await supabase.auth.signUp({ email, password });
-    if (signUpError) { setError(signUpError.message); setLoading(false); return; }
+    const { data, error: signUpError } = await supabase.auth.signUp({ 
+      email, 
+      password,
+      options: {
+        data: {
+          full_name: fullName,
+          ncc_number: nccNumber,
+          wing,
+          certificate_level: certificateLevel
+        }
+      }
+    });
 
-    if (data.user) {
-      const { error: profileError } = await supabase.from('cadet_profiles').insert([{
-        id: data.user.id, full_name: fullName, ncc_number: nccNumber,
-        wing: wing, certificate_level: certificateLevel
-      }]);
-      if (profileError) { setError('Account created, but profile setup failed: ' + profileError.message); }
-      else { setSuccess(true); }
+    if (signUpError) { 
+      setError(signUpError.message); 
+    } else if (data.session) {
+      navigate('/dashboard');
+    } else {
+      setSuccess(true);
     }
     setLoading(false);
   };

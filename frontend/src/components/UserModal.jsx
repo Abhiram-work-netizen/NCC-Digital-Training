@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
-import { supabase } from '../services/supabase';
+import { supabase, adminAuthClient } from '../services/supabase';
 
 export default function UserModal({ isOpen, onClose, user, onSave, mode = 'admin' }) {
   const [formData, setFormData] = useState({
@@ -65,12 +65,20 @@ export default function UserModal({ isOpen, onClose, user, onSave, mode = 'admin
         const { error: updateError } = await supabase.from(table).update(updates).eq('id', user.id);
         if (updateError) throw updateError;
       } else {
-        // Create new user (Requires Backend or Service Role, simulating for now)
-        // Note: For a truly secure implementation, this should call a secure backend endpoint
-        // using the Supabase Admin API. For demonstration without a running backend:
-        setError('Direct user creation requires backend service. Please instruct user to sign up, then edit their profile here.');
-        setLoading(false);
-        return;
+        // Create new user using the custom admin auth client
+        const { error: signUpError } = await adminAuthClient.auth.admin.createUser({
+          email: formData.email,
+          password: formData.password,
+          user_metadata: {
+            full_name: formData.full_name,
+            role: formData.role,
+            wing: formData.role === 'cadet' ? formData.wing : undefined,
+            certificate_level: formData.role === 'cadet' ? formData.certificate_level : undefined,
+            ncc_number: formData.role === 'cadet' ? formData.ncc_number : undefined
+          }
+        });
+
+        if (signUpError) throw signUpError;
       }
 
       onSave();
@@ -83,9 +91,9 @@ export default function UserModal({ isOpen, onClose, user, onSave, mode = 'admin
   };
 
   return (
-    <div className="fixed inset-0 bg-navy-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl overflow-hidden animate-scaleIn">
-        <div className="p-4 border-b border-surface-100 flex items-center justify-between bg-surface-50">
+    <div className="fixed inset-0 bg-navy-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4 overflow-y-auto">
+      <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl my-auto flex flex-col max-h-[90vh] animate-scaleIn">
+        <div className="p-4 border-b border-surface-100 flex items-center justify-between bg-surface-50 shrink-0">
           <h3 className="font-bold text-navy-900 text-lg">
             {user ? 'Edit User' : 'Add New User'}
           </h3>
@@ -94,7 +102,7 @@ export default function UserModal({ isOpen, onClose, user, onSave, mode = 'admin
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-4 md:p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-4 md:p-6 space-y-4 overflow-y-auto">
           {error && <div className="p-3 rounded-lg bg-danger/10 text-danger text-sm font-medium">{error}</div>}
 
           <div>

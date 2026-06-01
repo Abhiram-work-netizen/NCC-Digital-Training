@@ -726,11 +726,60 @@ class MockSupabaseClient {
         profiles.push(newProfile);
         localStorage.setItem('ncc_mock_cadet_profiles', JSON.stringify(profiles));
 
-        // Set active user session
-        localStorage.setItem('ncc_mock_session_user', JSON.stringify(newUser));
-        this._triggerAuthChange('SIGNED_IN', newUser);
+        if (!options.mockNoSessionPersist) {
+          // Set active user session
+          localStorage.setItem('ncc_mock_session_user', JSON.stringify(newUser));
+          this._triggerAuthChange('SIGNED_IN', newUser);
+        }
 
-        return { data: { user: newUser, session: { user: newUser } }, error: null };
+        return { data: { user: newUser, session: options.mockNoSessionPersist ? null : { user: newUser } }, error: null };
+      },
+
+      admin: {
+        createUser: async ({ email, password, user_metadata = {} }) => {
+          const users = JSON.parse(localStorage.getItem('ncc_mock_auth_users') || '[]');
+          if (users.find(u => u.email === email)) {
+            return { data: null, error: { message: 'User already exists' } };
+          }
+          const newId = uuidv4();
+          const newUser = { id: newId, email, password, role: user_metadata.role || 'cadet' };
+          users.push(newUser);
+          localStorage.setItem('ncc_mock_auth_users', JSON.stringify(users));
+
+          const role = user_metadata.role || 'cadet';
+          if (role === 'cadet') {
+            const profiles = JSON.parse(localStorage.getItem('ncc_mock_cadet_profiles') || '[]');
+            profiles.push({
+              id: newId,
+              full_name: user_metadata.full_name || 'Cadet',
+              wing: user_metadata.wing || 'Common',
+              certificate_level: user_metadata.certificate_level || 'A',
+              ncc_number: user_metadata.ncc_number || '',
+              level: 1,
+              exp: 0,
+              created_at: new Date().toISOString()
+            });
+            localStorage.setItem('ncc_mock_cadet_profiles', JSON.stringify(profiles));
+          } else if (role === 'instructor') {
+            const profiles = JSON.parse(localStorage.getItem('ncc_mock_instructor_profiles') || '[]');
+            profiles.push({
+              id: newId,
+              full_name: user_metadata.full_name || 'Instructor',
+              created_at: new Date().toISOString()
+            });
+            localStorage.setItem('ncc_mock_instructor_profiles', JSON.stringify(profiles));
+          } else if (role === 'admin') {
+            const profiles = JSON.parse(localStorage.getItem('ncc_mock_admin_profiles') || '[]');
+            profiles.push({
+              id: newId,
+              full_name: user_metadata.full_name || 'Admin',
+              created_at: new Date().toISOString()
+            });
+            localStorage.setItem('ncc_mock_admin_profiles', JSON.stringify(profiles));
+          }
+
+          return { data: { user: newUser }, error: null };
+        }
       },
 
       signInWithPassword: async ({ email, password }) => {
@@ -1278,6 +1327,130 @@ class MockSupabaseClient {
   }
 }
 
+class RealCustomAuth {
+  constructor(client) {
+    this.client = client;
+    this.listeners = {};
+    const saved = localStorage.getItem('ncc_custom_session');
+    this.session = saved ? JSON.parse(saved) : null;
+  }
+
+  _trigger(event, session) {
+    Object.values(this.listeners).forEach(cb => cb(event, session));
+  }
+
+  async signUp({ email, password, options = {} }) {
+    const { data: existing } = await this.client.from('cadet_profiles').select('id').eq('email', email).maybeSingle();
+    if (existing) return { data: null, error: { message: 'User already exists' } };
+    
+    // Simple fallback UUID generator if crypto is unavailable
+    const newId = (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now();
+    const metadata = options.data || {};
+    
+    const { error } = await this.client.from('cadet_profiles').insert([{
+      id: newId,
+      email,
+      password,
+      full_name: metadata.full_name || 'Cadet',
+      wing: metadata.wing || 'Common',
+      certificate_level: metadata.certificate_level || 'A',
+      ncc_number: metadata.ncc_number || '',
+      role: 'cadet'
+    }]);
+
+    if (error) return { data: null, error };
+    
+    const user = { id: newId, email, role: 'cadet' };
+    const session = { user };
+    localStorage.setItem('ncc_custom_session', JSON.stringify(session));
+    this.session = session;
+    this._trigger('SIGNED_IN', session);
+    
+    return { data: { user, session }, error: null };
+  }
+
+  async signInWithPassword({ email, password }) {
+    let { data: user, error } = await this.client.from('cadet_profiles').select('*').eq('email', email).eq('password', password).maybeSingle();
+    
+    if (!user) {
+      const res = await this.client.from('instructor_profiles').select('*').eq('email', email).eq('password', password).maybeSingle();
+      user = res.data;
+    }
+    
+    if (!user) {
+      const res = await this.client.from('admin_profiles').select('*').eq('email', email).eq('password', password).maybeSingle();
+      user = res.data;
+    }
+
+    if (!user) {
+      return { data: null, error: { message: 'Invalid login credentials' } };
+    }
+
+    const session = { user };
+    localStorage.setItem('ncc_custom_session', JSON.stringify(session));
+    this.session = session;
+    this._trigger('SIGNED_IN', session);
+    
+    return { data: { user, session }, error: null };
+  }
+
+  async signOut() {
+    localStorage.removeItem('ncc_custom_session');
+    this.session = null;
+    this._trigger('SIGNED_OUT', null);
+    return { error: null };
+  }
+
+  async getSession() {
+    return { data: { session: this.session }, error: null };
+  }
+  
+  async getUser() {
+    return { data: { user: this.session?.user || null }, error: null };
+  }
+
+  onAuthStateChange(callback) {
+    const id = Date.now().toString();
+    this.listeners[id] = callback;
+    callback(this.session ? 'SIGNED_IN' : 'SIGNED_OUT', this.session);
+    return { data: { subscription: { unsubscribe: () => { delete this.listeners[id]; } } } };
+  }
+
+  // Admin override for UserModal
+  get admin() {
+    return {
+      createUser: async ({ email, password, user_metadata = {} }) => {
+        const newId = (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now();
+        const table = user_metadata.role === 'admin' ? 'admin_profiles' : user_metadata.role === 'instructor' ? 'instructor_profiles' : 'cadet_profiles';
+        
+        const { error } = await this.client.from(table).insert([{
+          id: newId,
+          email,
+          password,
+          full_name: user_metadata.full_name || 'User',
+          role: user_metadata.role || 'cadet',
+          wing: user_metadata.wing,
+          certificate_level: user_metadata.certificate_level,
+          ncc_number: user_metadata.ncc_number
+        }]);
+
+        if (error) return { data: null, error };
+        return { data: { user: { id: newId, email, role: user_metadata.role || 'cadet' } }, error: null };
+      }
+    };
+  }
+}
+
+const customRealAuth = new RealCustomAuth(realSupabase);
+const customRealSupabase = new Proxy(realSupabase, {
+  get(target, prop) {
+    if (prop === 'auth') return customRealAuth;
+    return target[prop];
+  }
+});
+
 const mockSupabase = new MockSupabaseClient();
 
-export const supabase = USE_MOCK ? mockSupabase : realSupabase;
+export const supabase = USE_MOCK ? mockSupabase : customRealSupabase;
+
+export const adminAuthClient = USE_MOCK ? mockSupabase : customRealSupabase;

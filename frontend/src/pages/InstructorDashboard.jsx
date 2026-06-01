@@ -5,6 +5,7 @@ import AddQuestionModal from '../components/AddQuestionModal';
 import UserModal from '../components/UserModal';
 import AddTestModal from '../components/AddTestModal';
 import CourseEditorModal from '../components/CourseEditorModal';
+import AnnouncementModal from '../components/AnnouncementModal';
 import { useNavigate } from 'react-router-dom';
 
 const TABS = [
@@ -13,6 +14,7 @@ const TABS = [
   { id: 'courses', label: 'Courses', icon: BookOpen },
   { id: 'tests', label: 'Exams', icon: ClipboardCheck },
   { id: 'questions', label: 'Question Bank', icon: ClipboardCheck },
+  { id: 'announcements', label: 'Announcements', icon: Megaphone }
 ];
 
 export default function InstructorDashboard() {
@@ -35,6 +37,11 @@ export default function InstructorDashboard() {
   const [editingTest, setEditingTest] = useState(null);
   const [isCourseModalOpen, setIsCourseModalOpen] = useState(false);
   const [editingCourse, setEditingCourse] = useState(null);
+  
+  const [announcements, setAnnouncements] = useState([]);
+  const [isAnnouncementModalOpen, setIsAnnouncementModalOpen] = useState(false);
+  const [editingAnnouncement, setEditingAnnouncement] = useState(null);
+  
   const navigate = useNavigate();
 
   const loadData = async () => {
@@ -61,6 +68,11 @@ export default function InstructorDashboard() {
       const { data: attempts } = await supabase.from('test_attempts')
         .select('score').in('status', ['submitted', 'flagged']);
       const avg = attempts?.length ? Math.round(attempts.reduce((s, a) => s + (a.score || 0), 0) / attempts.length) : 0;
+
+      // Announcements
+      const { data: anns } = await supabase.from('announcements')
+        .select('*').order('created_at', { ascending: false });
+      setAnnouncements(anns || []);
 
       setStats({
         courses: courseList?.length || 0,
@@ -94,6 +106,13 @@ export default function InstructorDashboard() {
     const { error } = await supabase.from('questions').delete().eq('id', id);
     if (error) alert(error.message);
     else refreshQuestions();
+  };
+
+  const handleDeleteAnnouncement = async (ann) => {
+    if (!confirm(`Are you sure you want to delete the announcement "${ann.title}"?`)) return;
+    const { error } = await supabase.from('announcements').delete().eq('id', ann.id);
+    if (error) alert('Error deleting announcement: ' + error.message);
+    else loadData();
   };
 
   const filteredCadets = cadets.filter(c =>
@@ -388,6 +407,53 @@ export default function InstructorDashboard() {
         </div>
       )}
 
+      {/* Announcements Tab */}
+      {activeTab === 'announcements' && (
+        <div className="space-y-4">
+          <div className="flex justify-end">
+            <button 
+              onClick={() => { setEditingAnnouncement(null); setIsAnnouncementModalOpen(true); }}
+              className="ncc-btn ncc-btn-primary py-2.5 px-6 cursor-pointer"
+            >
+              <Plus className="w-4 h-4" /> Create Announcement
+            </button>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {announcements.map(a => (
+              <div key={a.id} className="ncc-glass-card p-5 relative group flex flex-col">
+                <div className="absolute top-4 right-4 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button onClick={() => { setEditingAnnouncement(a); setIsAnnouncementModalOpen(true); }} className="p-1.5 hover:bg-surface-200 rounded-lg text-navy-500 cursor-pointer" title="Edit Announcement">
+                    <Edit2 className="w-4 h-4" />
+                  </button>
+                  <button onClick={() => handleDeleteAnnouncement(a)} className="p-1.5 hover:bg-danger/10 rounded-lg text-danger cursor-pointer" title="Delete Announcement">
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className={`ncc-badge ${a.priority === 'high' ? 'bg-danger/10 text-danger' : a.priority === 'low' ? 'bg-surface-200 text-surface-500' : 'bg-info-bg text-info'}`}>
+                    {a.priority.toUpperCase()}
+                  </span>
+                  <span className={`ncc-badge ${a.target_wing === 'Army' ? 'ncc-badge-army' : a.target_wing === 'Navy' ? 'ncc-badge-navy' : a.target_wing === 'Air Force' ? 'ncc-badge-airforce' : 'bg-surface-100 text-surface-700'}`}>
+                    {a.target_wing}
+                  </span>
+                  {!a.is_active && (
+                    <span className="ncc-badge bg-surface-200 text-surface-500">Draft/Hidden</span>
+                  )}
+                </div>
+                <h3 className="font-bold text-navy-900 mb-1 pr-14 line-clamp-2">{a.title}</h3>
+                <p className="text-sm text-surface-700 flex-1 line-clamp-3 break-words">{a.content}</p>
+                <div className="mt-4 text-xs text-surface-400 font-medium">
+                  {new Date(a.created_at).toLocaleDateString()}
+                </div>
+              </div>
+            ))}
+            {announcements.length === 0 && (
+              <div className="col-span-full p-8 text-center text-surface-500 ncc-glass-card">No announcements created yet.</div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Add/Edit Modal */}
       <AddQuestionModal 
         isOpen={isModalOpen} 
@@ -417,6 +483,13 @@ export default function InstructorDashboard() {
         isOpen={isCourseModalOpen}
         onClose={() => setIsCourseModalOpen(false)}
         courseToEdit={editingCourse}
+        onSave={loadData}
+      />
+
+      <AnnouncementModal
+        isOpen={isAnnouncementModalOpen}
+        onClose={() => setIsAnnouncementModalOpen(false)}
+        announcement={editingAnnouncement}
         onSave={loadData}
       />
     </div>
