@@ -55,8 +55,15 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
 
   const handleOptionChange = (index, value) => {
     const newOptions = [...formData.options];
+    const oldOption = newOptions[index];
     newOptions[index] = value;
-    setFormData({ ...formData, options: newOptions });
+    
+    let newCorrectAnswer = formData.correct_answer;
+    if (oldOption === formData.correct_answer && oldOption !== '') {
+      newCorrectAnswer = value;
+    }
+    
+    setFormData({ ...formData, options: newOptions, correct_answer: newCorrectAnswer });
   };
 
   return (
