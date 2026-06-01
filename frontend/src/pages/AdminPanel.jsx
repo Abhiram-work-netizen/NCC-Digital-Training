@@ -20,6 +20,9 @@ export default function AdminPanel() {
   const [editingCourse, setEditingCourse] = useState(null);
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
+  const [courseSearch, setCourseSearch] = useState('');
+  const [courseWingFilter, setCourseWingFilter] = useState('All');
+  const [courseCertFilter, setCourseCertFilter] = useState('All');
   const [users, setUsers] = useState([]);
   const [activity, setActivity] = useState([]);
   const [stats, setStats] = useState({ users: 0, courses: 0, tests: 0, flagged: 0 });
@@ -105,6 +108,14 @@ export default function AdminPanel() {
   };
 
   const filtered = users.filter(u => (u.full_name || '').toLowerCase().includes(search.toLowerCase()));
+
+  const filteredCourses = courses.filter(c => {
+    const matchesSearch = (c.title || '').toLowerCase().includes(courseSearch.toLowerCase()) || 
+                          (c.description || '').toLowerCase().includes(courseSearch.toLowerCase());
+    const matchesWing = courseWingFilter === 'All' || c.target_wing === courseWingFilter;
+    const matchesCert = courseCertFilter === 'All' || c.certificate_level === courseCertFilter;
+    return matchesSearch && matchesWing && matchesCert;
+  });
 
   if (loading) return (
     <div className="flex items-center justify-center min-h-[60vh]">
@@ -245,16 +256,52 @@ export default function AdminPanel() {
 
       {activeTab === 'courses' && (
         <div className="space-y-4">
-          <div className="flex justify-end">
+          <div className="flex flex-col lg:flex-row gap-3 justify-between items-start lg:items-center bg-surface-50 p-3 rounded-xl border border-surface-100">
+            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+              <div className="relative w-full sm:w-64">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-400" />
+                <input 
+                  type="text" 
+                  placeholder="Search courses..." 
+                  value={courseSearch}
+                  onChange={e => setCourseSearch(e.target.value)}
+                  className="ncc-input pl-9 py-2 w-full text-sm h-10"
+                />
+              </div>
+              <div className="flex gap-2 w-full sm:w-auto">
+                <select 
+                  value={courseWingFilter} 
+                  onChange={e => setCourseWingFilter(e.target.value)}
+                  className="ncc-input py-2 text-sm cursor-pointer h-10 flex-1 sm:flex-none"
+                >
+                  <option value="All">All Wings</option>
+                  <option value="Common">Common</option>
+                  <option value="Army">Army</option>
+                  <option value="Navy">Navy</option>
+                  <option value="Air Force">Air Force</option>
+                </select>
+                <select 
+                  value={courseCertFilter} 
+                  onChange={e => setCourseCertFilter(e.target.value)}
+                  className="ncc-input py-2 text-sm cursor-pointer h-10 flex-1 sm:flex-none"
+                >
+                  <option value="All">All Certs</option>
+                  <option value="A">A Cert</option>
+                  <option value="B">B Cert</option>
+                  <option value="C">C Cert</option>
+                </select>
+              </div>
+            </div>
             <button 
               onClick={() => { setEditingCourse(null); setIsCourseModalOpen(true); }}
-              className="ncc-btn ncc-btn-primary py-2.5 px-6 cursor-pointer"
+              className="ncc-btn ncc-btn-primary py-2.5 px-5 whitespace-nowrap w-full lg:w-auto"
             >
               <Plus className="w-4 h-4" /> Create Course
             </button>
           </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {courses.map(c => (
+            {filteredCourses.map(c => (
               <div key={c.id} className="ncc-glass-card p-5 relative group flex flex-col">
                 <div className="absolute top-4 right-4 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button onClick={() => { setEditingCourse(c); setIsCourseModalOpen(true); }} className="p-1.5 hover:bg-surface-200 rounded-lg text-navy-500 cursor-pointer" title="Edit Course Info">
@@ -275,8 +322,8 @@ export default function AdminPanel() {
                 </button>
               </div>
             ))}
-            {courses.length === 0 && (
-              <div className="col-span-full p-8 text-center text-surface-500 ncc-glass-card">No courses created yet.</div>
+            {filteredCourses.length === 0 && (
+              <div className="col-span-full p-8 text-center text-surface-500 ncc-glass-card">No courses found matching your criteria.</div>
             )}
           </div>
         </div>
