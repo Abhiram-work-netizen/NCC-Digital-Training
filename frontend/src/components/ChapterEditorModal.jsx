@@ -90,7 +90,8 @@ export default function ChapterEditorModal({ isOpen, onClose, chapterToEdit, mod
       order_index: formData.sequence_order,
       module_id: moduleId,
       image_urls: attachments,
-      content_type: 'markdown'
+      content_type: 'markdown',
+      content_data: {}
     };
 
     try {
