@@ -125,7 +125,7 @@ BEGIN
 
     -- Grade answers
     FOR v_record IN 
-        SELECT aq.question_id, q.correct_answer
+        SELECT aq.question_id, q.correct_answer, q.option_a, q.option_b, q.option_c, q.option_d
         FROM csv_attempt_questions aq
         JOIN csv_questions q ON q.question_id = aq.question_id
         WHERE aq.attempt_id = p_attempt_id
@@ -133,7 +133,18 @@ BEGIN
         v_total_q := v_total_q + 1;
         
         -- Check if answer is correct (extremely robust string matching)
-        IF LOWER(REGEXP_REPLACE(p_answers->>v_record.question_id, '[^a-zA-Z0-9]', '', 'g')) = LOWER(REGEXP_REPLACE(v_record.correct_answer, '[^a-zA-Z0-9]', '', 'g')) THEN
+        -- Supports cases where correct_answer is 'A', 'B', 'C', 'D' OR the full text
+        IF LOWER(REGEXP_REPLACE(p_answers->>v_record.question_id, '[^a-zA-Z0-9]', '', 'g')) = 
+           LOWER(REGEXP_REPLACE(
+               CASE 
+                   WHEN trim(v_record.correct_answer) ILIKE 'A' THEN v_record.option_a
+                   WHEN trim(v_record.correct_answer) ILIKE 'B' THEN v_record.option_b
+                   WHEN trim(v_record.correct_answer) ILIKE 'C' THEN v_record.option_c
+                   WHEN trim(v_record.correct_answer) ILIKE 'D' THEN v_record.option_d
+                   ELSE v_record.correct_answer
+               END, 
+               '[^a-zA-Z0-9]', '', 'g'
+           )) THEN
             v_correct_q := v_correct_q + 1;
             
             -- Save individual correct answer
