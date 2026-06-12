@@ -1,20 +1,73 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '../services/supabase';
-import { X, Save, Plus, Trash2, HelpCircle } from 'lucide-react';
+import { X, Save, HelpCircle } from 'lucide-react';
 
-export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEdit = null, banks = [] }) {
+export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEdit = null }) {
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState(questionToEdit || {
+  const [subjects, setSubjects] = useState([]);
+  
+  const [formData, setFormData] = useState({
+    question_id: '',
+    subject_code: '',
+    module_number: '',
+    certificate: 'Common',
+    wing: 'Common',
     question_text: '',
-    question_type: 'mcq',
-    options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
-    correct_answer: '',
-    difficulty: 'medium',
-    bank_id: banks[0]?.id || '',
-    topic_tag: '',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer: 'A',
+    difficulty: '1',
     explanation: '',
-    points: 1
+    active: 'TRUE'
   });
+
+  useEffect(() => {
+    const fetchSubjects = async () => {
+      const { data } = await supabase.from('subjects').select('*');
+      if (data) setSubjects(data);
+    };
+    if (isOpen) fetchSubjects();
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (questionToEdit) {
+      setFormData({
+        question_id: questionToEdit.question_id || '',
+        subject_code: questionToEdit.subject_code || '',
+        module_number: questionToEdit.module_number || '',
+        certificate: questionToEdit.certificate || 'Common',
+        wing: questionToEdit.wing || 'Common',
+        question_text: questionToEdit.question_text || '',
+        option_a: questionToEdit.option_a || '',
+        option_b: questionToEdit.option_b || '',
+        option_c: questionToEdit.option_c || '',
+        option_d: questionToEdit.option_d || '',
+        correct_answer: questionToEdit.correct_answer || 'A',
+        difficulty: String(questionToEdit.difficulty || '1'),
+        explanation: questionToEdit.explanation || '',
+        active: String(questionToEdit.active || 'TRUE').toUpperCase()
+      });
+    } else {
+      setFormData({
+        question_id: `Q${Date.now()}`,
+        subject_code: subjects[0]?.subject_code || '',
+        module_number: '1',
+        certificate: 'Common',
+        wing: 'Common',
+        question_text: '',
+        option_a: '',
+        option_b: '',
+        option_c: '',
+        option_d: '',
+        correct_answer: 'A',
+        difficulty: '1',
+        explanation: '',
+        active: 'TRUE'
+      });
+    }
+  }, [questionToEdit, isOpen, subjects]);
 
   if (!isOpen) return null;
 
@@ -23,18 +76,13 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
     setLoading(true);
     try {
       const dataToSave = { ...formData };
-      if (dataToSave.question_type === 'true_false') {
-        dataToSave.options = ['True', 'False'];
-      } else if (dataToSave.question_type === 'short_answer') {
-        dataToSave.options = null;
-      }
-
+      
       let error;
-      if (questionToEdit?.id) {
+      if (questionToEdit?.question_id) {
         const { error: err } = await supabase
           .from('questions')
           .update(dataToSave)
-          .eq('id', questionToEdit.id);
+          .eq('question_id', questionToEdit.question_id);
         error = err;
       } else {
         const { error: err } = await supabase
@@ -53,23 +101,10 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
     }
   };
 
-  const handleOptionChange = (index, value) => {
-    const newOptions = [...formData.options];
-    const oldOption = newOptions[index];
-    newOptions[index] = value;
-    
-    let newCorrectAnswer = formData.correct_answer;
-    if (oldOption === formData.correct_answer && oldOption !== '') {
-      newCorrectAnswer = value;
-    }
-    
-    setFormData({ ...formData, options: newOptions, correct_answer: newCorrectAnswer });
-  };
-
   return (
     <div className="fixed inset-0 z-[2000] bg-navy-900/60 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl animate-scaleIn">
-        <div className="p-4 md:p-6 border-b border-surface-100 flex items-center justify-between bg-surface-50/50">
+        <div className="p-4 md:p-6 border-b border-surface-100 flex items-center justify-between bg-surface-50/50 flex-shrink-0">
           <h2 className="text-xl font-bold text-navy-900 flex items-center gap-2">
             <HelpCircle className="w-6 h-6 text-gold-500" />
             {questionToEdit ? 'Edit Question' : 'Add New Question'}
@@ -82,14 +117,53 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
         <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Question Bank</label>
+              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Subject Code</label>
               <select 
-                value={formData.bank_id} 
-                onChange={e => setFormData({...formData, bank_id: e.target.value})}
+                value={formData.subject_code} 
+                onChange={e => setFormData({...formData, subject_code: e.target.value})}
                 className="ncc-input h-11"
                 required
               >
-                {banks.map(b => <option key={b.id} value={b.id}>{b.title}</option>)}
+                <option value="">Select Subject</option>
+                {subjects.map(s => <option key={s.subject_code} value={s.subject_code}>{s.subject_code} - {s.subject_name}</option>)}
+              </select>
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Module Number</label>
+              <input 
+                type="text" 
+                value={formData.module_number} 
+                onChange={e => setFormData({...formData, module_number: e.target.value})}
+                className="ncc-input h-11"
+              />
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Certificate</label>
+              <select 
+                value={formData.certificate} 
+                onChange={e => setFormData({...formData, certificate: e.target.value})}
+                className="ncc-input h-11"
+              >
+                <option value="Common">Common</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Wing</label>
+              <select 
+                value={formData.wing} 
+                onChange={e => setFormData({...formData, wing: e.target.value})}
+                className="ncc-input h-11"
+              >
+                <option value="Common">Common</option>
+                <option value="Army">Army</option>
+                <option value="Navy">Navy</option>
+                <option value="Air Force">Air Force</option>
               </select>
             </div>
             <div className="space-y-1.5">
@@ -99,9 +173,9 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
                 onChange={e => setFormData({...formData, difficulty: e.target.value})}
                 className="ncc-input h-11"
               >
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
+                <option value="1">1 (Easy)</option>
+                <option value="2">2 (Medium)</option>
+                <option value="3">3 (Hard)</option>
               </select>
             </div>
           </div>
@@ -117,103 +191,34 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
             />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Question Type</label>
-              <div className="grid grid-cols-3 gap-2">
-                {['mcq', 'true_false', 'short_answer'].map(type => (
-                  <button
-                    key={type}
-                    type="button"
-                    onClick={() => setFormData({...formData, question_type: type})}
-                    className={`py-2 text-[10px] md:text-xs font-bold rounded-lg border-2 transition cursor-pointer ${
-                      formData.question_type === type 
-                        ? 'bg-navy-900 border-navy-900 text-white shadow-md' 
-                        : 'border-surface-200 text-surface-600 hover:border-navy-200'
-                    }`}
-                  >
-                    {type.replace('_', ' ').toUpperCase()}
-                  </button>
-                ))}
+          <div className="space-y-4 bg-surface-50 p-4 rounded-2xl border border-surface-100">
+            <label className="text-xs font-bold text-navy-900 uppercase tracking-wider block">Options & Answer</label>
+            
+            {['A', 'B', 'C', 'D'].map(opt => (
+              <div key={opt} className="flex gap-2 items-center">
+                <span className="font-bold text-surface-500 w-6">{opt}.</span>
+                <input 
+                  type="text" 
+                  value={formData[`option_${opt.toLowerCase()}`]} 
+                  onChange={e => setFormData({...formData, [`option_${opt.toLowerCase()}`]: e.target.value})}
+                  className="ncc-input h-10 flex-1"
+                  placeholder={`Option ${opt}`}
+                  required={opt === 'A' || opt === 'B'} // require at least 2 options
+                />
+                <button 
+                  type="button"
+                  onClick={() => setFormData({...formData, correct_answer: opt})}
+                  className={`px-3 py-2 rounded-lg text-[10px] font-bold uppercase transition cursor-pointer ${
+                    formData.correct_answer === opt
+                      ? 'bg-mgreen-600 text-white shadow-md' 
+                      : 'bg-white border border-surface-200 text-surface-400 hover:border-mgreen-600'
+                  }`}
+                >
+                  Correct
+                </button>
               </div>
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Points</label>
-              <input 
-                type="number" 
-                value={formData.points} 
-                onChange={e => setFormData({...formData, points: parseInt(e.target.value)})}
-                className="ncc-input h-11"
-                min="1"
-                max="10"
-              />
-            </div>
+            ))}
           </div>
-
-          {formData.question_type === 'mcq' && (
-            <div className="space-y-4 bg-surface-50 p-4 rounded-2xl border border-surface-100">
-              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider block">Options</label>
-              {formData.options.map((opt, i) => (
-                <div key={i} className="flex gap-2">
-                  <input 
-                    type="text" 
-                    value={opt} 
-                    onChange={e => handleOptionChange(i, e.target.value)}
-                    className="ncc-input h-10 flex-1"
-                    placeholder={`Option ${i+1}`}
-                    required
-                  />
-                  <button 
-                    type="button"
-                    onClick={() => setFormData({...formData, correct_answer: opt})}
-                    className={`px-3 rounded-lg text-[10px] font-bold uppercase transition cursor-pointer ${
-                      formData.correct_answer === opt && opt !== ''
-                        ? 'bg-mgreen-600 text-white' 
-                        : 'bg-white border border-surface-200 text-surface-400 hover:border-mgreen-600'
-                    }`}
-                  >
-                    Correct
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {formData.question_type === 'true_false' && (
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Correct Answer</label>
-              <div className="flex gap-4">
-                {['True', 'False'].map(opt => (
-                  <button
-                    key={opt}
-                    type="button"
-                    onClick={() => setFormData({...formData, correct_answer: opt})}
-                    className={`flex-1 py-3 rounded-xl border-2 font-bold transition cursor-pointer ${
-                      formData.correct_answer === opt 
-                        ? 'bg-mgreen-600 border-mgreen-600 text-white' 
-                        : 'bg-white border-surface-200 text-surface-600 hover:border-mgreen-200'
-                    }`}
-                  >
-                    {opt}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {formData.question_type === 'short_answer' && (
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Correct Answer (Keyword)</label>
-              <input 
-                type="text" 
-                value={formData.correct_answer} 
-                onChange={e => setFormData({...formData, correct_answer: e.target.value})}
-                className="ncc-input h-11"
-                placeholder="Enter exact keyword..."
-                required
-              />
-            </div>
-          )}
 
           <div className="space-y-1.5">
             <label className="text-xs font-bold text-navy-900 uppercase tracking-wider">Explanation (Optional)</label>
@@ -224,9 +229,19 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
               placeholder="Explain why this is the correct answer..."
             />
           </div>
+
+          <div className="flex items-center gap-2">
+             <input 
+                type="checkbox"
+                checked={formData.active === 'TRUE'}
+                onChange={e => setFormData({...formData, active: e.target.checked ? 'TRUE' : 'FALSE'})}
+                className="w-5 h-5 accent-gold-500 cursor-pointer"
+             />
+             <label className="font-bold text-navy-900 text-sm">Active Question</label>
+          </div>
         </form>
 
-        <div className="p-4 md:p-6 border-t border-surface-100 bg-surface-50/50 flex gap-3">
+        <div className="p-4 md:p-6 border-t border-surface-100 bg-surface-50/50 flex gap-3 flex-shrink-0">
           <button 
             type="button" 
             onClick={onClose} 
