@@ -11,8 +11,8 @@ export default function SystemActivity() {
       // In a real app we'd query an audit_logs table. 
       // For now we'll construct an activity feed from exam attempts and announcements.
       
-      const { data: attempts } = await supabase.from('exam_attempts')
-        .select('id, status, submitted_at, percentage, cadet_id, mock_exams(test_name)')
+      const { data: attempts } = await supabase.from('csv_exam_attempts')
+        .select('id, status, submitted_at, percentage, cadet_id, csv_mock_exams(test_name)')
         .not('submitted_at', 'is', null)
         .order('submitted_at', { ascending: false })
         .limit(30);
@@ -25,7 +25,7 @@ export default function SystemActivity() {
       const combined = [
         ...(attempts || []).map(a => ({
           type: 'exam',
-          text: `Cadet completed exam: ${a.mock_exams?.test_name}`,
+          text: `Cadet completed exam: ${a.csv_mock_exams?.test_name}`,
           details: `Score: ${a.percentage}% | Status: ${a.status}`,
           time: new Date(a.submitted_at),
           severity: a.status === 'flagged' ? 'warning' : 'info'

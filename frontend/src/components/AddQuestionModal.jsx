@@ -4,7 +4,7 @@ import { X, Save, HelpCircle } from 'lucide-react';
 
 export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEdit = null }) {
   const [loading, setLoading] = useState(false);
-  const [subjects, setSubjects] = useState([]);
+  const [csv_subjects, setSubjects] = useState([]);
   
   const [formData, setFormData] = useState({
     question_id: '',
@@ -25,7 +25,7 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
 
   useEffect(() => {
     const fetchSubjects = async () => {
-      const { data } = await supabase.from('subjects').select('*');
+      const { data } = await supabase.from('csv_subjects').select('*');
       if (data) setSubjects(data);
     };
     if (isOpen) fetchSubjects();
@@ -52,7 +52,7 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
     } else {
       setFormData({
         question_id: `Q${Date.now()}`,
-        subject_code: subjects[0]?.subject_code || '',
+        subject_code: csv_subjects[0]?.subject_code || '',
         module_number: '1',
         certificate: 'Common',
         wing: 'Common',
@@ -67,7 +67,7 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
         active: 'TRUE'
       });
     }
-  }, [questionToEdit, isOpen, subjects]);
+  }, [questionToEdit, isOpen, csv_subjects]);
 
   if (!isOpen) return null;
 
@@ -80,13 +80,13 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
       let error;
       if (questionToEdit?.question_id) {
         const { error: err } = await supabase
-          .from('questions')
+          .from('csv_questions')
           .update(dataToSave)
           .eq('question_id', questionToEdit.question_id);
         error = err;
       } else {
         const { error: err } = await supabase
-          .from('questions')
+          .from('csv_questions')
           .insert(dataToSave);
         error = err;
       }
@@ -125,7 +125,7 @@ export default function AddQuestionModal({ isOpen, onClose, onSave, questionToEd
                 required
               >
                 <option value="">Select Subject</option>
-                {subjects.map(s => <option key={s.subject_code} value={s.subject_code}>{s.subject_code} - {s.subject_name}</option>)}
+                {csv_subjects.map(s => <option key={s.subject_code} value={s.subject_code}>{s.subject_code} - {s.subject_name}</option>)}
               </select>
             </div>
             <div className="space-y-1.5">

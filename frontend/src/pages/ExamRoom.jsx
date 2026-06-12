@@ -13,7 +13,7 @@ export default function ExamRoom() {
   const [phase, setPhase] = useState('loading'); // loading, rules, exam, submitting, results
   const [testInfo, setTestInfo] = useState(null);
   const [attemptId, setAttemptId] = useState(null);
-  const [questions, setQuestions] = useState([]);
+  const [csv_questions, setQuestions] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState({});
   const [flagged, setFlagged] = useState(new Set());
@@ -70,7 +70,7 @@ export default function ExamRoom() {
       const { data, error } = await supabase.rpc('fn_start_exam', { p_test_id: testId });
       if (error) throw error;
       setAttemptId(data.attempt_id);
-      setQuestions(data.questions || []);
+      setQuestions(data.csv_questions || []);
       setTimeLeft((data.duration_minutes || 20) * 60);
       startTimeRef.current = Date.now();
       setPhase('exam');
@@ -179,7 +179,7 @@ export default function ExamRoom() {
     const elapsed = startTimeRef.current ? Math.round((Date.now() - startTimeRef.current) / 1000) : 0;
     // Prepare answers as a flat object { question_id: answer } to match RPC expectation
     const answerObject = {};
-    questions.forEach(q => {
+    csv_questions.forEach(q => {
       if (q && q.id) {
         answerObject[q.id] = answers[q.id] || '';
       }
@@ -201,7 +201,7 @@ export default function ExamRoom() {
       setError('Submission failed: ' + err.message);
       setPhase('results');
     }
-  }, [phase, questions, answers, attemptId, tabSwitches, refreshProfile]);
+  }, [phase, csv_questions, answers, attemptId, tabSwitches, refreshProfile]);
 
   const formatTime = (s) => `${Math.floor(s / 60).toString().padStart(2, '0')}:${(s % 60).toString().padStart(2, '0')}`;
   const answered = Object.keys(answers).filter(k => answers[k]).length;
@@ -233,7 +233,7 @@ export default function ExamRoom() {
               <h4 className="font-bold text-navy-900 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> Exam Details</h4>
               <ul className="space-y-1.5 text-xs text-surface-700 font-medium">
                 <li>Duration: {testInfo?.duration_minutes || 20} min</li>
-                <li>Questions: {testInfo?.question_count || 10} Q</li>
+                <li>csv_questions: {testInfo?.question_count || 10} Q</li>
                 <li>Passing: {testInfo?.passing_score || 60}%</li>
               </ul>
             </div>
@@ -342,7 +342,7 @@ export default function ExamRoom() {
   }
 
   // ==================== EXAM INTERFACE ====================
-  const q = questions[currentQ];
+  const q = csv_questions[currentQ];
   if (!q) return null;
 
   const getSafeOptions = (opts) => {
@@ -388,7 +388,7 @@ export default function ExamRoom() {
             <div className="w-10 h-1 bg-surface-200 rounded-full mx-auto mb-4" />
             <h3 className="text-sm font-bold text-navy-900 mb-3">Question Navigator</h3>
             <div className="grid grid-cols-8 gap-2 mb-4">
-              {questions.map((qq, i) => (
+              {csv_questions.map((qq, i) => (
                 <button key={i} onClick={() => { setCurrentQ(i); setShowMobileNav(false); }}
                   className={`w-full aspect-square rounded-lg text-xs font-medium transition cursor-pointer flex items-center justify-center ${
                     i === currentQ ? 'bg-navy-900 text-white' :
@@ -401,7 +401,7 @@ export default function ExamRoom() {
             <div className="flex gap-3 text-xs text-surface-700">
               <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-mgreen-600/20" /> Answered ({answered})</div>
               <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-warning-bg border border-warning/30" /> Flagged ({flagged.size})</div>
-              <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-surface-100" /> Left ({questions.length - answered})</div>
+              <div className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded bg-surface-100" /> Left ({csv_questions.length - answered})</div>
             </div>
           </div>
         </>
@@ -418,7 +418,7 @@ export default function ExamRoom() {
           <Clock className="w-4 h-4 md:w-5 md:h-5" /> {formatTime(timeLeft)}
         </div>
         <div className="flex items-center gap-2 md:gap-4">
-          <span className="text-xs md:text-sm text-surface-700 hidden sm:inline">{answered}/{questions.length}</span>
+          <span className="text-xs md:text-sm text-surface-700 hidden sm:inline">{answered}/{csv_questions.length}</span>
           {/* Mobile navigator toggle */}
           <button onClick={() => setShowMobileNav(true)} className="lg:hidden p-1.5 rounded-lg hover:bg-surface-100 cursor-pointer">
             <Grid3X3 className="w-5 h-5 text-surface-700" />
@@ -446,7 +446,7 @@ export default function ExamRoom() {
         <div className="flex-1 flex flex-col p-4 md:p-8 overflow-y-auto">
           <div className="max-w-3xl mx-auto w-full flex-1">
             <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6 flex-wrap">
-              <span className="ncc-badge bg-navy-900/10 text-navy-900">Q{currentQ + 1}/{questions.length}</span>
+              <span className="ncc-badge bg-navy-900/10 text-navy-900">Q{currentQ + 1}/{csv_questions.length}</span>
               {q.topic_tag && <span className="ncc-badge bg-info-bg text-info">{q.topic_tag}</span>}
               {q.difficulty && <span className={`ncc-badge ${q.difficulty === 'hard' ? 'bg-danger-bg text-danger' : q.difficulty === 'medium' ? 'bg-gold-500/10 text-gold-600' : 'bg-mgreen-600/10 text-mgreen-600'}`}>{q.difficulty}</span>}
               {flagged.has(q.id) && <span className="ncc-badge bg-warning-bg text-warning">Flagged</span>}
@@ -474,7 +474,7 @@ export default function ExamRoom() {
               className={`ncc-btn ncc-btn-ghost cursor-pointer text-sm min-h-[40px] ${flagged.has(q.id) ? 'text-warning border-warning/30' : ''}`}>
               <Flag className="w-4 h-4" /> <span className="hidden sm:inline">{flagged.has(q.id) ? 'Unflag' : 'Flag'}</span>
             </button>
-            <button onClick={() => setCurrentQ(p => Math.min(questions.length - 1, p + 1))} disabled={currentQ === questions.length - 1} className="ncc-btn ncc-btn-primary cursor-pointer text-sm min-h-[40px]"><span className="hidden sm:inline">Next</span> <ChevronRight className="w-4 h-4" /></button>
+            <button onClick={() => setCurrentQ(p => Math.min(csv_questions.length - 1, p + 1))} disabled={currentQ === csv_questions.length - 1} className="ncc-btn ncc-btn-primary cursor-pointer text-sm min-h-[40px]"><span className="hidden sm:inline">Next</span> <ChevronRight className="w-4 h-4" /></button>
           </div>
         </div>
 
@@ -482,7 +482,7 @@ export default function ExamRoom() {
         <div className="w-64 bg-white border-l border-surface-200 p-4 overflow-y-auto hidden lg:block">
           <h3 className="text-sm font-bold text-navy-900 mb-3">Navigator</h3>
           <div className="grid grid-cols-5 gap-2">
-            {questions.map((qq, i) => (
+            {csv_questions.map((qq, i) => (
               <button key={i} onClick={() => setCurrentQ(i)}
                 className={`w-9 h-9 rounded-lg text-sm font-medium transition cursor-pointer ${
                   i === currentQ ? 'bg-navy-900 text-white' :
@@ -495,7 +495,7 @@ export default function ExamRoom() {
           <div className="mt-4 space-y-2 text-xs text-surface-700">
             <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-mgreen-600/20" /> Answered ({answered})</div>
             <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-warning-bg border border-warning/30" /> Flagged ({flagged.size})</div>
-            <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-surface-100" /> Unanswered ({questions.length - answered})</div>
+            <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-surface-100" /> Unanswered ({csv_questions.length - answered})</div>
           </div>
         </div>
       </div>

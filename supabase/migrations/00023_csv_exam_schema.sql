@@ -2,23 +2,23 @@
 -- Migration for the CSV-driven dynamic exam engine
 
 -- 1. Core Syllabus Tables
-CREATE TABLE IF NOT EXISTS subjects (
+CREATE TABLE IF NOT EXISTS csv_subjects (
     subject_code VARCHAR(20) PRIMARY KEY,
     subject_name VARCHAR(100) NOT NULL,
     description TEXT
 );
 
-CREATE TABLE IF NOT EXISTS modules (
+CREATE TABLE IF NOT EXISTS csv_modules (
     id SERIAL PRIMARY KEY,
-    subject_code VARCHAR(20) REFERENCES subjects(subject_code) ON DELETE CASCADE,
+    subject_code VARCHAR(20) REFERENCES csv_subjects(subject_code) ON DELETE CASCADE,
     module_number INTEGER NOT NULL,
     module_name VARCHAR(200) NOT NULL,
     UNIQUE(subject_code, module_number)
 );
 
-CREATE TABLE IF NOT EXISTS questions (
+CREATE TABLE IF NOT EXISTS csv_questions (
     question_id SERIAL PRIMARY KEY,
-    subject_code VARCHAR(20) REFERENCES subjects(subject_code),
+    subject_code VARCHAR(20) REFERENCES csv_subjects(subject_code),
     module_number INTEGER,
     difficulty INTEGER CHECK (difficulty IN (1, 2, 3)), -- 1: Easy, 2: Medium, 3: Hard
     question_text TEXT NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS questions (
 );
 
 -- 2. Mock Exam Definitions
-CREATE TABLE IF NOT EXISTS mock_exams (
+CREATE TABLE IF NOT EXISTS csv_mock_exams (
     test_id SERIAL PRIMARY KEY,
     test_name VARCHAR(200) NOT NULL,
     wing VARCHAR(20) CHECK (wing IN ('Army', 'Navy', 'Air Force', 'Common')),
@@ -46,10 +46,10 @@ CREATE TABLE IF NOT EXISTS mock_exams (
 );
 
 -- 3. Exam Attempts & Analytics
-CREATE TABLE IF NOT EXISTS exam_attempts (
+CREATE TABLE IF NOT EXISTS csv_exam_attempts (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-    test_id INTEGER REFERENCES mock_exams(test_id) ON DELETE CASCADE,
+    test_id INTEGER REFERENCES csv_mock_exams(test_id) ON DELETE CASCADE,
     started_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()),
     submitted_at TIMESTAMP WITH TIME ZONE,
     status VARCHAR(20) DEFAULT 'in_progress', -- in_progress, submitted, flagged
@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS exam_attempts (
     tab_switches INTEGER DEFAULT 0
 );
 
-CREATE TABLE IF NOT EXISTS attempt_questions (
+CREATE TABLE IF NOT EXISTS csv_attempt_questions (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    attempt_id UUID REFERENCES exam_attempts(id) ON DELETE CASCADE,
-    question_id INTEGER REFERENCES questions(question_id) ON DELETE CASCADE,
+    attempt_id UUID REFERENCES csv_exam_attempts(id) ON DELETE CASCADE,
+    question_id INTEGER REFERENCES csv_questions(question_id) ON DELETE CASCADE,
     subject_code VARCHAR(20),
     user_answer VARCHAR(1) CHECK (user_answer IN ('A', 'B', 'C', 'D', NULL)),
     is_correct BOOLEAN DEFAULT FALSE,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS attempt_questions (
 );
 
 -- 4. Engine Configuration Tables
-CREATE TABLE IF NOT EXISTS grading_policy (
+CREATE TABLE IF NOT EXISTS csv_grading_policy (
     id SERIAL PRIMARY KEY,
     policy_name VARCHAR(50) NOT NULL,
     min_score INTEGER NOT NULL,
@@ -80,13 +80,13 @@ CREATE TABLE IF NOT EXISTS grading_policy (
     remarks TEXT
 );
 
-CREATE TABLE IF NOT EXISTS analytics_config (
+CREATE TABLE IF NOT EXISTS csv_analytics_config (
     id SERIAL PRIMARY KEY,
     key VARCHAR(50) UNIQUE NOT NULL,
     value JSONB NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS anticheat_config (
+CREATE TABLE IF NOT EXISTS csv_anticheat_config (
     id SERIAL PRIMARY KEY,
     feature_name VARCHAR(50) UNIQUE NOT NULL,
     is_enabled BOOLEAN DEFAULT TRUE,
@@ -106,24 +106,24 @@ CREATE TABLE IF NOT EXISTS csv_import_logs (
 );
 
 -- Enable RLS (Assuming existing setup)
-ALTER TABLE subjects ENABLE ROW LEVEL SECURITY;
-ALTER TABLE modules ENABLE ROW LEVEL SECURITY;
-ALTER TABLE questions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE mock_exams ENABLE ROW LEVEL SECURITY;
-ALTER TABLE exam_attempts ENABLE ROW LEVEL SECURITY;
-ALTER TABLE attempt_questions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE grading_policy ENABLE ROW LEVEL SECURITY;
-ALTER TABLE analytics_config ENABLE ROW LEVEL SECURITY;
-ALTER TABLE anticheat_config ENABLE ROW LEVEL SECURITY;
+ALTER TABLE csv_subjects ENABLE ROW LEVEL SECURITY;
+ALTER TABLE csv_modules ENABLE ROW LEVEL SECURITY;
+ALTER TABLE csv_questions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE csv_mock_exams ENABLE ROW LEVEL SECURITY;
+ALTER TABLE csv_exam_attempts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE csv_attempt_questions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE csv_grading_policy ENABLE ROW LEVEL SECURITY;
+ALTER TABLE csv_analytics_config ENABLE ROW LEVEL SECURITY;
+ALTER TABLE csv_anticheat_config ENABLE ROW LEVEL SECURITY;
 ALTER TABLE csv_import_logs ENABLE ROW LEVEL SECURITY;
 
 -- Default Data for Configs
-INSERT INTO grading_policy (policy_name, min_score, max_score, grade, remarks) VALUES
+INSERT INTO csv_grading_policy (policy_name, min_score, max_score, grade, remarks) VALUES
 ('Default', 80, 100, 'A', 'Excellent performance'),
 ('Default', 65, 79, 'B', 'Good understanding'),
 ('Default', 50, 64, 'C', 'Satisfactory'),
 ('Default', 0, 49, 'F', 'Needs improvement');
 
-INSERT INTO anticheat_config (feature_name, is_enabled, threshold, action) VALUES
+INSERT INTO csv_anticheat_config (feature_name, is_enabled, threshold, action) VALUES
 ('tab_switching', TRUE, 3, 'flag'),
 ('copy_paste', TRUE, 0, 'block');

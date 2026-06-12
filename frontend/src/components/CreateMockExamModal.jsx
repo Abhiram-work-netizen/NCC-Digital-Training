@@ -20,13 +20,13 @@ export default function CreateMockExamModal({ isOpen, onClose, testToEdit, onSav
     { subject_code: 'NCC_GEN', count: 10 }
   ]);
   
-  const [subjects, setSubjects] = useState([]);
+  const [csv_subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchSubjects = async () => {
-      const { data } = await supabase.from('subjects').select('*');
+      const { data } = await supabase.from('csv_subjects').select('*');
       if (data) setSubjects(data);
     };
     if (isOpen) {
@@ -71,7 +71,7 @@ export default function CreateMockExamModal({ isOpen, onClose, testToEdit, onSav
   if (!isOpen) return null;
 
   const handleAddCriteria = () => {
-    setCriteria([...criteria, { subject_code: subjects[0]?.subject_code || '', count: 5 }]);
+    setCriteria([...criteria, { subject_code: csv_subjects[0]?.subject_code || '', count: 5 }]);
   };
 
   const handleRemoveCriteria = (index) => {
@@ -123,13 +123,13 @@ export default function CreateMockExamModal({ isOpen, onClose, testToEdit, onSav
 
       if (testToEdit) {
         const { error: updateError } = await supabase
-          .from('mock_exams')
+          .from('csv_mock_exams')
           .update(dataToSave)
           .eq('test_id', testToEdit.test_id || testToEdit.id);
         if (updateError) throw updateError;
       } else {
         const { error: insertError } = await supabase
-          .from('mock_exams')
+          .from('csv_mock_exams')
           .insert([dataToSave]);
         if (insertError) throw insertError;
       }
@@ -269,7 +269,7 @@ export default function CreateMockExamModal({ isOpen, onClose, testToEdit, onSav
                         className="ncc-input flex-1"
                       >
                         <option value="">Select Subject</option>
-                        {subjects.map(s => (
+                        {csv_subjects.map(s => (
                           <option key={s.subject_code} value={s.subject_code}>{s.subject_code} - {s.subject_name}</option>
                         ))}
                       </select>

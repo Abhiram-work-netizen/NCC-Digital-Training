@@ -9,8 +9,8 @@ export default function ExamAnalytics() {
 
   useEffect(() => {
     const load = async () => {
-      const { data: attempts } = await supabase.from('exam_attempts')
-        .select('percentage, status, submitted_at, mock_exams(test_name, certificate_level, wing)')
+      const { data: attempts } = await supabase.from('csv_exam_attempts')
+        .select('percentage, status, submitted_at, csv_mock_exams(test_name, certificate_level, wing)')
         .in('status', ['submitted', 'flagged'])
         .order('submitted_at', { ascending: false })
         .limit(50);
@@ -79,8 +79,8 @@ export default function ExamAnalytics() {
             <tbody className="divide-y divide-surface-100">
               {exams.map((a, i) => (
                 <tr key={i} className="hover:bg-surface-50 transition">
-                  <td className="p-4 font-medium text-navy-900 text-sm">{a.mock_exams?.test_name || 'Unknown'}</td>
-                  <td className="p-4"><span className="ncc-badge bg-navy-900/10 text-navy-900">{a.mock_exams?.certificate_level}</span></td>
+                  <td className="p-4 font-medium text-navy-900 text-sm">{a.csv_mock_exams?.test_name || 'Unknown'}</td>
+                  <td className="p-4"><span className="ncc-badge bg-navy-900/10 text-navy-900">{a.csv_mock_exams?.certificate_level}</span></td>
                   <td className="p-4">
                     <span className={`font-bold text-sm ${(a.percentage || 0) >= 50 ? 'text-mgreen-600' : 'text-danger'}`}>{a.percentage || 0}%</span>
                   </td>
@@ -103,7 +103,7 @@ export default function ExamAnalytics() {
           {exams.map((a, i) => (
             <div key={i} className="p-4 space-y-1">
               <div className="flex items-center justify-between">
-                <h3 className="font-bold text-navy-900 text-sm">{a.mock_exams?.test_name || 'Unknown'}</h3>
+                <h3 className="font-bold text-navy-900 text-sm">{a.csv_mock_exams?.test_name || 'Unknown'}</h3>
                 <span className={`font-bold text-sm ${(a.percentage || 0) >= 50 ? 'text-mgreen-600' : 'text-danger'}`}>{a.percentage || 0}%</span>
               </div>
               <div className="flex gap-2 text-xs">

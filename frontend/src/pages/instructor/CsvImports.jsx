@@ -7,7 +7,7 @@ export default function InstructorImports() {
 
   const importOptions = [
     {
-      id: 'questions',
+      id: 'csv_questions',
       title: 'Import Questions',
       description: 'Upload a CSV of questions for the question repository.',
       icon: FileQuestion,
@@ -15,7 +15,7 @@ export default function InstructorImports() {
       bg: 'bg-gold-500/10'
     },
     {
-      id: 'subjects',
+      id: 'csv_subjects',
       title: 'Import Subjects',
       description: 'Upload a CSV defining subjects and their codes.',
       icon: BookOpen,
@@ -23,7 +23,7 @@ export default function InstructorImports() {
       bg: 'bg-navy-500/10'
     },
     {
-      id: 'modules',
+      id: 'csv_modules',
       title: 'Import Modules',
       description: 'Upload a CSV mapping modules to subjects.',
       icon: Layers,
@@ -31,7 +31,7 @@ export default function InstructorImports() {
       bg: 'bg-mgreen-600/10'
     },
     {
-      id: 'mock_exams',
+      id: 'csv_mock_exams',
       title: 'Import Mock Exams',
       description: 'Upload a CSV containing mock exam definitions.',
       icon: FileText,
@@ -80,7 +80,7 @@ export default function InstructorImports() {
       <CsvUploadModal
         isOpen={!!csvModalType}
         onClose={() => setCsvModalType(null)}
-        tableType={csvModalType || 'questions'}
+        tableType={csvModalType || 'csv_questions'}
         onSuccess={() => setCsvModalType(null)}
       />
     </div>

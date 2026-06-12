@@ -22,7 +22,7 @@ const defaultAuthUsers = [
   { id: 'c0000000-0000-0000-0000-000000000003', email: 'cadet@ncc.gov.in', password: 'Cadet@123', full_name: 'Cadet Rohan Sharma', role: 'cadet', wing: 'Army', certificate_level: 'B', ncc_number: 'DL/20/SD/A/100234', level: 2, exp: 1200 }
 ];
 
-const SYLLABUS_VERSION = 'ncc_mock_csv_v1';
+const SYLLABUS_VERSION = 'ncc_mock_v1';
 if (USE_MOCK && localStorage.getItem(SYLLABUS_VERSION) !== 'true') {
   localStorage.setItem(SYLLABUS_VERSION, 'true');
   localStorage.setItem('ncc_mock_initialized', 'true');
@@ -59,7 +59,7 @@ if (USE_MOCK && localStorage.getItem(SYLLABUS_VERSION) !== 'true') {
   localStorage.setItem('ncc_mock_grading_policy', JSON.stringify([]));
   localStorage.setItem('ncc_mock_analytics_config', JSON.stringify([]));
   localStorage.setItem('ncc_mock_anticheat_config', JSON.stringify([]));
-  localStorage.setItem('ncc_mock_csv_import_logs', JSON.stringify([]));
+  localStorage.setItem('ncc_mock_import_logs', JSON.stringify([]));
 }
 
 // Generate standard UUID
@@ -422,7 +422,7 @@ class MockSupabaseClient {
     // Actions
     if (builder.action === 'select') {
       // Resolve relationship joins for mock queries
-      if (builder.table === 'mock_exams') {
+      if (builder.table === 'csv_mock_exams') {
         const courses = this._getTableData('courses');
         list = list.map(t => {
           const course = courses.find(c => c.id === t.course_id);
@@ -452,18 +452,18 @@ class MockSupabaseClient {
             } : null
           };
         });
-      } else if (builder.table === 'questions') {
-        const subjects = this._getTableData('subjects');
+      } else if (builder.table === 'csv_questions') {
+        const csv_subjects = this._getTableData('csv_subjects');
         list = list.map(q => {
-          const subject = subjects.find(s => s.subject_code === q.subject_code);
+          const subject = csv_subjects.find(s => s.subject_code === q.subject_code);
           return {
             ...q,
-            subjects: subject ? {
+            csv_subjects: subject ? {
               subject_name: subject.subject_name
             } : null
           };
         });
-      } else if (builder.table === 'modules') {
+      } else if (builder.table === 'csv_modules') {
         const chapters = this._getTableData('chapters');
         list = list.map(m => {
           const modChapters = chapters.filter(c => c.module_id === m.id);
@@ -472,8 +472,8 @@ class MockSupabaseClient {
             chapters: modChapters
           };
         });
-      } else if (builder.table === 'exam_attempts') {
-        const tests = this._getTableData('mock_exams');
+      } else if (builder.table === 'csv_exam_attempts') {
+        const tests = this._getTableData('csv_mock_exams');
         list = list.map(ta => {
           const test = tests.find(t => t.test_id === ta.test_id);
           return {
@@ -595,8 +595,8 @@ class MockSupabaseClient {
     // 1. fn_get_course_chapter_ids
     if (fn === 'fn_get_course_chapter_ids') {
       const courseId = params.p_course_id;
-      const modules = this._getTableData('modules').filter(m => m.course_id === courseId);
-      const moduleIds = modules.map(m => m.id);
+      const csv_modules = this._getTableData('csv_modules').filter(m => m.course_id === courseId);
+      const moduleIds = csv_modules.map(m => m.id);
       const chapters = this._getTableData('chapters').filter(c => moduleIds.includes(c.module_id));
       return { data: chapters.map(c => c.id), error: null };
     }
@@ -604,11 +604,11 @@ class MockSupabaseClient {
     // 2. fn_start_exam
     if (fn === 'fn_start_exam') {
       const testId = params.p_test_id;
-      const tests = this._getTableData('mock_exams');
+      const tests = this._getTableData('csv_mock_exams');
       const test = tests.find(t => t.test_id === testId);
       if (!test) return { data: null, error: { message: 'Test not found' } };
 
-      const allQuestions = this._getTableData('questions');
+      const allQuestions = this._getTableData('csv_questions');
       
       const distribution = (test.question_distribution || '').split('|');
       let selected = [];
@@ -637,11 +637,11 @@ class MockSupabaseClient {
         tab_switch_count: 0
       };
 
-      const attempts = this._getTableData('exam_attempts');
+      const attempts = this._getTableData('csv_exam_attempts');
       attempts.push(attempt);
-      this._saveTableData('exam_attempts', attempts);
+      this._saveTableData('csv_exam_attempts', attempts);
       
-      const attemptQuestionsAll = this._getTableData('attempt_questions');
+      const attemptQuestionsAll = this._getTableData('csv_attempt_questions');
       selected.forEach(q => {
         attemptQuestionsAll.push({
           id: uuidv4(),
@@ -659,14 +659,14 @@ class MockSupabaseClient {
           is_correct: null
         });
       });
-      this._saveTableData('attempt_questions', attemptQuestionsAll);
+      this._saveTableData('csv_attempt_questions', attemptQuestionsAll);
 
       return {
         data: {
           attempt_id: attemptId,
           duration_minutes: parseInt(test.time_limit_minutes) || 20,
           test_title: test.test_name,
-          questions: selected.map(q => ({
+          csv_questions: selected.map(q => ({
             id: q.question_id,
             question_text: q.question_text,
             options: [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean)
@@ -683,14 +683,14 @@ class MockSupabaseClient {
       const tabSwitches = params.p_tab_switches || 0;
       const timeSpent = params.p_time_spent || 0;
 
-      const attempts = this._getTableData('exam_attempts');
+      const attempts = this._getTableData('csv_exam_attempts');
       const attemptIndex = attempts.findIndex(a => a.id === attemptId);
       if (attemptIndex === -1) return { data: null, error: { message: 'Attempt not found' } };
       const attempt = attempts[attemptIndex];
 
-      const test = this._getTableData('mock_exams').find(t => t.test_id === attempt.test_id);
+      const test = this._getTableData('csv_mock_exams').find(t => t.test_id === attempt.test_id);
       
-      const attemptQuestionsAll = this._getTableData('attempt_questions');
+      const attemptQuestionsAll = this._getTableData('csv_attempt_questions');
       const attemptQuestions = attemptQuestionsAll.filter(q => q.attempt_id === attemptId);
 
       let correct = 0;
@@ -712,11 +712,11 @@ class MockSupabaseClient {
         q.is_correct = !!isCorrect;
       }
       
-      this._saveTableData('attempt_questions', attemptQuestionsAll);
+      this._saveTableData('csv_attempt_questions', attemptQuestionsAll);
 
       const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
       
-      const gradingPolicies = this._getTableData('grading_policy');
+      const gradingPolicies = this._getTableData('csv_grading_policy');
       let gradeInfo = { grade: 'FAIL', badge: 'none', label: 'Fail', message: 'Below pass mark.', colour_code: '#c62828' };
       for (const gp of gradingPolicies) {
         if (pct >= parseInt(gp.min_percent) && pct <= parseInt(gp.max_percent)) {
@@ -733,13 +733,13 @@ class MockSupabaseClient {
       attempt.total_questions = total;
       attempt.tab_switch_count = tabSwitches;
       attempt.time_spent_seconds = timeSpent;
-      const anticheat = this._getTableData('anticheat_config');
+      const anticheat = this._getTableData('csv_anticheat_config');
       const maxSwitchesSetting = anticheat.find(c => c.setting_key === 'max_tab_switches_before_flag');
       const maxSwitches = maxSwitchesSetting ? parseInt(maxSwitchesSetting.value) : 2;
       attempt.status = tabSwitches >= maxSwitches ? 'flagged' : 'submitted';
 
       attempts[attemptIndex] = attempt;
-      this._saveTableData('exam_attempts', attempts);
+      this._saveTableData('csv_exam_attempts', attempts);
 
       const currentUser = JSON.parse(localStorage.getItem('ncc_mock_session_user') || '{}');
       const profiles = this._getTableData('cadet_profiles');
@@ -803,17 +803,17 @@ class MockSupabaseClient {
     // 4. fn_get_exam_results
     if (fn === 'fn_get_exam_results') {
       const attemptId = params.p_attempt_id;
-      const attempt = this._getTableData('exam_attempts').find(a => a.id === attemptId);
+      const attempt = this._getTableData('csv_exam_attempts').find(a => a.id === attemptId);
       if (!attempt) return { data: null, error: { message: 'Results not found' } };
 
-      const test = this._getTableData('mock_exams').find(t => t.test_id === attempt.test_id);
-      const attemptQuestions = this._getTableData('attempt_questions').filter(q => q.attempt_id === attemptId);
+      const test = this._getTableData('csv_mock_exams').find(t => t.test_id === attempt.test_id);
+      const attemptQuestions = this._getTableData('csv_attempt_questions').filter(q => q.attempt_id === attemptId);
       
       let correct = attemptQuestions.filter(q => q.is_correct).length;
       let total = attempt.total_questions || 1;
       let pct = Math.round((correct / total) * 100);
 
-      const gradingPolicies = this._getTableData('grading_policy');
+      const gradingPolicies = this._getTableData('csv_grading_policy');
       let gradeInfo = { grade: 'FAIL', badge: 'none', label: 'Fail', message: 'Below pass mark.', colour_code: '#c62828' };
       for (const gp of gradingPolicies) {
         if (pct >= parseInt(gp.min_percent) && pct <= parseInt(gp.max_percent)) {
@@ -858,13 +858,13 @@ class MockSupabaseClient {
       let existing = this._getTableData(table) || [];
       
       let pk = 'id';
-      if (table === 'questions') pk = 'question_id';
-      else if (table === 'subjects') pk = 'subject_code';
-      else if (table === 'modules') pk = 'module_id';
-      else if (table === 'mock_exams') pk = 'test_id';
-      else if (table === 'grading_policy') pk = 'grade';
-      else if (table === 'analytics_config') pk = 'metric_id';
-      else if (table === 'anticheat_config') pk = 'setting_key';
+      if (table === 'csv_questions') pk = 'question_id';
+      else if (table === 'csv_subjects') pk = 'subject_code';
+      else if (table === 'csv_modules') pk = 'module_id';
+      else if (table === 'csv_mock_exams') pk = 'test_id';
+      else if (table === 'csv_grading_policy') pk = 'grade';
+      else if (table === 'csv_analytics_config') pk = 'metric_id';
+      else if (table === 'csv_anticheat_config') pk = 'setting_key';
 
       let imported = 0;
       let updated = 0;

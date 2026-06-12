@@ -16,22 +16,22 @@ BEGIN
     -- direct COPY or unnest is better, but this works well for CSV sizes typical here.
     FOR row IN SELECT * FROM jsonb_array_elements(data)
     LOOP
-        IF table_name = 'subjects' THEN
-            INSERT INTO subjects (subject_code, subject_name, description)
+        IF table_name = 'csv_subjects' THEN
+            INSERT INTO csv_subjects (subject_code, subject_name, description)
             VALUES (row->>'subject_code', row->>'subject_name', row->>'description')
             ON CONFLICT (subject_code) DO UPDATE 
             SET subject_name = EXCLUDED.subject_name, description = EXCLUDED.description;
             imported_count := imported_count + 1;
 
-        ELSIF table_name = 'modules' THEN
-            INSERT INTO modules (id, subject_code, module_number, module_name)
+        ELSIF table_name = 'csv_modules' THEN
+            INSERT INTO csv_modules (id, subject_code, module_number, module_name)
             VALUES ((row->>'id')::int, row->>'subject_code', (row->>'module_number')::int, row->>'module_name')
             ON CONFLICT (id) DO UPDATE 
             SET subject_code = EXCLUDED.subject_code, module_number = EXCLUDED.module_number, module_name = EXCLUDED.module_name;
             imported_count := imported_count + 1;
 
-        ELSIF table_name = 'questions' THEN
-            INSERT INTO questions (question_id, subject_code, module_number, difficulty, question_text, option_a, option_b, option_c, option_d, correct_answer, explanation, active)
+        ELSIF table_name = 'csv_questions' THEN
+            INSERT INTO csv_questions (question_id, subject_code, module_number, difficulty, question_text, option_a, option_b, option_c, option_d, correct_answer, explanation, active)
             VALUES (
                 (row->>'question_id')::int, 
                 row->>'subject_code', 
@@ -50,8 +50,8 @@ BEGIN
             SET subject_code = EXCLUDED.subject_code, module_number = EXCLUDED.module_number, difficulty = EXCLUDED.difficulty, question_text = EXCLUDED.question_text, option_a = EXCLUDED.option_a, option_b = EXCLUDED.option_b, option_c = EXCLUDED.option_c, option_d = EXCLUDED.option_d, correct_answer = EXCLUDED.correct_answer, explanation = EXCLUDED.explanation, active = EXCLUDED.active;
             imported_count := imported_count + 1;
 
-        ELSIF table_name = 'mock_exams' THEN
-            INSERT INTO mock_exams (test_id, test_name, wing, certificate_level, time_limit_minutes, passing_percent, question_distribution, is_active)
+        ELSIF table_name = 'csv_mock_exams' THEN
+            INSERT INTO csv_mock_exams (test_id, test_name, wing, certificate_level, time_limit_minutes, passing_percent, question_distribution, is_active)
             VALUES (
                 (row->>'test_id')::int, 
                 row->>'test_name', 
@@ -93,17 +93,17 @@ DECLARE
     v_question record;
 BEGIN
     -- Get Test
-    SELECT * INTO v_test FROM mock_exams WHERE test_id = p_test_id AND is_active = TRUE;
+    SELECT * INTO v_test FROM csv_mock_exams WHERE test_id = p_test_id AND is_active = TRUE;
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Test not found or inactive';
     END IF;
 
     -- Create Attempt
     v_attempt_id := gen_random_uuid();
-    INSERT INTO exam_attempts (id, user_id, test_id, started_at, status)
+    INSERT INTO csv_exam_attempts (id, user_id, test_id, started_at, status)
     VALUES (v_attempt_id, auth.uid(), p_test_id, now(), 'in_progress');
 
-    -- Generate Questions based on distribution
+    -- Generate csv_questions based on distribution
     -- Format: "SUBJECT_CODE:COUNT|SUBJECT_CODE:COUNT"
     FOREACH v_dist_item IN ARRAY string_to_array(v_test.question_distribution, '|')
     LOOP
@@ -112,13 +112,13 @@ BEGIN
 
         IF v_subj IS NOT NULL AND v_subj != '' AND v_count > 0 THEN
             FOR v_question IN (
-                SELECT * FROM questions 
+                SELECT * FROM csv_questions 
                 WHERE subject_code = v_subj AND active = TRUE 
                 ORDER BY random() 
                 LIMIT v_count
             )
             LOOP
-                INSERT INTO attempt_questions (
+                INSERT INTO csv_attempt_questions (
                     attempt_id, question_id, subject_code, user_answer, is_correct
                 ) VALUES (
                     v_attempt_id, v_question.question_id, v_question.subject_code, null, false
@@ -129,7 +129,7 @@ BEGIN
     END LOOP;
 
     -- Update Attempt total
-    UPDATE exam_attempts SET total_questions = v_total_questions WHERE id = v_attempt_id;
+    UPDATE csv_exam_attempts SET total_questions = v_total_questions WHERE id = v_attempt_id;
 
     -- Return Exam Data
     RETURN (
@@ -137,7 +137,7 @@ BEGIN
             'attempt_id', v_attempt_id,
             'duration_minutes', v_test.time_limit_minutes,
             'test_title', v_test.test_name,
-            'questions', (
+            'csv_questions', (
                 SELECT jsonb_agg(
                     jsonb_build_object(
                         'id', q.question_id,
@@ -145,8 +145,8 @@ BEGIN
                         'options', jsonb_build_array(q.option_a, q.option_b, q.option_c, q.option_d)
                     )
                 )
-                FROM attempt_questions aq
-                JOIN questions q ON aq.question_id = q.question_id
+                FROM csv_attempt_questions aq
+                JOIN csv_questions q ON aq.question_id = q.question_id
                 WHERE aq.attempt_id = v_attempt_id
             )
         )
@@ -171,8 +171,8 @@ DECLARE
     v_status text := 'submitted';
     v_max_switches int := 2;
 BEGIN
-    SELECT * INTO v_attempt FROM exam_attempts WHERE id = p_attempt_id;
-    SELECT * INTO v_test FROM mock_exams WHERE test_id = v_attempt.test_id;
+    SELECT * INTO v_attempt FROM csv_exam_attempts WHERE id = p_attempt_id;
+    SELECT * INTO v_test FROM csv_mock_exams WHERE test_id = v_attempt.test_id;
 
     v_total := v_attempt.total_questions;
 
@@ -186,7 +186,7 @@ BEGIN
         FROM jsonb_each_text(p_answers)
     ),
     graded AS (
-        UPDATE attempt_questions aq
+        UPDATE csv_attempt_questions aq
         SET 
             user_answer = sa.ans_text,
             is_correct = (
@@ -199,7 +199,7 @@ BEGIN
                     ELSE false
                 END
             )
-        FROM questions q
+        FROM csv_questions q
         JOIN submitted_answers sa ON q.question_id = sa.q_id
         WHERE aq.question_id = q.question_id AND aq.attempt_id = p_attempt_id
         RETURNING aq.is_correct
@@ -209,7 +209,7 @@ BEGIN
     v_pct := CASE WHEN v_total > 0 THEN round((v_correct::numeric / v_total::numeric) * 100) ELSE 0 END;
     v_exp_gain := v_pct * 10;
 
-    SELECT * INTO v_grade FROM grading_policy 
+    SELECT * INTO v_grade FROM csv_grading_policy 
     WHERE v_pct >= min_score AND v_pct <= max_score 
     ORDER BY min_score DESC LIMIT 1;
 
@@ -218,7 +218,7 @@ BEGIN
         v_status := 'flagged';
     END IF;
 
-    UPDATE exam_attempts 
+    UPDATE csv_exam_attempts 
     SET 
         submitted_at = now(),
         score = v_correct,
@@ -257,10 +257,10 @@ DECLARE
     v_test record;
     v_grade record;
 BEGIN
-    SELECT * INTO v_attempt FROM exam_attempts WHERE id = p_attempt_id;
-    SELECT * INTO v_test FROM mock_exams WHERE test_id = v_attempt.test_id;
+    SELECT * INTO v_attempt FROM csv_exam_attempts WHERE id = p_attempt_id;
+    SELECT * INTO v_test FROM csv_mock_exams WHERE test_id = v_attempt.test_id;
     
-    SELECT * INTO v_grade FROM grading_policy 
+    SELECT * INTO v_grade FROM csv_grading_policy 
     WHERE v_attempt.percentage >= min_score AND v_attempt.percentage <= max_score 
     ORDER BY min_score DESC LIMIT 1;
 
@@ -294,8 +294,8 @@ BEGIN
                     'is_correct', aq.is_correct
                 )
             )
-            FROM attempt_questions aq
-            JOIN questions q ON aq.question_id = q.question_id
+            FROM csv_attempt_questions aq
+            JOIN csv_questions q ON aq.question_id = q.question_id
             WHERE aq.attempt_id = p_attempt_id
         )
     );

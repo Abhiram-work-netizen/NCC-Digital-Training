@@ -50,7 +50,7 @@ export const validateData = (data, type) => {
   }
 
   // Common validation depending on type
-  if (type === 'questions') {
+  if (type === 'csv_questions') {
     const seenIds = new Set();
     data.forEach((row, i) => {
       if (!row.question_id) errors.push(`Row ${i + 1}: Missing question_id`);
@@ -64,7 +64,7 @@ export const validateData = (data, type) => {
         errors.push(`Row ${i + 1}: Invalid difficulty '${row.difficulty}'. Must be 1, 2, or 3.`);
       }
     });
-  } else if (type === 'mock_exams') {
+  } else if (type === 'csv_mock_exams') {
     const seenIds = new Set();
     data.forEach((row, i) => {
       if (!row.test_id) errors.push(`Row ${i + 1}: Missing test_id`);

@@ -4,7 +4,7 @@ import { BookOpen, Users, ClipboardCheck, BarChart3, GraduationCap, TrendingUp, 
 import { Link } from 'react-router-dom';
 
 export default function InstructorOverview() {
-  const [stats, setStats] = useState({ courses: 0, cadets: 0, questions: 0, tests: 0, avgScore: 0 });
+  const [stats, setStats] = useState({ courses: 0, cadets: 0, csv_questions: 0, tests: 0, avgScore: 0 });
   const [recentExams, setRecentExams] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -12,16 +12,16 @@ export default function InstructorOverview() {
     const load = async () => {
       const { data: courseList } = await supabase.from('courses').select('id', { count: 'exact' });
       const { data: cadetList } = await supabase.from('cadet_profiles').select('id', { count: 'exact' });
-      const { count: qCount } = await supabase.from('questions').select('question_id', { count: 'exact', head: true });
-      const { data: tList } = await supabase.from('mock_exams').select('*').order('test_id', { ascending: false }).limit(5);
-      const { data: attempts } = await supabase.from('exam_attempts')
+      const { count: qCount } = await supabase.from('csv_questions').select('question_id', { count: 'exact', head: true });
+      const { data: tList } = await supabase.from('csv_mock_exams').select('*').order('test_id', { ascending: false }).limit(5);
+      const { data: attempts } = await supabase.from('csv_exam_attempts')
         .select('percentage').in('status', ['submitted', 'flagged']);
       const avg = attempts?.length ? Math.round(attempts.reduce((s, a) => s + (a.percentage || 0), 0) / attempts.length) : 0;
 
       setStats({
         courses: courseList?.length || 0,
         cadets: cadetList?.length || 0,
-        questions: qCount || 0,
+        csv_questions: qCount || 0,
         tests: tList?.length || 0,
         avgScore: avg,
       });
@@ -40,7 +40,7 @@ export default function InstructorOverview() {
   const quickActions = [
     { label: 'Manage Cadets', icon: Users, path: '/instructor/cadets', color: 'text-mgreen-600', bg: 'bg-mgreen-600/10' },
     { label: 'Course Manager', icon: BookOpen, path: '/instructor/courses', color: 'text-navy-500', bg: 'bg-navy-500/10' },
-    { label: 'Question Bank', icon: FileText, path: '/instructor/questions', color: 'text-gold-500', bg: 'bg-gold-500/10' },
+    { label: 'Question Bank', icon: FileText, path: '/instructor/csv_questions', color: 'text-gold-500', bg: 'bg-gold-500/10' },
     { label: 'Mock Exams', icon: ClipboardCheck, path: '/instructor/mock-exams', color: 'text-wing-airforce', bg: 'bg-wing-airforce-bg' },
     { label: 'Announcements', icon: Megaphone, path: '/instructor/announcements', color: 'text-danger', bg: 'bg-danger-bg' },
     { label: 'Exam Analytics', icon: BarChart3, path: '/instructor/analytics', color: 'text-info', bg: 'bg-info-bg' },
@@ -60,7 +60,7 @@ export default function InstructorOverview() {
         {[
           { label: 'Active Courses', value: stats.courses, icon: BookOpen, color: 'text-navy-500', bg: 'bg-navy-500/10' },
           { label: 'Total Cadets', value: stats.cadets, icon: Users, color: 'text-mgreen-600', bg: 'bg-mgreen-600/10' },
-          { label: 'Questions', value: stats.questions, icon: FileText, color: 'text-gold-500', bg: 'bg-gold-500/10' },
+          { label: 'csv_questions', value: stats.csv_questions, icon: FileText, color: 'text-gold-500', bg: 'bg-gold-500/10' },
           { label: 'Avg. Score', value: stats.avgScore + '%', icon: TrendingUp, color: 'text-wing-airforce', bg: 'bg-wing-airforce-bg' },
         ].map((s, i) => (
           <div key={i} className="ncc-stat-card">

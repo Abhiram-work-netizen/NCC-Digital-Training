@@ -15,7 +15,7 @@ export default function CreateMockExam() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [mode, setMode] = useState('criteria');
-  const [subjects, setSubjects] = useState([]);
+  const [csv_subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [published, setPublished] = useState(false);
@@ -35,14 +35,14 @@ export default function CreateMockExam() {
 
   useEffect(() => {
     const fetchSubjects = async () => {
-      const { data } = await supabase.from('subjects').select('*');
+      const { data } = await supabase.from('csv_subjects').select('*');
       if (data) setSubjects(data);
     };
     fetchSubjects();
   }, []);
 
   const handleAddCriteria = () => {
-    setCriteria([...criteria, { subject_code: subjects[0]?.subject_code || '', count: 5 }]);
+    setCriteria([...criteria, { subject_code: csv_subjects[0]?.subject_code || '', count: 5 }]);
   };
 
   const handleRemoveCriteria = (index) => {
@@ -104,7 +104,7 @@ export default function CreateMockExam() {
     try {
       const dataToSave = { ...formData, question_distribution: getDistributionString() };
       if (!dataToSave.question_distribution) throw new Error('Please specify question distribution.');
-      const { error: insertError } = await supabase.from('mock_exams').insert([dataToSave]);
+      const { error: insertError } = await supabase.from('csv_mock_exams').insert([dataToSave]);
       if (insertError) throw insertError;
       setPublished(true);
       setStep(4);
@@ -236,7 +236,7 @@ export default function CreateMockExam() {
                   <div key={i} className="flex gap-2 flex-wrap">
                     <select value={c.subject_code} onChange={e => handleCriteriaChange(i, 'subject_code', e.target.value)} className="ncc-input flex-1 min-w-[180px]">
                       <option value="">Select Subject</option>
-                      {subjects.map(s => <option key={s.subject_code} value={s.subject_code}>{s.subject_code} - {s.subject_name}</option>)}
+                      {csv_subjects.map(s => <option key={s.subject_code} value={s.subject_code}>{s.subject_code} - {s.subject_name}</option>)}
                     </select>
                     <input type="number" min="1" value={c.count} onChange={e => handleCriteriaChange(i, 'count', parseInt(e.target.value))} className="ncc-input w-20 text-center" placeholder="Qty" />
                     <button type="button" onClick={() => handleRemoveCriteria(i)} className="p-3 text-danger hover:bg-danger/10 rounded-xl transition-colors cursor-pointer">
@@ -279,7 +279,7 @@ export default function CreateMockExam() {
                 { label: 'Wing', value: formData.wing },
                 { label: 'Duration', value: `${formData.time_limit_minutes} minutes` },
                 { label: 'Pass %', value: `${formData.passing_percent}%` },
-                { label: 'Total Questions', value: totalQuestions },
+                { label: 'Total csv_questions', value: totalQuestions },
               ].map((item, i) => (
                 <div key={i} className="bg-surface-50 p-3 rounded-xl">
                   <p className="text-[10px] font-bold text-surface-400 uppercase tracking-wider">{item.label}</p>

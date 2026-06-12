@@ -20,10 +20,10 @@ export default function AdminOverview() {
       const { count: courseCount } = await supabase.from('courses').select('id', { count: 'exact', head: true });
       
       // Tests
-      const { count: testCount } = await supabase.from('exam_attempts').select('id', { count: 'exact', head: true });
+      const { count: testCount } = await supabase.from('csv_exam_attempts').select('id', { count: 'exact', head: true });
       
       // Flagged
-      const { count: flaggedCount } = await supabase.from('exam_attempts')
+      const { count: flaggedCount } = await supabase.from('csv_exam_attempts')
         .select('id', { count: 'exact', head: true }).eq('status', 'flagged');
 
       setStats({
@@ -34,12 +34,12 @@ export default function AdminOverview() {
       });
 
       // Recent activity
-      const { data: recentAttempts } = await supabase.from('exam_attempts')
-        .select('percentage, status, submitted_at, mock_exams(test_name)')
+      const { data: recentAttempts } = await supabase.from('csv_exam_attempts')
+        .select('percentage, status, submitted_at, csv_mock_exams(test_name)')
         .order('submitted_at', { ascending: false }).limit(8);
 
       setActivity((recentAttempts || []).map(a => ({
-        text: `${a.status === 'flagged' ? '🚩 Flagged' : '✅ Submitted'} ${a.mock_exams?.test_name || 'Test'} — Score: ${a.percentage || 0}%`,
+        text: `${a.status === 'flagged' ? '🚩 Flagged' : '✅ Submitted'} ${a.csv_mock_exams?.test_name || 'Test'} — Score: ${a.percentage || 0}%`,
         time: a.submitted_at ? new Date(a.submitted_at).toLocaleString() : '',
         type: a.status === 'flagged' ? 'warning' : 'success'
       })));

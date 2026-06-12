@@ -14,7 +14,7 @@ export default function InstructorMockExams() {
   const navigate = useNavigate();
 
   const loadTests = async () => {
-    const { data } = await supabase.from('mock_exams').select('*').order('test_id', { ascending: false });
+    const { data } = await supabase.from('csv_mock_exams').select('*').order('test_id', { ascending: false });
     setTests(data || []);
     setLoading(false);
   };
@@ -87,7 +87,7 @@ export default function InstructorMockExams() {
       <CsvUploadModal
         isOpen={csvModalOpen}
         onClose={() => setCsvModalOpen(false)}
-        tableType="mock_exams"
+        tableType="csv_mock_exams"
         onSuccess={() => { setCsvModalOpen(false); loadTests(); }}
       />
     </div>

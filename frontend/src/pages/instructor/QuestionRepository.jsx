@@ -5,9 +5,9 @@ import AddQuestionModal from '../../components/AddQuestionModal';
 import CsvUploadModal from '../../components/CsvUploadModal';
 
 export default function QuestionRepository() {
-  const [questions, setQuestions] = useState([]);
+  const [csv_questions, setQuestions] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
-  const [subjects, setSubjects] = useState([]);
+  const [csv_subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Filters
@@ -42,24 +42,24 @@ export default function QuestionRepository() {
     return () => clearTimeout(searchTimer.current);
   }, [search]);
 
-  // Load subjects once
+  // Load csv_subjects once
   useEffect(() => {
     const fetchSubjects = async () => {
-      const { data } = await supabase.from('subjects').select('*');
+      const { data } = await supabase.from('csv_subjects').select('*');
       setSubjects(data || []);
     };
     fetchSubjects();
   }, []);
 
-  // Load questions with server-side pagination and filters
+  // Load csv_questions with server-side pagination and filters
   const loadQuestions = useCallback(async () => {
     setLoading(true);
     const from = (page - 1) * perPage;
     const to = from + perPage - 1;
 
     let query = supabase
-      .from('questions')
-      .select('*, subjects(subject_name)', { count: 'exact' })
+      .from('csv_questions')
+      .select('*, csv_subjects(subject_name)', { count: 'exact' })
       .order('question_id', { ascending: false })
       .range(from, to);
 
@@ -88,7 +88,7 @@ export default function QuestionRepository() {
 
   const deleteQuestion = async (id) => {
     if (!confirm('Are you sure you want to deactivate this question?')) return;
-    const { error } = await supabase.from('questions').update({ active: 'FALSE' }).eq('question_id', id);
+    const { error } = await supabase.from('csv_questions').update({ active: 'FALSE' }).eq('question_id', id);
     if (error) alert(error.message);
     else loadQuestions();
   };
@@ -104,7 +104,7 @@ export default function QuestionRepository() {
         <h1 className="text-xl md:text-2xl font-bold text-navy-900 flex items-center gap-2">
           <FileText className="w-6 h-6 md:w-7 md:h-7 text-gold-500" /> Question Repository
         </h1>
-        <p className="text-surface-700 text-sm">{totalCount} questions in database</p>
+        <p className="text-surface-700 text-sm">{totalCount} csv_questions in database</p>
       </div>
 
       {/* Top Filters */}
@@ -115,7 +115,7 @@ export default function QuestionRepository() {
               <Search className="absolute left-3 w-4 h-4 text-surface-300 pointer-events-none" />
               <input
                 type="text"
-                placeholder="Search questions..."
+                placeholder="Search csv_questions..."
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 className="ncc-input ncc-input-icon py-2 w-full text-sm h-10"
@@ -123,8 +123,8 @@ export default function QuestionRepository() {
             </div>
             <div className="flex flex-wrap gap-2">
               <select value={selectedSubject} onChange={e => { setSelectedSubject(e.target.value); setPage(1); }} className="ncc-input py-2 text-xs font-bold w-full sm:w-40">
-                <option value="all">All Subjects</option>
-                {subjects.map(b => <option key={b.subject_code} value={b.subject_code}>{b.subject_name}</option>)}
+                <option value="all">All csv_subjects</option>
+                {csv_subjects.map(b => <option key={b.subject_code} value={b.subject_code}>{b.subject_name}</option>)}
               </select>
               <select value={selectedDifficulty} onChange={e => { setSelectedDifficulty(e.target.value); setPage(1); }} className="ncc-input py-2 text-xs font-bold w-full sm:w-32">
                 <option value="all">All Difficulty</option>
@@ -174,7 +174,7 @@ export default function QuestionRepository() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-surface-100">
-                      {questions.map(q => (
+                      {csv_questions.map(q => (
                         <tr
                           key={q.question_id}
                           className={`hover:bg-surface-50 transition group cursor-pointer ${selectedQuestion?.question_id === q.question_id ? 'bg-gold-500/5 border-l-2 border-gold-500' : ''}`}
@@ -212,8 +212,8 @@ export default function QuestionRepository() {
                           </td>
                         </tr>
                       ))}
-                      {questions.length === 0 && (
-                        <tr><td colSpan={6} className="p-12 text-center text-surface-400">No questions found matching your criteria.</td></tr>
+                      {csv_questions.length === 0 && (
+                        <tr><td colSpan={6} className="p-12 text-center text-surface-400">No csv_questions found matching your criteria.</td></tr>
                       )}
                     </tbody>
                   </table>
@@ -222,7 +222,7 @@ export default function QuestionRepository() {
 
               {/* Mobile Cards */}
               <div className="md:hidden space-y-3">
-                {questions.map(q => (
+                {csv_questions.map(q => (
                   <div
                     key={q.question_id}
                     className={`ncc-glass-card p-4 cursor-pointer ${selectedQuestion?.question_id === q.question_id ? 'ring-2 ring-gold-500/30' : ''}`}
@@ -247,8 +247,8 @@ export default function QuestionRepository() {
                     </div>
                   </div>
                 ))}
-                {questions.length === 0 && (
-                  <div className="ncc-glass-card p-8 text-center text-surface-400">No questions found.</div>
+                {csv_questions.length === 0 && (
+                  <div className="ncc-glass-card p-8 text-center text-surface-400">No csv_questions found.</div>
                 )}
               </div>
 
@@ -469,7 +469,7 @@ export default function QuestionRepository() {
       <CsvUploadModal
         isOpen={csvModalOpen}
         onClose={() => setCsvModalOpen(false)}
-        tableType="questions"
+        tableType="csv_questions"
         onSuccess={() => { setCsvModalOpen(false); loadQuestions(); }}
       />
     </div>
