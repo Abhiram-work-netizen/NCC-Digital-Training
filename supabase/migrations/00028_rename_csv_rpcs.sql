@@ -132,8 +132,8 @@ BEGIN
     LOOP
         v_total_q := v_total_q + 1;
         
-        -- Check if answer is correct
-        IF p_answers->>v_record.question_id = v_record.correct_answer THEN
+        -- Check if answer is correct (aggressively trim whitespace/carriage returns from CSVs)
+        IF trim(both E' \n\r\t' from p_answers->>v_record.question_id) = trim(both E' \n\r\t' from v_record.correct_answer) THEN
             v_correct_q := v_correct_q + 1;
             
             -- Save individual correct answer
