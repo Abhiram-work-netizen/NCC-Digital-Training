@@ -60,6 +60,53 @@ export default function CsvUploadModal({ isOpen, onClose, tableType, onSuccess }
       // Batch upsert in chunks of 500 to avoid payload limits
       const chunkSize = 500;
       let totalInserted = 0;
+
+      // Auto-extract and insert subjects and modules first if uploading questions
+      if (tableType === 'csv_questions') {
+        const uniqueSubjects = [];
+        const subjectCodes = new Set();
+        rows.forEach(row => {
+          if (row.subject_code && !subjectCodes.has(row.subject_code)) {
+            subjectCodes.add(row.subject_code);
+            uniqueSubjects.push({
+              subject_code: row.subject_code,
+              subject_name: row.subject_name || row.subject_code,
+              description: row.subject_name || `${row.subject_code} Subject`
+            });
+          }
+        });
+
+        if (uniqueSubjects.length > 0) {
+          const { error: subjectError } = await supabase
+            .from('csv_subjects')
+            .upsert(uniqueSubjects, { onConflict: 'subject_code' });
+          if (subjectError) throw new Error('Failed to auto-create subjects: ' + subjectError.message);
+        }
+
+        const uniqueModules = [];
+        const moduleKeys = new Set();
+        rows.forEach(row => {
+          if (row.subject_code && row.module_number) {
+            const key = `${row.subject_code}-${row.module_number}`;
+            if (!moduleKeys.has(key)) {
+              moduleKeys.add(key);
+              uniqueModules.push({
+                subject_code: row.subject_code,
+                module_number: parseInt(row.module_number, 10),
+                module_name: row.module_name || `Module ${row.module_number}`
+              });
+            }
+          }
+        });
+
+        if (uniqueModules.length > 0) {
+          const { error: moduleError } = await supabase
+            .from('csv_modules')
+            .upsert(uniqueModules, { onConflict: 'subject_code, module_number' });
+          if (moduleError) console.warn('Failed to auto-create modules:', moduleError.message);
+        }
+      }
+
       for (let i = 0; i < rows.length; i += chunkSize) {
         const rawChunk = rows.slice(i, i + chunkSize);
         
