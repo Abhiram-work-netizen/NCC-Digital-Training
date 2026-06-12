@@ -12,7 +12,6 @@ export default function Performance() {
   const navigate = useNavigate();
   const [attempts, setAttempts] = useState([]);
   const [historyError, setHistoryError] = useState(null);
-  const [rawAtts, setRawAtts] = useState(null);
   const [topicData, setTopicData] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
   const [leaderboardWing, setLeaderboardWing] = useState('All');
@@ -29,23 +28,26 @@ export default function Performance() {
   }, [leaderboardWing]);
 
   const loadData = async () => {
-    // 1. Fetch raw, completely unfiltered attempts for debugging
-    const { data: rawData } = await supabase.from('csv_exam_attempts').select('*');
-    setRawAtts(rawData);
-
-    // 2. Fetch all attempts from the new CSV engine with filters
-    const { data: atts, error: err1 } = await supabase.from('csv_exam_attempts')
-      .select('*, csv_mock_exams(test_name, passing_percent)')
-      .eq('user_id', user.id)
-      .order('submitted_at', { ascending: true });
+    // We are now using a secure RPC function to fetch history to bypass any potential RLS misconfigurations in PostgREST
+    const { data: atts, error: err1 } = await supabase.rpc('fn_get_my_csv_attempts');
     
     if (err1) {
-      console.error("Error fetching attempts:", err1);
-      setHistoryError(err1.message || 'Database error occurred loading history.');
+      console.error("Error fetching attempts via RPC:", err1);
+      setHistoryError(err1.message || 'Database error occurred loading history via RPC.');
     } else {
       setHistoryError(null);
     }
-    setAttempts(atts || []);
+    
+    // We transform the flat RPC response back into the nested shape the UI expects
+    const formattedAtts = (atts || []).map(a => ({
+      ...a,
+      csv_mock_exams: {
+        test_name: a.test_name,
+        passing_percent: a.passing_percent
+      }
+    }));
+    
+    setAttempts(formattedAtts);
 
     // Fetch all answers for topic breakdown
     const attemptIds = (atts || []).map(a => a.id);
@@ -333,14 +335,6 @@ export default function Performance() {
             <History className="w-5 h-5 text-info" /> Recent Test Results
           </h3>
           <div className="space-y-3">
-            {/* DEBUG BLOCK FOR DIAGNOSTICS */}
-            <div className="bg-surface-900 text-white p-4 font-mono text-xs overflow-auto max-h-64 mb-4 rounded-xl">
-              <p className="text-danger font-bold mb-2">RAW DATABASE ATTEMPTS LOG (DEBUG ONLY):</p>
-              <pre>{JSON.stringify(rawAtts, null, 2)}</pre>
-              <p className="text-info font-bold mt-2">CURRENT USER ID:</p>
-              <pre>{user?.id}</pre>
-            </div>
-
             {historyError && (
               <div className="bg-danger/10 border border-danger/20 text-danger p-4 rounded-xl text-sm font-bold flex flex-col gap-1">
                 <span>⚠️ Database Error: Failed to load history.</span>
