@@ -14,9 +14,23 @@ import ExamRoom from './pages/ExamRoom';
 import ExamResults from './pages/ExamResults';
 import Performance from './pages/Performance';
 import Profile from './pages/Profile';
-import InstructorDashboard from './pages/InstructorDashboard';
-import InstructorCourseManager from './pages/InstructorCourseManager';
-import AdminPanel from './pages/AdminPanel';
+
+// Instructor Route Pages
+import InstructorOverview from './pages/instructor/InstructorOverview';
+import InstructorCadets from './pages/instructor/Cadets';
+import InstructorCourses from './pages/instructor/Courses';
+import InstructorQuestionRepository from './pages/instructor/QuestionRepository';
+import InstructorMockExams from './pages/instructor/MockExams';
+import CreateMockExam from './pages/instructor/CreateMockExam';
+import ExamAnalytics from './pages/instructor/ExamAnalytics';
+import InstructorAnnouncements from './pages/instructor/Announcements';
+import InstructorImports from './pages/instructor/CsvImports';
+import InstructorCourseManager from './pages/InstructorCourseManager'; // Kept in original folder for now
+
+// Admin Route Pages
+import AdminOverview from './pages/admin/AdminOverview';
+import UserManagement from './pages/admin/UserManagement';
+import SystemActivity from './pages/admin/SystemActivity';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const { user, role, loading } = useAuth();
@@ -45,9 +59,34 @@ function App() {
               <Route path="/performance" element={<Performance />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/exam-results/:attemptId" element={<ExamResults />} />
-              <Route path="/instructor" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorDashboard /></ProtectedRoute>} />
+              
+              {/* Instructor Routes */}
+              <Route path="/instructor" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorOverview /></ProtectedRoute>} />
+              <Route path="/instructor/cadets" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorCadets /></ProtectedRoute>} />
+              <Route path="/instructor/courses" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorCourses /></ProtectedRoute>} />
+              <Route path="/instructor/questions" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorQuestionRepository /></ProtectedRoute>} />
+              <Route path="/instructor/mock-exams" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorMockExams /></ProtectedRoute>} />
+              <Route path="/instructor/mock-exams/create" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><CreateMockExam /></ProtectedRoute>} />
+              <Route path="/instructor/analytics" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><ExamAnalytics /></ProtectedRoute>} />
+              <Route path="/instructor/announcements" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorAnnouncements /></ProtectedRoute>} />
+              <Route path="/instructor/imports" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorImports /></ProtectedRoute>} />
               <Route path="/instructor/course/:courseId" element={<ProtectedRoute allowedRoles={['instructor', 'admin']}><InstructorCourseManager /></ProtectedRoute>} />
-              <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}><AdminPanel /></ProtectedRoute>} />
+
+              {/* Admin Routes */}
+              <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}><AdminOverview /></ProtectedRoute>} />
+              <Route path="/admin/users" element={<ProtectedRoute allowedRoles={['admin']}><UserManagement defaultRole="all" /></ProtectedRoute>} />
+              <Route path="/admin/cadets" element={<ProtectedRoute allowedRoles={['admin']}><UserManagement defaultRole="cadet" /></ProtectedRoute>} />
+              <Route path="/admin/anos" element={<ProtectedRoute allowedRoles={['admin']}><UserManagement defaultRole="instructor" /></ProtectedRoute>} />
+              <Route path="/admin/administrators" element={<ProtectedRoute allowedRoles={['admin']}><UserManagement defaultRole="admin" /></ProtectedRoute>} />
+              
+              <Route path="/admin/courses" element={<ProtectedRoute allowedRoles={['admin']}><InstructorCourses /></ProtectedRoute>} />
+              <Route path="/admin/questions" element={<ProtectedRoute allowedRoles={['admin']}><InstructorQuestionRepository /></ProtectedRoute>} />
+              <Route path="/admin/mock-exams" element={<ProtectedRoute allowedRoles={['admin']}><InstructorMockExams /></ProtectedRoute>} />
+              <Route path="/admin/analytics" element={<ProtectedRoute allowedRoles={['admin']}><ExamAnalytics /></ProtectedRoute>} />
+              <Route path="/admin/imports" element={<ProtectedRoute allowedRoles={['admin']}><InstructorImports /></ProtectedRoute>} />
+              <Route path="/admin/announcements" element={<ProtectedRoute allowedRoles={['admin']}><InstructorAnnouncements /></ProtectedRoute>} />
+              
+              <Route path="/admin/activity" element={<ProtectedRoute allowedRoles={['admin']}><SystemActivity /></ProtectedRoute>} />
             </Route>
 
             {/* Immersive Course Layout */}

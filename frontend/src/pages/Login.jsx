@@ -58,28 +58,28 @@ export default function Login() {
         <div className="relative z-10 text-center max-w-md">
           <img src={nccLogo} alt="NCC Crest" className="w-28 h-auto mx-auto mb-6 drop-shadow-2xl animate-float" />
           <h1 className="text-4xl font-black text-white mb-4 tracking-tight">NCC Digital Training</h1>
-          <p className="text-navy-200 text-lg leading-relaxed mb-8">
+          <p className="text-white/80 text-lg leading-relaxed mb-8">
             The premier digital learning and assessment platform for National Cadet Corps cadets.
           </p>
           <div className="flex justify-center gap-6 text-sm">
             <div className="text-center">
               <div className="text-gold-400 font-bold text-2xl">{stats.cadets}</div>
-              <div className="text-navy-300">Cadets</div>
+              <div className="text-white/60">Cadets</div>
             </div>
             <div className="w-px bg-white/20" />
             <div className="text-center">
               <div className="text-gold-400 font-bold text-2xl">{stats.courses}</div>
-              <div className="text-navy-300">Courses</div>
+              <div className="text-white/60">Courses</div>
             </div>
             <div className="w-px bg-white/20" />
             <div className="text-center">
               <div className="text-gold-400 font-bold text-2xl">3</div>
-              <div className="text-navy-300">Wings</div>
+              <div className="text-white/60">Wings</div>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-8 text-center text-navy-500 text-xs">
+        <div className="absolute bottom-8 text-center text-white/40 text-xs">
           Unity and Discipline • National Cadet Corps
         </div>
       </div>

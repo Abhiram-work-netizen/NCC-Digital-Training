@@ -3,7 +3,8 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/AuthContext';
 import {
   LayoutDashboard, BookOpen, ClipboardCheck, BarChart3, User,
-  GraduationCap, Shield, LogOut, Menu, X, Bell, ChevronDown
+  GraduationCap, Shield, LogOut, Menu, X, Bell, ChevronDown,
+  Users, FileText, Megaphone, Upload, ShieldAlert, Activity
 } from 'lucide-react';
 import nccLogo from '../assets/ncc-seeklogo.png';
 import NotificationPanel from '../components/NotificationPanel';
@@ -19,11 +20,19 @@ const CADET_ITEMS = [
 ];
 
 const INSTRUCTOR_ITEMS = [
-  { path: '/instructor', icon: GraduationCap, label: 'Instructor Panel' },
+  { path: '/instructor', icon: LayoutDashboard, label: 'Dashboard' },
+  { path: '/instructor/cadets', icon: Users, label: 'Cadets' },
+  { path: '/instructor/courses', icon: BookOpen, label: 'Courses' },
+  { path: '/instructor/questions', icon: FileText, label: 'Question Repository' },
+  { path: '/instructor/mock-exams', icon: ClipboardCheck, label: 'Mock Exams' },
+  { path: '/instructor/analytics', icon: BarChart3, label: 'Exam Analytics' },
+  { path: '/instructor/imports', icon: Upload, label: 'CSV Imports' },
+  { path: '/instructor/announcements', icon: Megaphone, label: 'Announcements' },
   { path: '/profile', icon: User, label: 'Profile' },
 ];
 
 const ADMIN_ITEMS = [
+<<<<<<< Updated upstream
   { path: '/admin', icon: Shield, label: 'Admin Panel' },
   { path: '/profile', icon: User, label: 'Profile' },
 ];
@@ -34,6 +43,20 @@ const BOTTOM_NAV_ITEMS = [
   { path: '/courses', icon: BookOpen, label: 'Courses' },
   { path: '/practice-tests', icon: ClipboardCheck, label: 'Tests' },
   { path: '/performance', icon: BarChart3, label: 'Stats' },
+=======
+  { path: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
+  { path: '/admin/users', icon: Users, label: 'User Management' },
+  { path: '/admin/cadets', icon: GraduationCap, label: 'Cadets' },
+  { path: '/admin/anos', icon: Shield, label: 'ANOs' },
+  { path: '/admin/administrators', icon: ShieldAlert, label: 'Administrators' },
+  { path: '/admin/courses', icon: BookOpen, label: 'Courses' },
+  { path: '/admin/questions', icon: FileText, label: 'Question Repository' },
+  { path: '/admin/mock-exams', icon: ClipboardCheck, label: 'Mock Exams' },
+  { path: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
+  { path: '/admin/imports', icon: Upload, label: 'CSV Imports' },
+  { path: '/admin/announcements', icon: Megaphone, label: 'Announcements' },
+  { path: '/admin/activity', icon: Activity, label: 'System Activity' },
+>>>>>>> Stashed changes
   { path: '/profile', icon: User, label: 'Profile' },
 ];
 
@@ -101,7 +124,18 @@ const MainLayout = () => {
   if (role === 'admin') items = ADMIN_ITEMS;
 
   const wing = profile?.wing || 'Common';
-  const wc = wingColors[wing] || { bg: 'bg-gold-200', text: 'text-gold-600', border: 'border-gold-500' };
+
+  const getMobileNavItems = () => {
+    // Only show 4 items + profile on mobile
+    if (items.length <= 5) return items;
+    return [
+      items[0],
+      items[1],
+      items[2],
+      items[3],
+      items.find(i => i.path === '/profile') || items[4]
+    ];
+  };
 
   return (
     <div className="flex h-screen overflow-hidden bg-surface-50">
@@ -127,7 +161,7 @@ const MainLayout = () => {
           <p className="text-[10px] font-bold text-navy-400 uppercase tracking-[0.15em] px-3 mb-2 mt-2">Main Menu</p>
           {items.map((item) => {
             const isActive = location.pathname === item.path ||
-              (item.path !== '/' && location.pathname.startsWith(item.path));
+              (item.path !== '/' && location.pathname.startsWith(item.path) && location.pathname !== '/profile');
             const Icon = item.icon;
             return (
               <Link
@@ -188,7 +222,7 @@ const MainLayout = () => {
             {/* Desktop page title */}
             <div className="hidden md:block">
               <h2 className="text-lg font-bold text-navy-900">
-                {items.find(i => location.pathname === i.path || (i.path !== '/' && location.pathname.startsWith(i.path)))?.label || 'NCC Platform'}
+                {items.find(i => location.pathname === i.path || (i.path !== '/' && location.pathname.startsWith(i.path) && i.path !== '/profile'))?.label || 'NCC Platform'}
               </h2>
             </div>
           </div>
@@ -233,9 +267,9 @@ const MainLayout = () => {
 
       {/* Mobile Bottom Navigation Bar */}
       <nav className="ncc-mobile-nav">
-        {items.map((item) => {
+        {getMobileNavItems().map((item) => {
           const isActive = location.pathname === item.path ||
-            (item.path !== '/' && location.pathname.startsWith(item.path));
+            (item.path !== '/' && location.pathname.startsWith(item.path) && item.path !== '/profile');
           const Icon = item.icon;
           return (
             <Link
