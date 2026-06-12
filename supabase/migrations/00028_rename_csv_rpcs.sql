@@ -33,9 +33,18 @@ BEGIN
     RETURNING id INTO v_attempt_id;
 
     -- 3. Randomly select questions based on distribution (mock logic)
-    -- For this beta version, we just pull ALL questions for the subjects
-    -- In production, this would parse `question_distribution` and pick N random questions per subject
-    WITH SelectedQuestions AS (
+    WITH Distribution AS (
+        SELECT 
+            split_part(part, ':', 1) AS subject_code,
+            split_part(part, ':', 2)::INTEGER AS q_count
+        FROM (
+            SELECT unnest(string_to_array(question_distribution, '|')) AS part
+            FROM csv_mock_exams
+            WHERE test_id = p_test_id
+        ) d
+        WHERE part != '' AND part LIKE '%:%'
+    ),
+    SelectedQuestions AS (
         SELECT 
             q.question_id, 
             q.question_text, 
@@ -47,11 +56,15 @@ BEGIN
             ) as options,
             q.subject_code, 
             q.difficulty
-        FROM csv_questions q
-        JOIN csv_mock_exams m ON m.test_id = p_test_id
-        WHERE m.question_distribution LIKE '%' || q.subject_code || '%'
-        AND q.active = TRUE
-        -- LIMIT logic would go here
+        FROM Distribution d
+        CROSS JOIN LATERAL (
+            SELECT question_id, question_text, option_a, option_b, option_c, option_d, subject_code, difficulty
+            FROM csv_questions
+            WHERE subject_code = d.subject_code
+            AND active = TRUE
+            ORDER BY random()
+            LIMIT d.q_count
+        ) q
     )
     SELECT jsonb_agg(
         jsonb_build_object(
