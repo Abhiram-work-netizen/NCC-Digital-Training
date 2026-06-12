@@ -32,13 +32,32 @@ export default function ExamRoom() {
   // Fetch test info
   useEffect(() => {
     const fetchTest = async () => {
-      const { data, error } = await supabase.from('tests').select('*').eq('id', testId).single();
-      if (error || !data) {
-        setError('Test not found');
+      // First try to fetch from csv_mock_exams
+      const { data, error } = await supabase.from('csv_mock_exams').select('*').eq('test_id', testId).single();
+      
+      if (!error && data) {
+        // Calculate total questions from distribution string e.g. "NCC_GEN:20|NCC_ARMY:10"
+        let totalQuestions = 0;
+        if (data.question_distribution) {
+          const parts = data.question_distribution.split('|');
+          parts.forEach(part => {
+            const [, countStr] = part.split(':');
+            if (countStr) totalQuestions += parseInt(countStr, 10);
+          });
+        }
+        
+        setTestInfo({
+          title: data.test_name,
+          description: `Mock Exam for ${data.wing} Wing, Certificate ${data.certificate_level}`,
+          duration_minutes: data.time_limit_minutes,
+          question_count: totalQuestions,
+          passing_score: data.passing_percent
+        });
         setPhase('rules');
         return;
       }
-      setTestInfo(data);
+
+      setError('Test not found');
       setPhase('rules');
     };
     fetchTest();
@@ -67,7 +86,8 @@ export default function ExamRoom() {
 
     setPhase('loading');
     try {
-      const { data, error } = await supabase.rpc('fn_start_exam', { p_test_id: testId });
+      // Use the newly renamed CSV RPC to avoid overloaded function ambiguity
+      const { data, error } = await supabase.rpc('fn_start_csv_exam', { p_test_id: parseInt(testId, 10) });
       if (error) throw error;
       setAttemptId(data.attempt_id);
       setQuestions(data.csv_questions || []);
@@ -186,7 +206,7 @@ export default function ExamRoom() {
     });
 
     try {
-      const { data, error } = await supabase.rpc('fn_submit_exam', {
+      const { data, error } = await supabase.rpc('fn_submit_csv_exam', {
         p_attempt_id: attemptId,
         p_answers: answerObject,
         p_tab_switches: tabSwitches,
@@ -233,7 +253,7 @@ export default function ExamRoom() {
               <h4 className="font-bold text-navy-900 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> Exam Details</h4>
               <ul className="space-y-1.5 text-xs text-surface-700 font-medium">
                 <li>Duration: {testInfo?.duration_minutes || 20} min</li>
-                <li>csv_questions: {testInfo?.question_count || 10} Q</li>
+                <li>Questions: {testInfo?.question_count || 10} Q</li>
                 <li>Passing: {testInfo?.passing_score || 60}%</li>
               </ul>
             </div>
