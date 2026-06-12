@@ -2,6 +2,9 @@
 -- Renames the CSV exam RPCs to prevent naming conflicts with legacy functions
 -- This solves the "Could not choose the best candidate function" error in PostgREST
 
+-- Fix the user_answer column so it can accept the full string text instead of just 'A', 'B', 'C', 'D'
+ALTER TABLE IF EXISTS csv_attempt_questions DROP CONSTRAINT IF EXISTS csv_attempt_questions_user_answer_check;
+ALTER TABLE IF EXISTS csv_attempt_questions ALTER COLUMN user_answer TYPE TEXT;
 -- Drop the new conflicting functions (from 00024)
 DROP FUNCTION IF EXISTS public.fn_start_exam(INTEGER);
 DROP FUNCTION IF EXISTS public.fn_submit_exam(UUID, JSONB, INTEGER, INTEGER);
@@ -135,16 +138,14 @@ BEGIN
             
             -- Save individual correct answer
             UPDATE csv_attempt_questions
-            SET selected_answer = p_answers->>v_record.question_id,
-                is_correct = TRUE,
-                score_awarded = 1
+            SET user_answer = p_answers->>v_record.question_id,
+                is_correct = TRUE
             WHERE attempt_id = p_attempt_id AND question_id = v_record.question_id;
         ELSE
             -- Save incorrect answer
             UPDATE csv_attempt_questions
-            SET selected_answer = p_answers->>v_record.question_id,
-                is_correct = FALSE,
-                score_awarded = 0
+            SET user_answer = p_answers->>v_record.question_id,
+                is_correct = FALSE
             WHERE attempt_id = p_attempt_id AND question_id = v_record.question_id;
         END IF;
     END LOOP;
