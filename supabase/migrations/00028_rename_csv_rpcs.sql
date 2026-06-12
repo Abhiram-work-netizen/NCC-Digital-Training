@@ -132,8 +132,8 @@ BEGIN
     LOOP
         v_total_q := v_total_q + 1;
         
-        -- Check if answer is correct (aggressively trim whitespace/carriage returns from CSVs)
-        IF trim(both E' \n\r\t' from p_answers->>v_record.question_id) = trim(both E' \n\r\t' from v_record.correct_answer) THEN
+        -- Check if answer is correct (extremely robust string matching)
+        IF LOWER(REGEXP_REPLACE(p_answers->>v_record.question_id, '[^a-zA-Z0-9]', '', 'g')) = LOWER(REGEXP_REPLACE(v_record.correct_answer, '[^a-zA-Z0-9]', '', 'g')) THEN
             v_correct_q := v_correct_q + 1;
             
             -- Save individual correct answer
