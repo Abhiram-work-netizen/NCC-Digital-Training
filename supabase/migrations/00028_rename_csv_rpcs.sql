@@ -36,7 +36,17 @@ BEGIN
     -- For this beta version, we just pull ALL questions for the subjects
     -- In production, this would parse `question_distribution` and pick N random questions per subject
     WITH SelectedQuestions AS (
-        SELECT q.question_id, q.question_text, q.options, q.subject_code, q.difficulty
+        SELECT 
+            q.question_id, 
+            q.question_text, 
+            -- Build a JSON array of non-null options
+            (
+                SELECT jsonb_agg(opt)
+                FROM unnest(ARRAY[q.option_a, q.option_b, q.option_c, q.option_d]) AS opt
+                WHERE opt IS NOT NULL AND opt != ''
+            ) as options,
+            q.subject_code, 
+            q.difficulty
         FROM csv_questions q
         JOIN csv_mock_exams m ON m.test_id = p_test_id
         WHERE m.question_distribution LIKE '%' || q.subject_code || '%'
