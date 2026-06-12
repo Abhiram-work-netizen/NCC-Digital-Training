@@ -33,7 +33,7 @@ BEGIN
         ELSIF table_name = 'csv_questions' THEN
             INSERT INTO csv_questions (question_id, subject_code, module_number, difficulty, question_text, option_a, option_b, option_c, option_d, correct_answer, explanation, active)
             VALUES (
-                (row->>'question_id')::int, 
+                (row->>'question_id')::varchar, 
                 row->>'subject_code', 
                 (row->>'module_number')::int, 
                 (row->>'difficulty')::int, 

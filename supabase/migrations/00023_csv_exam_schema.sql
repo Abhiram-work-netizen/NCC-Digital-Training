@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS csv_modules (
 );
 
 CREATE TABLE IF NOT EXISTS csv_questions (
-    question_id SERIAL PRIMARY KEY,
+    question_id VARCHAR(50) PRIMARY KEY,
     subject_code VARCHAR(20) REFERENCES csv_subjects(subject_code),
     module_number INTEGER,
     difficulty INTEGER CHECK (difficulty IN (1, 2, 3)), -- 1: Easy, 2: Medium, 3: Hard
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS csv_exam_attempts (
 CREATE TABLE IF NOT EXISTS csv_attempt_questions (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     attempt_id UUID REFERENCES csv_exam_attempts(id) ON DELETE CASCADE,
-    question_id INTEGER REFERENCES csv_questions(question_id) ON DELETE CASCADE,
+    question_id VARCHAR(50) REFERENCES csv_questions(question_id) ON DELETE CASCADE,
     subject_code VARCHAR(20),
     user_answer VARCHAR(1) CHECK (user_answer IN ('A', 'B', 'C', 'D', NULL)),
     is_correct BOOLEAN DEFAULT FALSE,
