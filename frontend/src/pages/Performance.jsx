@@ -29,7 +29,8 @@ export default function Performance() {
 
   const loadData = async () => {
     // We are now using a secure RPC function to fetch history to bypass any potential RLS misconfigurations in PostgREST
-    const { data: atts, error: err1 } = await supabase.rpc('fn_get_my_csv_attempts');
+    // Passing p_user_id explicitly to bypass the auth.uid() nullification edge case in SECURITY DEFINER
+    const { data: atts, error: err1 } = await supabase.rpc('fn_get_my_csv_attempts', { p_user_id: user.id });
     
     if (err1) {
       console.error("Error fetching attempts via RPC:", err1);
