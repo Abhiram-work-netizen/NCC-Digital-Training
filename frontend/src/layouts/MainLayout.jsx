@@ -32,18 +32,6 @@ const INSTRUCTOR_ITEMS = [
 ];
 
 const ADMIN_ITEMS = [
-<<<<<<< Updated upstream
-  { path: '/admin', icon: Shield, label: 'Admin Panel' },
-  { path: '/profile', icon: User, label: 'Profile' },
-];
-
-// Bottom nav shows max 5 items (the core 5)
-const BOTTOM_NAV_ITEMS = [
-  { path: '/dashboard', icon: LayoutDashboard, label: 'Home' },
-  { path: '/courses', icon: BookOpen, label: 'Courses' },
-  { path: '/practice-tests', icon: ClipboardCheck, label: 'Tests' },
-  { path: '/performance', icon: BarChart3, label: 'Stats' },
-=======
   { path: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
   { path: '/admin/users', icon: Users, label: 'User Management' },
   { path: '/admin/cadets', icon: GraduationCap, label: 'Cadets' },
@@ -56,7 +44,15 @@ const BOTTOM_NAV_ITEMS = [
   { path: '/admin/imports', icon: Upload, label: 'CSV Imports' },
   { path: '/admin/announcements', icon: Megaphone, label: 'Announcements' },
   { path: '/admin/activity', icon: Activity, label: 'System Activity' },
->>>>>>> Stashed changes
+  { path: '/profile', icon: User, label: 'Profile' },
+];
+
+// Bottom nav shows max 5 items (the core 5)
+const BOTTOM_NAV_ITEMS = [
+  { path: '/dashboard', icon: LayoutDashboard, label: 'Home' },
+  { path: '/courses', icon: BookOpen, label: 'Courses' },
+  { path: '/mock-exams', icon: ClipboardCheck, label: 'Exams' },
+  { path: '/performance', icon: BarChart3, label: 'Stats' },
   { path: '/profile', icon: User, label: 'Profile' },
 ];
 
