@@ -27,9 +27,9 @@ export default function Performance() {
   }, [leaderboardWing]);
 
   const loadData = async () => {
-    // Fetch all attempts
-    const { data: atts } = await supabase.from('test_attempts')
-      .select('*, tests(title, course_id, passing_score)')
+    // Fetch all attempts from the new CSV engine
+    const { data: atts } = await supabase.from('csv_exam_attempts')
+      .select('*, csv_mock_exams(test_name, passing_percent)')
       .eq('user_id', user.id)
       .in('status', ['submitted', 'flagged'])
       .order('submitted_at', { ascending: true });
@@ -38,12 +38,12 @@ export default function Performance() {
     // Fetch all answers for topic breakdown
     const attemptIds = (atts || []).map(a => a.id);
     if (attemptIds.length) {
-      const { data: answers } = await supabase.from('test_answers')
-        .select('is_correct, questions(topic_tag)')
+      const { data: answers } = await supabase.from('csv_attempt_questions')
+        .select('is_correct, csv_questions(subject_code)')
         .in('attempt_id', attemptIds);
       const topics = {};
       (answers || []).forEach(a => {
-        const t = a.questions?.topic_tag || 'General';
+        const t = a.csv_questions?.subject_code || 'General';
         if (!topics[t]) topics[t] = { topic: t, correct: 0, total: 0 };
         topics[t].total++;
         if (a.is_correct) topics[t].correct++;
@@ -67,9 +67,9 @@ export default function Performance() {
     </div>
   );
 
-  const avgScore = attempts.length ? Math.round(attempts.reduce((s, a) => s + (a.score || 0), 0) / attempts.length) : 0;
-  const passedCount = attempts.filter(a => a.score >= (a.tests?.passing_score || 60)).length;
-  const trendData = attempts.map((a, i) => ({ name: `Test ${i + 1}`, score: a.score || 0 }));
+  const avgScore = attempts.length ? Math.round(attempts.reduce((s, a) => s + (a.percentage || 0), 0) / attempts.length) : 0;
+  const passedCount = attempts.filter(a => a.percentage >= (a.csv_mock_exams?.passing_percent || 60)).length;
+  const trendData = attempts.map((a, i) => ({ name: `Test ${i + 1}`, score: a.percentage || 0 }));
   const weakTopics = topicData.filter(t => t.score < 60).sort((a, b) => a.score - b.score);
 
   return (
@@ -329,27 +329,27 @@ export default function Performance() {
               >
                 <div className="flex items-center gap-4">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    attempt.score >= (attempt.tests?.passing_score || 60) ? 'bg-mgreen-600/10 text-mgreen-600' : 'bg-danger/10 text-danger'
+                    attempt.percentage >= (attempt.csv_mock_exams?.passing_percent || 60) ? 'bg-mgreen-600/10 text-mgreen-600' : 'bg-danger/10 text-danger'
                   }`}>
-                    <span className="text-lg font-black">{attempt.score}%</span>
+                    <span className="text-lg font-black">{attempt.percentage}%</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-navy-900 group-hover:text-gold-600 transition-colors">{attempt.tests?.title}</h4>
+                    <h4 className="font-bold text-navy-900 group-hover:text-gold-600 transition-colors">{attempt.csv_mock_exams?.test_name}</h4>
                     <div className="flex items-center gap-3 mt-1">
                       <p className="text-[11px] text-surface-500 font-medium">
                         {new Date(attempt.submitted_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
                       </p>
                       <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
-                        attempt.score >= (attempt.tests?.passing_score || 60) ? 'bg-mgreen-600/10 text-mgreen-600' : 'bg-danger/10 text-danger'
+                        attempt.percentage >= (attempt.csv_mock_exams?.passing_percent || 60) ? 'bg-mgreen-600/10 text-mgreen-600' : 'bg-danger/10 text-danger'
                       }`}>
-                        {attempt.score >= (attempt.tests?.passing_score || 60) ? 'Passed' : 'Failed'}
+                        {attempt.percentage >= (attempt.csv_mock_exams?.passing_percent || 60) ? 'Passed' : 'Failed'}
                       </span>
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-right">
                   <div className="hidden sm:block">
-                    <p className="text-xs font-bold text-navy-900">{attempt.total_correct}/{attempt.total_questions}</p>
+                    <p className="text-xs font-bold text-navy-900">{attempt.score}/{attempt.total_questions}</p>
                     <p className="text-[10px] text-surface-500 font-medium uppercase">Correct</p>
                   </div>
                   <ChevronRight className="w-5 h-5 text-surface-300 group-hover:text-gold-500 transition-all group-hover:translate-x-1" />

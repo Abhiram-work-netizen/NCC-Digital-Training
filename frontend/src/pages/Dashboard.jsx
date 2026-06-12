@@ -65,9 +65,9 @@ export default function Dashboard() {
       setAnnouncements(anns || []);
 
       // Test stats
-      const { data: attempts } = await supabase.from('test_attempts')
-        .select('score, status').eq('user_id', user.id).in('status', ['submitted', 'flagged']);
-      const avgScore = attempts?.length ? Math.round(attempts.reduce((s, a) => s + (a.score || 0), 0) / attempts.length) : 0;
+      const { data: attempts } = await supabase.from('csv_exam_attempts')
+        .select('percentage, status').eq('user_id', user.id).in('status', ['submitted', 'flagged']);
+      const avgScore = attempts?.length ? Math.round(attempts.reduce((s, a) => s + (a.percentage || 0), 0) / attempts.length) : 0;
 
       setStats({
         enrolled: enrolled.length,
