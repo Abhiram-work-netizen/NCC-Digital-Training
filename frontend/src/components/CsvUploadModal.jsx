@@ -35,14 +35,28 @@ export default function CsvUploadModal({ isOpen, onClose, tableType, onSuccess }
     setError('');
     
     try {
-      const { data, error: importError } = await supabase.rpc('fn_import_csv_data', {
-        table: tableType,
-        data: validationResult.data
-      });
+      const rows = validationResult.data;
 
-      if (importError) throw importError;
-      
-      setImportResult(data);
+      // Determine the conflict key for upsert based on table type
+      let conflictKey = 'id';
+      if (tableType === 'csv_questions') conflictKey = 'question_id';
+      else if (tableType === 'csv_subjects') conflictKey = 'subject_code';
+      else if (tableType === 'csv_mock_exams') conflictKey = 'test_id';
+
+      // Batch upsert in chunks of 500 to avoid payload limits
+      const chunkSize = 500;
+      let totalInserted = 0;
+      for (let i = 0; i < rows.length; i += chunkSize) {
+        const chunk = rows.slice(i, i + chunkSize);
+        const { error: upsertError } = await supabase
+          .from(tableType)
+          .upsert(chunk, { onConflict: conflictKey });
+
+        if (upsertError) throw upsertError;
+        totalInserted += chunk.length;
+      }
+
+      setImportResult({ imported: totalInserted, updated: 0, skipped: 0 });
       if (onSuccess) onSuccess();
     } catch (err) {
       setError(err.message || 'Import failed.');

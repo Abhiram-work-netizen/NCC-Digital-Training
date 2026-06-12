@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../services/supabase';
-import { ClipboardCheck, Plus, Edit2, Upload } from 'lucide-react';
+import { ClipboardCheck, Plus, Edit2, Upload, Trash2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import CreateMockExamModal from '../../components/CreateMockExamModal';
 import CsvUploadModal from '../../components/CsvUploadModal';
@@ -20,6 +20,13 @@ export default function InstructorMockExams() {
   };
 
   useEffect(() => { loadTests(); }, []);
+
+  const deleteTest = async (testId) => {
+    if (!confirm('Are you sure you want to delete this mock exam? This cannot be undone.')) return;
+    const { error } = await supabase.from('csv_mock_exams').delete().eq('test_id', testId);
+    if (error) alert(error.message);
+    else loadTests();
+  };
 
   if (loading) return (
     <div className="flex items-center justify-center min-h-[60vh]">
@@ -55,6 +62,9 @@ export default function InstructorMockExams() {
             <div className="absolute top-4 right-4 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
               <button onClick={() => { setEditingTest(t); setIsTestModalOpen(true); }} className="p-1.5 hover:bg-surface-200 rounded-lg text-navy-500 cursor-pointer">
                 <Edit2 className="w-4 h-4" />
+              </button>
+              <button onClick={() => deleteTest(t.test_id)} className="p-1.5 hover:bg-danger/10 rounded-lg text-danger cursor-pointer" title="Delete Exam">
+                <Trash2 className="w-4 h-4" />
               </button>
             </div>
             <div className="flex items-center gap-2 mb-2">
