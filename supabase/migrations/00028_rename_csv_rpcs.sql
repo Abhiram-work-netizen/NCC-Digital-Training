@@ -111,11 +111,13 @@ DECLARE
     v_correct_q INTEGER := 0;
     v_score INTEGER := 0;
     v_percentage INTEGER := 0;
+    v_exp_gain INTEGER := 0;
+    v_user_id UUID;
     v_status VARCHAR := 'submitted';
     v_record RECORD;
 BEGIN
     -- Validate attempt
-    SELECT test_id INTO v_test_id
+    SELECT test_id, user_id INTO v_test_id, v_user_id
     FROM csv_exam_attempts
     WHERE id = p_attempt_id AND status = 'in_progress';
 
@@ -162,6 +164,8 @@ BEGIN
     END LOOP;
 
     v_score := v_correct_q;
+    v_exp_gain := v_correct_q * 10; -- Award 10 XP per correct question
+    
     IF v_total_q > 0 THEN
         v_percentage := (v_correct_q * 100) / v_total_q;
     END IF;
@@ -181,12 +185,22 @@ BEGIN
         submitted_at = now()
     WHERE id = p_attempt_id;
 
+    -- Award XP to Cadet
+    IF v_exp_gain > 0 AND v_user_id IS NOT NULL THEN
+        UPDATE public.cadet_profiles
+        SET 
+            exp = COALESCE(exp, 0) + v_exp_gain,
+            level = fn_calculate_level(COALESCE(exp, 0) + v_exp_gain)
+        WHERE id = v_user_id;
+    END IF;
+
     RETURN jsonb_build_object(
         'status', v_status,
         'score', v_score,
         'total_questions', v_total_q,
         'percentage', v_percentage,
-        'total_correct', v_correct_q
+        'total_correct', v_correct_q,
+        'exp_gain', v_exp_gain
     );
 END;
 $$;
