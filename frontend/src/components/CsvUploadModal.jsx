@@ -37,17 +37,48 @@ export default function CsvUploadModal({ isOpen, onClose, tableType, onSuccess }
     try {
       const rows = validationResult.data;
 
-      // Determine the conflict key for upsert based on table type
+      // Determine the conflict key and allowed columns for upsert based on table type
       let conflictKey = 'id';
-      if (tableType === 'csv_questions') conflictKey = 'question_id';
-      else if (tableType === 'csv_subjects') conflictKey = 'subject_code';
-      else if (tableType === 'csv_mock_exams') conflictKey = 'test_id';
+      let allowedColumns = [];
+      if (tableType === 'csv_questions') {
+        conflictKey = 'question_id';
+        allowedColumns = ['question_id', 'subject_code', 'module_number', 'difficulty', 'question_text', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_answer', 'explanation', 'active'];
+      }
+      else if (tableType === 'csv_subjects') {
+        conflictKey = 'subject_code';
+        allowedColumns = ['subject_code', 'subject_name', 'description'];
+      }
+      else if (tableType === 'csv_modules') {
+        conflictKey = 'id';
+        allowedColumns = ['id', 'subject_code', 'module_number', 'module_name'];
+      }
+      else if (tableType === 'csv_mock_exams') {
+        conflictKey = 'test_id';
+        allowedColumns = ['test_id', 'test_name', 'wing', 'certificate_level', 'time_limit_minutes', 'passing_percent', 'question_distribution', 'is_active'];
+      }
 
       // Batch upsert in chunks of 500 to avoid payload limits
       const chunkSize = 500;
       let totalInserted = 0;
       for (let i = 0; i < rows.length; i += chunkSize) {
-        const chunk = rows.slice(i, i + chunkSize);
+        const rawChunk = rows.slice(i, i + chunkSize);
+        
+        // Strip out extraneous CSV columns to prevent PostgREST errors
+        const chunk = rawChunk.map(row => {
+          const cleanRow = {};
+          allowedColumns.forEach(col => {
+            if (row[col] !== undefined && row[col] !== '') {
+              // Convert boolean fields
+              if ((col === 'active' || col === 'is_active') && typeof row[col] === 'string') {
+                cleanRow[col] = row[col].toUpperCase() === 'TRUE';
+              } else {
+                cleanRow[col] = row[col];
+              }
+            }
+          });
+          return cleanRow;
+        });
+
         const { error: upsertError } = await supabase
           .from(tableType)
           .upsert(chunk, { onConflict: conflictKey });
