@@ -11,6 +11,7 @@ export default function Performance() {
   const { user, profile } = useAuth();
   const navigate = useNavigate();
   const [attempts, setAttempts] = useState([]);
+  const [historyError, setHistoryError] = useState(null);
   const [topicData, setTopicData] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
   const [leaderboardWing, setLeaderboardWing] = useState('All');
@@ -28,11 +29,18 @@ export default function Performance() {
 
   const loadData = async () => {
     // Fetch all attempts from the new CSV engine
-    const { data: atts } = await supabase.from('csv_exam_attempts')
+    const { data: atts, error: err1 } = await supabase.from('csv_exam_attempts')
       .select('*, csv_mock_exams(test_name, passing_percent)')
       .eq('user_id', user.id)
       .in('status', ['submitted', 'flagged'])
       .order('submitted_at', { ascending: true });
+    
+    if (err1) {
+      console.error("Error fetching attempts:", err1);
+      setHistoryError(err1.message || 'Database error occurred loading history.');
+    } else {
+      setHistoryError(null);
+    }
     setAttempts(atts || []);
 
     // Fetch all answers for topic breakdown
@@ -321,7 +329,21 @@ export default function Performance() {
             <History className="w-5 h-5 text-info" /> Recent Test Results
           </h3>
           <div className="space-y-3">
-            {[...attempts].reverse().map(attempt => (
+            {historyError && (
+              <div className="bg-danger/10 border border-danger/20 text-danger p-4 rounded-xl text-sm font-bold flex flex-col gap-1">
+                <span>⚠️ Database Error: Failed to load history.</span>
+                <span className="text-xs font-normal opacity-80">{historyError}</span>
+                <span className="text-xs font-normal mt-1">Please ensure you have executed all SQL patches in your Supabase Editor.</span>
+              </div>
+            )}
+            
+            {!historyError && attempts.length === 0 && (
+              <div className="text-center p-8 bg-surface-100 rounded-2xl text-surface-500 font-medium border border-dashed border-surface-300">
+                You haven't taken any mock exams yet. Let's get started!
+              </div>
+            )}
+
+            {!historyError && attempts.length > 0 && [...attempts].reverse().map(attempt => (
               <div 
                 key={attempt.id} 
                 onClick={() => navigate(`/exam-results/${attempt.id}`)}
@@ -334,7 +356,7 @@ export default function Performance() {
                     <span className="text-lg font-black">{attempt.percentage}%</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-navy-900 group-hover:text-gold-600 transition-colors">{attempt.csv_mock_exams?.test_name}</h4>
+                    <h4 className="font-bold text-navy-900 group-hover:text-gold-600 transition-colors">{attempt.csv_mock_exams?.test_name || 'Practice Test'}</h4>
                     <div className="flex items-center gap-3 mt-1">
                       <p className="text-[11px] text-surface-500 font-medium">
                         {new Date(attempt.submitted_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
