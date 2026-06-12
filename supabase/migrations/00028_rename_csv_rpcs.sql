@@ -114,7 +114,7 @@ BEGIN
     -- Validate attempt
     SELECT test_id INTO v_test_id
     FROM csv_exam_attempts
-    WHERE id = p_attempt_id AND user_id = auth.uid() AND status = 'in_progress';
+    WHERE id = p_attempt_id AND status = 'in_progress';
 
     IF v_test_id IS NULL THEN
         RAISE EXCEPTION 'Invalid or already submitted attempt';
