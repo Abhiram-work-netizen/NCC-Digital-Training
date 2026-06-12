@@ -15,22 +15,48 @@ export default function PracticeTests() {
   useEffect(() => {
     const load = async () => {
       const wing = profile?.wing || 'Common';
-      const { data: allTests } = await supabase.from('tests')
-        .select('*, courses(title, target_wing, certificate_level)')
+      const { data: allTests } = await supabase.from('csv_mock_exams')
+        .select('*')
         .eq('is_active', true)
-        .or(`target_wing.eq.Common,target_wing.eq.${wing}`)
+        .or(`wing.eq.Common,wing.eq.${wing}`)
         .order('created_at', { ascending: false });
-      setTests(allTests || []);
+      
+      const formattedTests = (allTests || []).map(test => {
+        // Calculate total questions from distribution string e.g. "NCC_GEN:20|NCC_ARMY:10"
+        let totalQuestions = 0;
+        if (test.question_distribution) {
+          const parts = test.question_distribution.split('|');
+          parts.forEach(part => {
+            const [, countStr] = part.split(':');
+            if (countStr) totalQuestions += parseInt(countStr, 10);
+          });
+        }
 
-      // Best scores per test
+        return {
+          id: test.test_id,
+          test_type: 'mock',
+          title: test.test_name,
+          description: `Mock Exam for ${test.wing} Wing, Certificate ${test.certificate_level}`,
+          duration_minutes: test.time_limit_minutes,
+          question_count: totalQuestions,
+          passing_score: test.passing_percent,
+          target_wing: test.wing,
+          certificate_level: test.certificate_level,
+          created_at: test.created_at
+        };
+      });
+
+      setTests(formattedTests);
+
+      // Best scores per test from new csv_exam_attempts table
       if (user) {
-        const { data: attempts } = await supabase.from('test_attempts')
-          .select('test_id, score, status')
+        const { data: attempts } = await supabase.from('csv_exam_attempts')
+          .select('test_id, percentage, status')
           .eq('user_id', user.id)
           .in('status', ['submitted', 'flagged']);
         const scores = {};
         (attempts || []).forEach(a => {
-          if (!scores[a.test_id] || a.score > scores[a.test_id]) scores[a.test_id] = a.score;
+          if (!scores[a.test_id] || a.percentage > scores[a.test_id]) scores[a.test_id] = a.percentage;
         });
         setBestScores(scores);
       }
@@ -42,7 +68,7 @@ export default function PracticeTests() {
   const filtered = tests.filter(t => {
     const matchesType = typeFilter === 'All' || t.test_type === typeFilter;
     const certLevel = profile?.certificate_level || 'A';
-    const matchesCert = t.courses?.certificate_level === certLevel;
+    const matchesCert = !t.certificate_level || t.certificate_level === certLevel;
     return matchesType && matchesCert;
   });
 
