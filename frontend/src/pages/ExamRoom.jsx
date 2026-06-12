@@ -86,8 +86,11 @@ export default function ExamRoom() {
 
     setPhase('loading');
     try {
-      // Use the newly renamed CSV RPC to avoid overloaded function ambiguity
-      const { data, error } = await supabase.rpc('fn_start_csv_exam', { p_test_id: parseInt(testId, 10) });
+      // Use the newly renamed CSV RPC with explicit user ID to prevent phantom data bug
+      const { data, error } = await supabase.rpc('fn_start_csv_exam', { 
+        p_test_id: parseInt(testId, 10),
+        p_user_id: user?.id
+      });
       if (error) throw error;
       setAttemptId(data.attempt_id);
       setQuestions(data.csv_questions || []);
